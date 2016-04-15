@@ -22,5 +22,7 @@ private:
     sf::Sprite sprite;
     sf::SoundBuffer buffer;
     sf::Sound sound;
+    size_t FontSize;
+    size_t Puncts_menu;
 
 };

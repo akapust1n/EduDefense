@@ -6,6 +6,10 @@ Menu::Menu(float width, float height)
     if (!font.loadFromFile("fonts/9711.otf")) {
        throw(file_load_error());
     }
+    Puncts_menu = 4; //4
+    FontSize = 60;
+    for(size_t i = 0; i<Puncts_menu; i++)
+        menu[i].setCharacterSize(FontSize);
 
     menu[0].setFont(font);
     menu[0].setColor(sf::Color::Red);
