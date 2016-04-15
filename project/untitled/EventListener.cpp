@@ -1,4 +1,14 @@
-#ifndef EVENTLISTENER_CPP
-#define EVENTLISTENER_CPP
+#include "EventListener.h"
+#include "Game.h"
 
-#endif // EVENTLISTENER_CPP
+WindowEventListener::WindowEventListener()
+
+{
+    Game::RegisterEventListener(this);
+}
+
+WindowEventListener::~WindowEventListener()
+{
+    Game::UnRegisterEventListener(this);
+}
+

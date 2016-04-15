@@ -13,13 +13,16 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    event_listener.cpp \
-    main_window.cpp
+    Game.cpp \
+    EventListener.cpp \
+    StateManager.cpp \
+    Logfile.cpp
 
 HEADERS  += \
-    event_listener.h \
-    game_start.h \
-    main_window.h
+    Game.h \
+    EventListener.h \
+    StateManager.h \
+    Logfile.h
 
 FORMS    +=
 
