@@ -1,35 +1,36 @@
 #include "Menu.h"
+#include <Exceptions.h>
 
 Menu::Menu(float width, float height)
 {
     if (!font.loadFromFile("fonts/9711.otf")) {
-        // handle error
+       throw(file_load_error());
     }
 
     menu[0].setFont(font);
     menu[0].setColor(sf::Color::Red);
     menu[0].setString("Play");
-    menu[0].setPosition(sf::Vector2f(width / 4, height / (MAX_NUMBER_OF_ITEMS + 5) * 1));
+    menu[0].setPosition(sf::Vector2f(width / 3.5, height / (MAX_NUMBER_OF_ITEMS + 5) * 1 + 50));
 
     menu[1].setFont(font);
     menu[1].setColor(sf::Color::White);
     menu[1].setString("Options");
-    menu[1].setPosition(sf::Vector2f(width / 4, height / (MAX_NUMBER_OF_ITEMS + 5) * 2));
+    menu[1].setPosition(sf::Vector2f(width / 3.5, height / (MAX_NUMBER_OF_ITEMS + 5) * 2 + 50));
 
     menu[2].setFont(font);
     menu[2].setColor(sf::Color::White);
     menu[2].setString("Statistics");
-    menu[2].setPosition(sf::Vector2f(width / 4, height / (MAX_NUMBER_OF_ITEMS + 5) * 3));
+    menu[2].setPosition(sf::Vector2f(width / 3.5, height / (MAX_NUMBER_OF_ITEMS + 5) * 3 + 50));
 
     menu[3].setFont(font);
     menu[3].setColor(sf::Color::White);
     menu[3].setString("Exit");
-    menu[3].setPosition(sf::Vector2f(width / 4, height / (MAX_NUMBER_OF_ITEMS + 5) * 4));
+    menu[3].setPosition(sf::Vector2f(width / 3.5, height / (MAX_NUMBER_OF_ITEMS + 5) * 4 + 50));
 
     selectedItemIndex = 0;
 
     if (!texture.loadFromFile("images/fon.jpg")) {
-        // ошибка...
+        throw(file_load_error());
     };
 
     sprite.setTexture(texture);
@@ -37,7 +38,7 @@ Menu::Menu(float width, float height)
     sprite.setPosition(0, 0);
 
     if (!buffer.loadFromFile("music/MenuMusic.ogg")) {
-        // ошибка...
+        throw(file_load_error());
     }
     sound.setBuffer(buffer);
     sound.play();
