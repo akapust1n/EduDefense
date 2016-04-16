@@ -6,7 +6,7 @@
 class Moveable : public GameObject
 {
 public:
-    virtual ~Moveable = 0;
+    virtual ~Moveable() = 0;
 
     double getSpeed();
     void setSpeed(double speed);

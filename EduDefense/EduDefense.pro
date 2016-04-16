@@ -4,7 +4,8 @@ HEADERS += \
     Exceptions.h \
     gameobject.h \
     enemy.h \
-    moveable.h
+    moveable.h \
+    tower.h
 
 SOURCES += \
     Menu.cpp \
@@ -13,7 +14,8 @@ SOURCES += \
     Exceptions.cpp \
     gameobject.cpp \
     enemy.cpp \
-    moveable.cpp
+    moveable.cpp \
+    tower.cpp
 
 LIBS += -LC:/SFML/lib
 
