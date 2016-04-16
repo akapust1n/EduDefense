@@ -1,18 +1,19 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include "SFML/Audio.hpp"
-using namespace sf;
+
 #define MAX_NUMBER_OF_ITEMS 4
 
 class Menu {
 public:
-    Menu(float width, float height);
+    Menu();
+    Menu(double width, double height);
     ~Menu();
 
     void draw(sf::RenderWindow& window);
     void MoveUp();
     void MoveDown();
-    int GetPressedItem() { return selectedItemIndex; }
+    size_t GetPressedItem() { return selectedItemIndex; }
 
 private:
     int selectedItemIndex;
@@ -23,6 +24,6 @@ private:
     sf::SoundBuffer buffer;
     sf::Sound sound;
     size_t FontSize;
-    size_t Puncts_menu;
+    size_t menuItemsCount;
 
 };
