@@ -4,8 +4,9 @@
 #include <cstring>
 
 #include "moveable.h"
+#include "activegameobject.h"
 
-class Missle : public Moveable
+class Missle : public Moveable, public ActiveGameObject
 {
 public:
     virtual ~Missle() = 0;

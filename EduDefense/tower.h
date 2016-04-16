@@ -4,11 +4,12 @@
 #include "gameobject.h"
 #include "enemy.h"
 #include "missle.h"
+#include "activegameobject.h"
 
 static const size_t MAX_GRADE = 2;
-static const double GRADE_FACTORS[] {1.0, 1.4, 2.0};
+static const double GRADE_FACTORS[] {1.0, 1.4, 2.0}; // множители урона
 
-class Tower : public GameObject
+class Tower : public GameObject, public ActiveGameObject
 {
 public:
     virtual ~Tower() = 0;
