@@ -1,3 +1,4 @@
 *.o
 MakeFile
+Makefile
 *.user
