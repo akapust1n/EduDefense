@@ -11,34 +11,34 @@ Menu::Menu(double width, double height) {
     }
     menuItemsCount = 4;
     FontSize = 60;
-    for(size_t i = 0; i< menuItemsCount; i++)
+    for(size_t i = 0; i < menuItemsCount; i++)
         menu[i].setCharacterSize(FontSize);
 
     menu[PLAY].setFont(font);
     menu[PLAY].setColor(sf::Color::Red);
-    menu[PLAY].setString("Play");
-    menu[PLAY].setPosition(sf::Vector2f(width / 3.5, height / (MAX_NUMBER_OF_ITEMS + 5) * 1 + 50));
+    menu[PLAY].setString("   Play   ");
+    menu[PLAY].setPosition(sf::Vector2f(width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 1 + 75));
 
     menu[OPTIONS].setFont(font);
     menu[OPTIONS].setColor(sf::Color::White);
-    menu[OPTIONS].setString("Options");
-    menu[OPTIONS].setPosition(sf::Vector2f(width / 3.5, height / (MAX_NUMBER_OF_ITEMS + 5) * 2 + 50));
+    menu[OPTIONS].setString("  Options  ");
+    menu[OPTIONS].setPosition(sf::Vector2f(width / 2.75 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 2 + 75));
 
     menu[STATS].setFont(font);
     menu[STATS].setColor(sf::Color::White);
     menu[STATS].setString("Statistics");
-    menu[STATS].setPosition(sf::Vector2f(width / 3.5, height / (MAX_NUMBER_OF_ITEMS + 5) * 3 + 50));
+    menu[STATS].setPosition(sf::Vector2f(width / 2.8 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 3 + 75));
 
     menu[QUIT].setFont(font);
     menu[QUIT].setColor(sf::Color::White);
-    menu[QUIT].setString("Exit");
-    menu[QUIT].setPosition(sf::Vector2f(width / 3.5, height / (MAX_NUMBER_OF_ITEMS + 5) * 4 + 50));
+    menu[QUIT].setString("   Exit   ");
+    menu[QUIT].setPosition(sf::Vector2f(width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 4 + 75));
 
     selectedItemIndex = PLAY;
 
     if (!texture.loadFromFile(BG_IMG)) {
         throw(file_load_error());
-    };
+    }
 
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, width, height));
