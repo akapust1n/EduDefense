@@ -4,7 +4,7 @@
 
 #define MAX_NUMBER_OF_ITEMS 4
 
-enum MenuItems {
+enum MenuItem {
     PLAY,
     OPTIONS,
     STATS,
@@ -18,8 +18,8 @@ public:
     ~Menu();
 
     void draw(sf::RenderWindow& window);
-    void MoveUp();
-    void MoveDown();
+    void moveUp();
+    void moveDown();
     size_t GetPressedItem() { return selectedItemIndex; }
 
 private:

@@ -35,7 +35,7 @@ Menu::Menu(double width, double height)
     menu[QUIT].setString("Exit");
     menu[QUIT].setPosition(sf::Vector2f(width / 3.5, height / (MAX_NUMBER_OF_ITEMS + 5) * 4 + 50));
 
-    selectedItemIndex = 0;
+    selectedItemIndex = PLAY;
 
     if (!texture.loadFromFile(BG_IMG)) {
         throw(file_load_error());
@@ -70,7 +70,7 @@ void Menu::draw(sf::RenderWindow& window)
     // внутри главного цикла, между window.clear() и window.display()
 }
 
-void Menu::MoveUp()
+void Menu::moveUp()
 {
     if (selectedItemIndex - 1 >= 0) {
         menu[selectedItemIndex].setColor(sf::Color::White);
@@ -79,7 +79,7 @@ void Menu::MoveUp()
     }
 }
 
-void Menu::MoveDown()
+void Menu::moveDown()
 {
     if (selectedItemIndex + 1 < MAX_NUMBER_OF_ITEMS) {
         menu[selectedItemIndex].setColor(sf::Color::White);
@@ -87,3 +87,5 @@ void Menu::MoveDown()
         menu[selectedItemIndex].setColor(sf::Color::Red);
     }
 }
+
+MenuItem
