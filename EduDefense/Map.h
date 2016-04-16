@@ -1,12 +1,13 @@
 #ifndef MAPCREATOR_H
 #define MAPCREATOR_H
 #include <SFML/Graphics.hpp>
+#include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <fstream>
 #include <memory>
 #include <string>
 #include <vector>
+
 using namespace sf;
 //---------------------паттерн Строитель----------
 
@@ -18,7 +19,8 @@ public:
     {
     }
     Map() {}
-    Texture texture;
+
+    Sprite sprite_out;
     void setFilename(String filename) { File = filename; }
     void setHeight(int height) { HEIGHT_MAP = height; }
     void setWidth(int width) { WIDTH_MAP = width; }
@@ -26,21 +28,15 @@ public:
     {
         image.loadFromFile(File); //загружаем файл для карты
         texture.loadFromImage(image); //заряжаем текстуру картинкой
-        sprite.setTexture(texture); //заливаем текстуру спрайтом
+        sprite_out.setTexture(texture); //заливаем текстуру спрайтом
     }
 
 private:
     int HEIGHT_MAP; //размер карты высота
     int WIDTH_MAP; //размер карты ширина
-    String File;
+    String File; //файл с картинками для создания текстуры
     Image image;
-    Sprite sprite;
-    enum MapStates { //я ещё не придумал зачем это нужно, но в теории поможет при считывании файла
-        Way,
-        BadWay,
-        BuildingArea,
-        UnBuildingArea
-    };
+    Texture texture;
 };
 
 //базовый класс строителя
@@ -49,20 +45,24 @@ protected:
     std::shared_ptr<Map> mymap;
 
 public:
-    MapBuilder(String filename) { temp = filename; }
-    void createNewMapProduct() { mymap.reset(new Map(temp)); }
+    MapBuilder(String filename) { temp1 = filename; }
+    void createNewMapProduct() { mymap.reset(new Map(temp1)); }
     std::shared_ptr<Map> GetMap() { return mymap; }
 
     virtual void buildParams() = 0;
     virtual void buildTexture() = 0;
 
-private:
-    String temp;
+    //private:
+    String temp1;
 };
 
 //Строитель обычной карты
 class UsualMapBuilder : public MapBuilder {
 public:
+    UsualMapBuilder()
+        : MapBuilder("maps/map.png") // ПЕРЕДЕЛАТЬ ПОД ПАРАМЕТР
+    {
+    }
     virtual void buildParams()
     {
         mymap->setHeight(700);
@@ -70,20 +70,62 @@ public:
     }
     virtual void buildTexture()
     {
+
+        sf::String TileMap[25] = {
+            "                                        ",
+            "0000000000000000                       0",
+            "  s  s         0                      0",
+            "               0                        0",
+            "  s            0               00      0",
+            "               0               00       0",
+            "   s      000000                       0",
+            "          0                             0",
+            "      00000                            0",
+            "    s 0                                0",
+            "      00000000000                                 0",
+            "                0                      0",
+            "          s     0                      0",
+            "    s           0s                     0",
+            "000000000000    0 s                     0",
+            "           0    00000                      0",
+            "           0        0                0",
+            "           0000000000                0",
+            "                                       0",
+            "                                      0",
+            "                                      0",
+            "                                       0",
+            "0                                      0",
+            "0                                      0",
+            "0000000000000000000000000000000000000000",
+        };
         mymap->textureWork();
-        //ВРЕМЕННОЕ РЕШЕНИЕ
-        std::vector<std::string> temp;
-        std::string line;
-          std::ifstream myfile ("maps/level1.txt");
-          if (myfile.is_open())
-          {
-            while ( myfile.good() )
-            {
-              getline (myfile,line);
-              temp.push_back(line);
+
+        sf::RenderWindow window2(sf::VideoMode(800, 600), "lol");
+        sf::Event event;
+
+        while (window2.isOpen()) {
+            while (window2.pollEvent(event)) {
+                switch (event.type) {
+                case sf::Event::Closed:
+                    window2.close();
+                }
             }
-            myfile.close();
-          }
+            for (int i = 0; i < 25; i++)
+                for (int j = 0; j < 40; j++) {
+
+                    if (TileMap[i][j] == ' ')
+                        mymap->sprite_out.setTextureRect(IntRect(0, 0, 32, 32));
+                    if (TileMap[i][j] == 's')
+                        mymap->sprite_out.setTextureRect(IntRect(32, 0, 32, 32)); //если встретили символ s, то рисуем 2й квадратик
+                    if (TileMap[i][j] == '0')
+                        mymap->sprite_out.setTextureRect(IntRect(64, 0, 32, 32)); //если встретили символ 0, то рисуем 3й квадратик
+
+                    mymap->sprite_out.setPosition(j * 32, i * 32);
+                    window2.draw(mymap->sprite_out);
+                }
+
+            window2.display();
+        }
     }
 };
 
@@ -105,6 +147,7 @@ public:
     {
         mapBuilder->createNewMapProduct();
         mapBuilder->buildParams();
+        mapBuilder->buildTexture();
     }
 };
 

@@ -28,11 +28,20 @@ void Game::run()
 
                 case sf::Keyboard::Return:
                     switch (menu.GetPressedItem()) {
-                    case 0:
-                        std::cout << "Play button has been pressed" << std::endl;
+                    case 0:{
+                        Waiter waiter;
+
+                            UsualMapBuilder umap;
+                            waiter.SetMapBuilder (&umap);
+                            waiter.ConstructPizza();
+                            std::shared_ptr<Map> map = waiter.GetMap();
+                        //std::cout << "Play button has been pressed" << std::endl;
+                    }
                         break;
-                    case 1:
+                    case 1:{
+
                         std::cout << "Option button has been pressed" << std::endl;
+                    }
                         break;
                     case 2:
                         std::cout << "Statistic button has been pressed" << std::endl;
