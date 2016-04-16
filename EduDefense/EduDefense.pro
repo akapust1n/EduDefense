@@ -1,13 +1,17 @@
 HEADERS += \
     Menu.h \
     Game.h \
-    Exceptions.h
+    Exceptions.h \
+    gameobject.h \
+    enemy.h
 
 SOURCES += \
     Menu.cpp \
     main.cpp \
     Game.cpp \
-    Exceptions.cpp
+    Exceptions.cpp \
+    gameobject.cpp \
+    enemy.cpp
 
 LIBS += -LC:/SFML/lib
 
