@@ -30,10 +30,21 @@ public:
         texture.loadFromImage(image); //заряжаем текстуру картинкой
         sprite_out.setTexture(texture); //заливаем текстуру спрайтом
     }
+    int getleft_margin(){ return left_margin;}
+    int getright_margin(){ return right_margin;}
+    int gettop_margin(){ return top_margin;}
+    int getbot_margin(){ return bot_margin;}
+    int getheight(){ return HEIGHT_MAP;}
+    int getwidth(){ return WIDTH_MAP;}
+
 
 private:
     int HEIGHT_MAP; //размер карты высота
     int WIDTH_MAP; //размер карты ширина
+    int top_margin = 10;
+    int left_margin = 10;
+    int bot_margin = 10; //  пока не используетс
+    int right_margin = 10; //пока не используется
     String File; //файл с картинками для создания текстуры
     Image image;
     Texture texture;
@@ -43,7 +54,7 @@ private:
 class MapBuilder {
 protected:
     std::shared_ptr<Map> mymap;
-String temp1;
+    String temp1;
 
 public:
     MapBuilder(String filename) { temp1 = filename; }
@@ -52,22 +63,20 @@ public:
 
     virtual void buildParams() = 0;
     virtual void buildTexture() = 0;
-
-
 };
 
 //Строитель обычной карты
 class UsualMapBuilder : public MapBuilder {
 public:
-    UsualMapBuilder(RenderWindow &window, String mapsname)
+    UsualMapBuilder(RenderWindow& window, String mapsname)
         : MapBuilder(mapsname)
     {
         window2 = &window;
     }
     virtual void buildParams()
     {
-        mymap->setHeight(700);
-        mymap->setWidth(700);
+        mymap->setHeight(20);
+        mymap->setWidth(25);
     }
     virtual void buildTexture()
     {
@@ -93,16 +102,14 @@ public:
             "           0000000000                0",
             "                                       0",
             "                                      0",
-             "                                      0",
+            "                                      0",
             "                                       0",
             "0                                      0",
             "0                                      0",
             "0000000000000000000000000000000000000000",
         };
         mymap->textureWork();
-
-       // sf::RenderWindow window2(sf::VideoMode(800, 600), "lol");
-      sf::Event event;
+        sf::Event event;
         while (window2->isOpen()) {
             while (window2->pollEvent(event)) {
                 switch (event.type) {
@@ -110,8 +117,8 @@ public:
                     window2->close();
                 }
             }
-            for (int i = 0; i < 25; i++)
-                for (int j = 0; j < 40; j++) {
+            for (int i = 0; i < mymap->getheight(); i++)
+                for (int j = 0; j < mymap->getwidth(); j++) {
 
                     if (TileMap[i][j] == ' ')
                         mymap->sprite_out.setTextureRect(IntRect(0, 0, 32, 32));
@@ -120,16 +127,16 @@ public:
                     if (TileMap[i][j] == '0')
                         mymap->sprite_out.setTextureRect(IntRect(64, 0, 32, 32)); //если встретили символ 0, то рисуем 3й квадратик
 
-                    mymap->sprite_out.setPosition(j * 32, i * 32);
+                    mymap->sprite_out.setPosition(mymap->getleft_margin()+ j * 32, mymap->gettop_margin()+i * 32);
                     window2->draw(mymap->sprite_out);
-
                 }
 
             window2->display();
         }
     }
+
 private:
-    RenderWindow *window2;
+    RenderWindow* window2;
 };
 
 //директор
