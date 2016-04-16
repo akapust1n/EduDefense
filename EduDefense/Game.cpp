@@ -1,11 +1,12 @@
 #include <Game.h>
 #include <iostream>
+
 using namespace std;
-Game::Game()
-    : window_width(1024)
-    , window_height(768)
-    , window(sf::VideoMode(1024, 768), "Edu Defense")
-    , menu(1024, 768)
+Game::Game(size_t width, size_t height)
+    : window(sf::VideoMode(width, height), GAME_TITLE)
+    , window_width(width)
+    , window_height(height)
+    , menu(width, height)
 {
 }
 

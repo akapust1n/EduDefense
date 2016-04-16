@@ -1,9 +1,12 @@
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
+
+#define GAME_TITLE "Edu Defense"
+
 class  Game
 {
 public:
-     Game();
+     Game(size_t width, size_t height);
      void run();
      Menu menu;
 private:

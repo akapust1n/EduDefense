@@ -4,6 +4,13 @@
 
 #define MAX_NUMBER_OF_ITEMS 4
 
+enum MenuItems {
+    PLAY,
+    OPTIONS,
+    STATS,
+    QUIT
+};
+
 class Menu {
 public:
     Menu();
@@ -25,5 +32,4 @@ private:
     sf::Sound sound;
     size_t FontSize;
     size_t menuItemsCount;
-
 };
