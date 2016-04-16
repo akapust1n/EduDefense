@@ -17,6 +17,8 @@ public:
     void setGrade(size_t grade);
     double getBaseDamage();
     void setBaseDamage(double baseDamage);
+    double getRange();
+    void setRange(double range);
     void upgrade();
     /**
      * @brief Запускает снаряд во врага
@@ -28,6 +30,7 @@ protected:
     size_t grade;
     double baseDamage;
     double damage = baseDamage;
+    double range;
 };
 
 #endif // TOWER_H
