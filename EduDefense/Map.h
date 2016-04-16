@@ -75,7 +75,7 @@ public:
     }
     virtual void buildParams()
     {
-        mymap->setHeight(20);
+        mymap->setHeight(21);
         mymap->setWidth(25);
     }
     virtual void buildTexture()
