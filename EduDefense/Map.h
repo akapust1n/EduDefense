@@ -70,7 +70,6 @@ public:
     }
     virtual void buildTexture()
     {
-
         sf::String TileMap[25] = {
             "                                        ",
             "0000000000000000                       0",

@@ -6,7 +6,8 @@ HEADERS += \
     enemy.h \
     moveable.h \
     tower.h \
-    Map.h
+    Map.h \
+    missle.h
 
 SOURCES += \
     Menu.cpp \
@@ -16,7 +17,8 @@ SOURCES += \
     gameobject.cpp \
     enemy.cpp \
     moveable.cpp \
-    tower.cpp
+    tower.cpp \
+    missle.cpp
 
 LIBS += -LC:/SFML/lib
 
@@ -25,3 +27,5 @@ CONFIG(debug, debug|release): LIBS += -lsfml-graphics  -lsfml-audio -lsfml-windo
 
 INCLUDEPATH += C:/SFML/include
 DEPENDPATH += C:/SFML/include
+
+QMAKE_CXXFLAGS += -std=c++11
