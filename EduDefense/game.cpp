@@ -1,6 +1,6 @@
-#include <Game.h>
+#include <game.h>
 #include <iostream>
-#include "Map.h"
+#include "map.h"
 using namespace std;
 Game::Game(size_t width, size_t height)
     : window(sf::VideoMode(width, height), GAME_TITLE)

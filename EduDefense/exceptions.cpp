@@ -1,4 +1,4 @@
-#include <Exceptions.h>
+#include <exceptions.h>
 
 //------------------------------Реализация класса ошибки памяти---------------------------
 memory_alloc_error::memory_alloc_error() {

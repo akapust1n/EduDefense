@@ -1,7 +1,7 @@
-#include "Menu.h"
+#include "menu.h"
 #include "SFML/Graphics.hpp"
 #include <iostream>
-#include <Game.h>
+#include <game.h>
 
 int main() {
     //sf::RenderWindow window(sf::VideoMode(1024, 768), "Edu Defense");

@@ -1,5 +1,5 @@
-#include "Menu.h"
-#include <Exceptions.h>
+#include "menu.h"
+#include <exceptions.h>
 
 static const char *FONT = "fonts/9711.otf";
 static const char *BG_IMG = "images/fon.jpg";
