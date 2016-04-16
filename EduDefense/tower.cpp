@@ -8,6 +8,22 @@ void Tower::setGrade(size_t grade) {
     this->grade = grade;
 }
 
+double Tower::getBaseDamage() {
+    return damage;
+}
+
+void Tower::setBaseDamage(double baseDamage) {
+    this->baseDamage = baseDamage;
+}
+
+double Tower::getRange() {
+    return range;
+}
+
+void Tower::setRange(double range) {
+    this->range = range;
+}
+
 void Tower::upgrade() {
     if (grade < MAX_GRADE) {
         grade++;
@@ -18,3 +34,4 @@ void Tower::upgrade() {
 void Tower::shoot(Enemy *enemy) {
 
 }
+
