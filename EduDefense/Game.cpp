@@ -14,8 +14,8 @@ void Game::run()
 {
     switch (menu.process(window)) {
     case PLAY:{
+        window.clear();
         Waiter waiter;
-
         UsualMapBuilder umap(window,"maps/map.png");
         waiter.SetMapBuilder(&umap);
         waiter.ConstructPizza();
