@@ -18,9 +18,11 @@ public:
     void setGrade(size_t grade);
     double getBaseDamage();
     void setBaseDamage(double baseDamage);
+    double getDamage();
     double getRange();
     void setRange(double range);
     void upgrade();
+
     /**
      * @brief Запускает снаряд во врага
      * @param enemy

@@ -16,6 +16,10 @@ void Tower::setBaseDamage(double baseDamage) {
     this->baseDamage = baseDamage;
 }
 
+double getDamage() {
+    return damage;
+}
+
 double Tower::getRange() {
     return range;
 }
