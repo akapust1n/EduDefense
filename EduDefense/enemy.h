@@ -1,15 +1,17 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include "gameobject.h"
+#include "moveable.h"
 
-class Enemy : public GameObject
+class Enemy : public Moveable
 {
 public:
     virtual ~Enemy() = 0;
+
     int getHealth();
     void setHealth(int health);
     bool isAlive();
+
 private:
     int health;
 };

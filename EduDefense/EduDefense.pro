@@ -3,7 +3,8 @@ HEADERS += \
     Game.h \
     Exceptions.h \
     gameobject.h \
-    enemy.h
+    enemy.h \
+    moveable.h
 
 SOURCES += \
     Menu.cpp \
@@ -11,7 +12,8 @@ SOURCES += \
     Game.cpp \
     Exceptions.cpp \
     gameobject.cpp \
-    enemy.cpp
+    enemy.cpp \
+    moveable.cpp
 
 LIBS += -LC:/SFML/lib
 

@@ -9,5 +9,5 @@ void Enemy::setHealth(int health) {
 }
 
 bool Enemy::isAlive() {
-    return health <= 0;
+    return health > 0;
 }
