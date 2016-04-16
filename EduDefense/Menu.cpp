@@ -1,14 +1,18 @@
 #include "Menu.h"
 #include <Exceptions.h>
 
-Menu::Menu(float width, float height)
+static const char *FONT = "fonts/9711.otf";
+static const char *BG_IMG = "images/fon.jpg";
+static const char *MUSIC = "music/MenuMusic.ogg";
+
+Menu::Menu(double width, double height)
 {
-    if (!font.loadFromFile("fonts/9711.otf")) {
+    if (!font.loadFromFile(FONT)) {
        throw(file_load_error());
     }
-    Puncts_menu = 4; //4
+    menuItemsCount = 4;
     FontSize = 60;
-    for(size_t i = 0; i<Puncts_menu; i++)
+    for(size_t i = 0; i< menuItemsCount; i++)
         menu[i].setCharacterSize(FontSize);
 
     menu[0].setFont(font);
@@ -33,21 +37,23 @@ Menu::Menu(float width, float height)
 
     selectedItemIndex = 0;
 
-    if (!texture.loadFromFile("images/fon.jpg")) {
+    if (!texture.loadFromFile(BG_IMG)) {
         throw(file_load_error());
     };
 
     sprite.setTexture(texture);
-    sprite.setTextureRect(IntRect(0, 0, width, height));
+    sprite.setTextureRect(sf::IntRect(0, 0, width, height));
     sprite.setPosition(0, 0);
 
-    if (!buffer.loadFromFile("music/MenuMusic.ogg")) {
+    if (!buffer.loadFromFile(MUSIC)) {
         throw(file_load_error());
     }
     sound.setBuffer(buffer);
     sound.play();
     sound.setLoop(true);
 }
+
+Menu::Menu() {}
 
 Menu::~Menu()
 {
@@ -57,7 +63,7 @@ void Menu::draw(sf::RenderWindow& window)
 {
     window.draw(sprite);
     //sprite.setTextureRect(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
-    for (int i = 0; i < MAX_NUMBER_OF_ITEMS; i++) {
+    for (size_t i = 0; i < MAX_NUMBER_OF_ITEMS; i++) {
         window.draw(menu[i]);
     }
 
