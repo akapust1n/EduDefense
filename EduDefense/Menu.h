@@ -20,7 +20,7 @@ public:
     void draw(sf::RenderWindow& window);
     void moveUp();
     void moveDown();
-    size_t GetPressedItem() { return selectedItemIndex; }
+    MenuItem process(sf::RenderWindow& window);
 
 private:
     int selectedItemIndex;

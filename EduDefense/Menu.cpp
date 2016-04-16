@@ -88,4 +88,35 @@ void Menu::moveDown()
     }
 }
 
-MenuItem
+MenuItem Menu::process(sf::RenderWindow &window) {
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            switch (event.type) {
+            case sf::Event::KeyReleased:
+                switch (event.key.code) {
+                case sf::Keyboard::Up:
+                    moveUp();
+                    break;
+                case sf::Keyboard::Down:
+                    moveDown();
+                    break;
+                case sf::Keyboard::Return:
+                    return (MenuItem) selectedItemIndex;
+                default:
+                    break;
+                }
+                break;
+            case sf::Event::Closed:
+                window.close();
+                break;
+            default:
+                break;
+            }
+        }
+        window.clear();
+        draw(window);
+        window.display();
+    }
+    return QUIT;
+}
