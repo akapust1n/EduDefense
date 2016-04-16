@@ -7,7 +7,8 @@ HEADERS += \
     moveable.h \
     tower.h \
     Map.h \
-    missle.h
+    missle.h \
+    activegameobject.h
 
 SOURCES += \
     Menu.cpp \
@@ -18,7 +19,8 @@ SOURCES += \
     enemy.cpp \
     moveable.cpp \
     tower.cpp \
-    missle.cpp
+    missle.cpp \
+    activegameobject.cpp
 
 LIBS += -LC:/SFML/lib
 

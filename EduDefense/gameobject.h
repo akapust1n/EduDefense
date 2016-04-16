@@ -19,7 +19,6 @@ public:
      * @return
      */
     bool isCollided(GameObject *gameObject);
-
 protected:
     double x;
     double y;
