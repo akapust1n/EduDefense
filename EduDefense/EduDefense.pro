@@ -5,7 +5,8 @@ HEADERS += \
     gameobject.h \
     enemy.h \
     moveable.h \
-    tower.h
+    tower.h \
+    Map.h
 
 SOURCES += \
     Menu.cpp \

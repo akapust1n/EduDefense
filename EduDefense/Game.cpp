@@ -1,6 +1,6 @@
 #include <Game.h>
 #include <iostream>
-
+#include "Map.h"
 using namespace std;
 Game::Game(size_t width, size_t height)
     : window(sf::VideoMode(width, height), GAME_TITLE)
@@ -12,21 +12,26 @@ Game::Game(size_t width, size_t height)
 
 void Game::run()
 {
-    switch(menu.process(window)) {
-    case PLAY:
-        cout<<"PLAY";
-        break;
+    switch (menu.process(window)) {
+    case PLAY:{
+        Waiter waiter;
+
+        UsualMapBuilder umap;
+        waiter.SetMapBuilder(&umap);
+        waiter.ConstructPizza();
+        std::shared_ptr<Map> map = waiter.GetMap();
+        break;}
     case OPTIONS:
-        cout<<"OPTIONS";
+        cout << "OPTIONS";
         break;
     case STATS:
-        cout<<"STATS";
+        cout << "STATS";
         break;
     case QUIT:
-        cout<<"QUIT";
+        cout << "QUIT";
         return;
     default:
-        cout<<"This should not happen";
+        cout << "This should not happen";
         break;
     }
 }
