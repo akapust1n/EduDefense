@@ -14,18 +14,14 @@ using namespace sf;
 //класс карты
 class Map {
 public:
-    Map(String filename)
-        : File(filename)
-    {
-    }
+    Map(String filename): File(filename) {}
     Map() {}
 
     Sprite sprite_out;
     void setFilename(String filename) { File = filename; }
     void setHeight(int height) { HEIGHT_MAP = height; }
     void setWidth(int width) { WIDTH_MAP = width; }
-    void textureWork()
-    {
+    void textureWork() {
         image.loadFromFile(File); //загружаем файл для карты
         texture.loadFromImage(image); //заряжаем текстуру картинкой
         sprite_out.setTexture(texture); //заливаем текстуру спрайтом
@@ -36,7 +32,6 @@ public:
     int getbot_margin(){ return bot_margin;}
     int getheight(){ return HEIGHT_MAP;}
     int getwidth(){ return WIDTH_MAP;}
-
 
 private:
     int HEIGHT_MAP; //размер карты высота
@@ -69,18 +64,16 @@ public:
 class UsualMapBuilder : public MapBuilder {
 public:
     UsualMapBuilder(RenderWindow& window, String mapsname)
-        : MapBuilder(mapsname)
-    {
+        : MapBuilder(mapsname) {
         window2 = &window;
     }
-    virtual void buildParams()
-    {
+
+    virtual void buildParams() {
         mymap->setHeight(21);
         mymap->setWidth(25);
     }
-    virtual void buildTexture()
-    {
 
+    virtual void buildTexture() {
         sf::String TileMap[25] = {
             "                                        ",
             "0000000000000000                       0",
@@ -130,7 +123,6 @@ public:
                     mymap->sprite_out.setPosition(mymap->getleft_margin()+ j * 32, mymap->gettop_margin()+i * 32);
                     window2->draw(mymap->sprite_out);
                 }
-
             window2->display();
         }
     }
@@ -145,16 +137,12 @@ private:
     MapBuilder* mapBuilder;
 
 public:
-    Waiter()
-        : mapBuilder(NULL)
-    {
-    }
+    Waiter(): mapBuilder(NULL) {}
     ~Waiter() {}
 
     void SetMapBuilder(MapBuilder* b) { mapBuilder = b; }
     std::shared_ptr<Map> GetMap() { return mapBuilder->GetMap(); }
-    void ConstructPizza()
-    {
+    void ConstructPizza() {
         mapBuilder->createNewMapProduct();
         mapBuilder->buildParams();
         mapBuilder->buildTexture();

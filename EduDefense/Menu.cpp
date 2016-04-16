@@ -5,10 +5,9 @@ static const char *FONT = "fonts/9711.otf";
 static const char *BG_IMG = "images/fon.jpg";
 static const char *MUSIC = "music/MenuMusic.ogg";
 
-Menu::Menu(double width, double height)
-{
+Menu::Menu(double width, double height) {
     if (!font.loadFromFile(FONT)) {
-       throw(file_load_error());
+        throw(file_load_error());
     }
     menuItemsCount = 4;
     FontSize = 60;
@@ -55,12 +54,9 @@ Menu::Menu(double width, double height)
 
 Menu::Menu() {}
 
-Menu::~Menu()
-{
-}
+Menu::~Menu(){}
 
-void Menu::draw(sf::RenderWindow& window)
-{
+void Menu::draw(sf::RenderWindow& window) {
     window.draw(sprite);
     //sprite.setTextureRect(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
     for (size_t i = 0; i < MAX_NUMBER_OF_ITEMS; i++) {
@@ -70,8 +66,7 @@ void Menu::draw(sf::RenderWindow& window)
     // внутри главного цикла, между window.clear() и window.display()
 }
 
-void Menu::moveUp()
-{
+void Menu::moveUp() {
     if (selectedItemIndex - 1 >= 0) {
         menu[selectedItemIndex].setColor(sf::Color::White);
         selectedItemIndex--;
@@ -79,8 +74,7 @@ void Menu::moveUp()
     }
 }
 
-void Menu::moveDown()
-{
+void Menu::moveDown() {
     if (selectedItemIndex + 1 < MAX_NUMBER_OF_ITEMS) {
         menu[selectedItemIndex].setColor(sf::Color::White);
         selectedItemIndex++;

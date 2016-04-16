@@ -9,11 +9,11 @@
  * Каждый loop инкрементирует loopCount.
  * Когда loopCount становится равен loopCountThreshold, вызывается action().
  */
-class ActiveGameObject : public GameObject
-{
+class ActiveGameObject : public GameObject {
 public:
     virtual ~ActiveGameObject() = 0;
     void loop();
+
 protected:
     size_t loopCountThreshold;
     size_t loopCount = 0;
