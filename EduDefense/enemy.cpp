@@ -1,10 +1,10 @@
 #include "enemy.h"
 
-int Enemy::getHealth() {
+double Enemy::getHealth() {
     return health;
 }
 
-void Enemy::setHealth(int health) {
+void Enemy::setHealth(double health) {
     this->health = health;
 }
 

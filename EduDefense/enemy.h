@@ -9,12 +9,12 @@ class Enemy : public Moveable, public ActiveGameObject
 public:
     virtual ~Enemy() = 0;
 
-    int getHealth();
-    void setHealth(int health);
+    double getHealth();
+    void setHealth(double health);
     bool isAlive();
 
 private:
-    int health;
+    double health;
 };
 
 #endif // ENEMY_H
