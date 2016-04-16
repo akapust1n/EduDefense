@@ -43,6 +43,7 @@ private:
 class MapBuilder {
 protected:
     std::shared_ptr<Map> mymap;
+String temp1;
 
 public:
     MapBuilder(String filename) { temp1 = filename; }
@@ -52,16 +53,16 @@ public:
     virtual void buildParams() = 0;
     virtual void buildTexture() = 0;
 
-    //private:
-    String temp1;
+
 };
 
 //Строитель обычной карты
 class UsualMapBuilder : public MapBuilder {
 public:
-    UsualMapBuilder()
-        : MapBuilder("maps/map.png")
+    UsualMapBuilder(RenderWindow &window, String mapsname)
+        : MapBuilder(mapsname)
     {
+        window2 = &window;
     }
     virtual void buildParams()
     {
@@ -70,6 +71,7 @@ public:
     }
     virtual void buildTexture()
     {
+
         sf::String TileMap[25] = {
             "                                        ",
             "0000000000000000                       0",
@@ -99,19 +101,13 @@ public:
         };
         mymap->textureWork();
 
-        sf::RenderWindow window2(sf::VideoMode(800, 600), "lol");
-        sf::Event event;
-        sf::Image image;
-        sf::Sprite sprite;
-        sf::Texture texture;
-        image.loadFromFile("maps/map.png"); //загружаем файл для карты
-        texture.loadFromImage(image); //заряжаем текстуру картинкой
-        //sprite.setTexture(texture);
-        while (window2.isOpen()) {
-            while (window2.pollEvent(event)) {
+       // sf::RenderWindow window2(sf::VideoMode(800, 600), "lol");
+      sf::Event event;
+        while (window2->isOpen()) {
+            while (window2->pollEvent(event)) {
                 switch (event.type) {
                 case sf::Event::Closed:
-                    window2.close();
+                    window2->close();
                 }
             }
             for (int i = 0; i < 25; i++)
@@ -125,13 +121,15 @@ public:
                         mymap->sprite_out.setTextureRect(IntRect(64, 0, 32, 32)); //если встретили символ 0, то рисуем 3й квадратик
 
                     mymap->sprite_out.setPosition(j * 32, i * 32);
-                    window2.draw(mymap->sprite_out);
+                    window2->draw(mymap->sprite_out);
 
                 }
 
-            window2.display();
+            window2->display();
         }
     }
+private:
+    RenderWindow *window2;
 };
 
 //директор
