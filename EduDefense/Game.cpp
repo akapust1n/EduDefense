@@ -11,7 +11,6 @@ Game::Game()
 
 void Game::run()
 {
-
     while (window.isOpen()) {
         sf::Event event;
 

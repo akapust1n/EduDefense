@@ -4,7 +4,8 @@ CONFIG(debug, debug|release): LIBS += -lsfml-graphics  -lsfml-audio -lsfml-windo
 HEADERS += \
     Menu.h \
     Game.h \
-    Exceptions.h
+    Exceptions.h \
+    Map.h
 
 SOURCES += \
     Menu.cpp \
