@@ -19,7 +19,6 @@ void Game::run()
         UsualMapBuilder umap(window,"maps/map.png");
         waiter.SetMapBuilder(&umap);
         waiter.ConstructPizza();
-        std::shared_ptr<Map> map = waiter.GetMap();
         break;}
     case OPTIONS:
         cout << "OPTIONS";
