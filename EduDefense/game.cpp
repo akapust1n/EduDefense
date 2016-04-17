@@ -10,31 +10,32 @@ Game::Game(size_t width, size_t height)
 void Game::run() {
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                Exit();
+            }
 
-        if (event.type == sf::Event::Closed) {
-            Exit();
-        }
-
-        switch (m_stateManager.getcurrentState()) {
-        case MenuMain: {
-            MenuItem i = menu.process(window);
-            m_stateManager.setState(fromMenuItemtoState(i));
-            break;
-        };
-        case Levelchoose: { // потом тут будет выбор уровня, но пока его нет
-            window.clear();
-            Waiter waiter;
-            UsualMapBuilder umap(window, "maps/map.png");
-            waiter.SetMapBuilder(&umap);
-            waiter.ConstructMap();
-            break;
-        }
-        case Quit: {
-            Exit();
-            break;
-        }
-        default:
-            cout << "Smth strange happend";
+            switch (m_stateManager.getcurrentState()) {
+            case MenuMain: {
+                MenuItem i = menu.process(window);
+                m_stateManager.setState(fromMenuItemtoState(i));
+                break;
+            };
+            case Levelchoose: { // потом тут будет выбор уровня, но пока его нет
+                window.clear();
+                Waiter waiter;
+                UsualMapBuilder umap(window, "maps/map.png");
+                waiter.SetMapBuilder(&umap);
+                waiter.ConstructMap();
+                break;
+            }
+            case Quit: {
+                Exit();
+                break;
+            }
+            default:
+                cout << "Smth strange happend";
+            }
         }
     }
 }
