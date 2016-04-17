@@ -18,8 +18,6 @@ void ObjectsCreator::readfile() {
         throw(file_load_error());
     fin >> string_len;
     fin >> num_string;
-    int i = 0;
-    int j = 0;
 
     for (int i = 0; i < num_string; i++)
         for (int j = 0; j < string_len; j++) {
@@ -28,18 +26,17 @@ void ObjectsCreator::readfile() {
             if (u != not_map_element) {
                 MapObject z(texture_size * j, texture_size, u);
                 switch (u) {
-                case freearea: {
+                case freearea:
                     freeareas.push_back(z);
                     break;
-                }
-                case stone: {
+                case stone:
                     stones.push_back(z);
                     break;
-                }
-                case road: {
+                case road:
                     roads.push_back(z);
                     break;
-                }
+                default:
+                    break;
                 }
             }
         }
