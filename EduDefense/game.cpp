@@ -8,13 +8,13 @@ Game::Game(size_t width, size_t height)
       window_height(height), menu(width, height), m_Exit(false) {}
 
 void Game::run() {
-  //  int i = 0;
+    int i = 0;
     while (window.isOpen() && !m_Exit) {
-       /* sf::Event event;
+        sf::Event event;i++;
        while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 Exit();
-            }*/
+            }}
             switch (m_stateManager.getcurrentState()) {
             case MenuMain: {
                 MenuItem i = menu.process(window);
@@ -37,7 +37,7 @@ void Game::run() {
                 cout << "Smth strange happend";
             }
         }
-  //  }
+cout<<i;
 }
 
 state Game::fromMenuItemtoState(MenuItem i) {
