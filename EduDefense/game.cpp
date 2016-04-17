@@ -1,25 +1,25 @@
-#include <Game.h>
+#include <game.h>
 #include <iostream>
-#include "Map.h"
+#include "map.h"
 using namespace std;
 Game::Game(size_t width, size_t height)
     : window(sf::VideoMode(width, height), GAME_TITLE)
     , window_width(width)
     , window_height(height)
-    , menu(width, height)
-{
+    , menu(width, height) {
+
 }
 
-void Game::run()
-{
+void Game::run() {
     switch (menu.process(window)) {
-    case PLAY:{
+    case PLAY: {
         window.clear();
         Waiter waiter;
         UsualMapBuilder umap(window,"maps/map.png");
         waiter.SetMapBuilder(&umap);
         waiter.ConstructPizza();
-        break;}
+        break;
+    }
     case OPTIONS:
         cout << "OPTIONS";
         break;

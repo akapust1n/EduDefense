@@ -1,8 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-class GameObject
-{
+class GameObject {
 public:
     virtual ~GameObject() = 0;
 
@@ -19,6 +18,7 @@ public:
      * @return
      */
     bool isCollided(GameObject *gameObject);
+
 protected:
     double x;
     double y;

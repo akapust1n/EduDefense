@@ -3,11 +3,9 @@
 
 #include "gameobject.h"
 
-class Moveable : public GameObject
-{
+class Moveable : public GameObject {
 public:
     virtual ~Moveable() = 0;
-
     double getSpeed();
     void setSpeed(double speed);
 

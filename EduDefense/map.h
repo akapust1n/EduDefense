@@ -14,18 +14,14 @@ using namespace sf;
 //класс карты
 class Map {
 public:
-    Map(String filename)
-        : File(filename)
-    {
-    }
+    Map(String filename): File(filename) {}
     Map() {}
 
     Sprite sprite_out;
     void setFilename(String filename) { File = filename; }
     void setHeight(int height) { HEIGHT_MAP = height; }
     void setWidth(int width) { WIDTH_MAP = width; }
-    void textureWork()
-    {
+    void textureWork() {
         image.loadFromFile(File); //загружаем файл для карты
         texture.loadFromImage(image); //заряжаем текстуру картинкой
         sprite_out.setTexture(texture); //заливаем текстуру спрайтом
@@ -37,12 +33,11 @@ public:
     int getheight(){ return HEIGHT_MAP;}
     int getwidth(){ return WIDTH_MAP;}
 
-
 private:
     int HEIGHT_MAP; //размер карты высота
     int WIDTH_MAP; //размер карты ширина
-    int top_margin = 10;
-    int left_margin = 10;
+    int top_margin = 6;
+    int left_margin = 6;
     int bot_margin = 10; //  пока не используетс
     int right_margin = 10; //пока не используется
     String File; //файл с картинками для создания текстуры
@@ -69,45 +64,40 @@ public:
 class UsualMapBuilder : public MapBuilder {
 public:
     UsualMapBuilder(RenderWindow& window, String mapsname)
-        : MapBuilder(mapsname)
-    {
+        : MapBuilder(mapsname) {
         window2 = &window;
     }
-    virtual void buildParams()
-    {
-        mymap->setHeight(21);
-        mymap->setWidth(25);
-    }
-    virtual void buildTexture()
-    {
 
-        sf::String TileMap[25] = {
-            "                                        ",
-            "0000000000000000                       0",
-            "  s  s         0                      0",
-            "               0                        0",
-            "  s            0               00      0",
-            "               0               00       0",
-            "   s      000000                       0",
-            "          0                             0",
-            "      00000                            0",
-            "    s 0                                0",
-            "      00000000000                                 0",
-            "                0                      0",
-            "          s     0                      0",
-            "    s           0s                     0",
-            "000000000000    0 s                     0",
-            "           0    00000                      0",
-            "           0        0                0",
-            "           0000000000                0",
-            "                                       0",
-            "                                      0",
-            "                                      0",
-            "                                       0",
-            "0                                      0",
-            "0                                      0",
-            "0000000000000000000000000000000000000000",
+    virtual void buildParams() {
+        mymap->setHeight(21);
+        mymap->setWidth(22);
+    }
+
+    virtual void buildTexture() {
+        sf::String TileMap[21] = {
+            "                      ",
+            "0000000000000000      ",
+            "  s  s         0      ",
+            "               0      ",
+            "  s            0      ",
+            "               0      ",
+            "   s      000000      ",
+            "          0           ",
+            "      00000           ",
+            "    s 0               ",
+            "      00000000000     ",
+            "                0     ",
+            "          s     0     ",
+            "    s           0s    ",
+            "000000000000    0 s   ",
+            "           0  s 00000 ",
+            "           0        0 ",
+            "           0000000000 ",
+            "                      ",
+            "                      ",
+            "                      ",
         };
+
         mymap->textureWork();
         sf::Event event;
         while (window2->isOpen()) {
@@ -130,7 +120,6 @@ public:
                     mymap->sprite_out.setPosition(mymap->getleft_margin()+ j * 32, mymap->gettop_margin()+i * 32);
                     window2->draw(mymap->sprite_out);
                 }
-
             window2->display();
         }
     }
@@ -145,16 +134,12 @@ private:
     MapBuilder* mapBuilder;
 
 public:
-    Waiter()
-        : mapBuilder(NULL)
-    {
-    }
+    Waiter(): mapBuilder(NULL) {}
     ~Waiter() {}
 
     void SetMapBuilder(MapBuilder* b) { mapBuilder = b; }
     std::shared_ptr<Map> GetMap() { return mapBuilder->GetMap(); }
-    void ConstructPizza()
-    {
+    void ConstructPizza() {
         mapBuilder->createNewMapProduct();
         mapBuilder->buildParams();
         mapBuilder->buildTexture();

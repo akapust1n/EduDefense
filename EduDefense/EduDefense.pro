@@ -1,26 +1,26 @@
 HEADERS += \
-    Menu.h \
-    Game.h \
-    Exceptions.h \
     gameobject.h \
     enemy.h \
     moveable.h \
     tower.h \
-    Map.h \
     missle.h \
-    activegameobject.h
+    activegameobject.h \
+    exceptions.h \
+    game.h \
+    map.h \
+    menu.h
 
 SOURCES += \
-    Menu.cpp \
     main.cpp \
-    Game.cpp \
-    Exceptions.cpp \
     gameobject.cpp \
     enemy.cpp \
     moveable.cpp \
     tower.cpp \
     missle.cpp \
-    activegameobject.cpp
+    activegameobject.cpp \
+    exceptions.cpp \
+    game.cpp \
+    menu.cpp
 
 LIBS += -LC:/SFML/lib
 
