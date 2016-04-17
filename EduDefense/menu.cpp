@@ -17,22 +17,22 @@ Menu::Menu(double width, double height) {
     menu[PLAY].setFont(font);
     menu[PLAY].setColor(sf::Color::Red);
     menu[PLAY].setString("   Play   ");
-    menu[PLAY].setPosition(sf::Vector2f(width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 1 + 75));
+    menu[PLAY].setPosition(sf::Vector2f(width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 1 + 85));
 
     menu[OPTIONS].setFont(font);
     menu[OPTIONS].setColor(sf::Color::White);
     menu[OPTIONS].setString("  Options  ");
-    menu[OPTIONS].setPosition(sf::Vector2f(width / 2.75 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 2 + 75));
+    menu[OPTIONS].setPosition(sf::Vector2f(width / 2.75 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 2 + 85));
 
     menu[STATS].setFont(font);
     menu[STATS].setColor(sf::Color::White);
     menu[STATS].setString("Statistics");
-    menu[STATS].setPosition(sf::Vector2f(width / 2.8 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 3 + 75));
+    menu[STATS].setPosition(sf::Vector2f(width / 2.8 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 3 + 85));
 
     menu[QUIT].setFont(font);
     menu[QUIT].setColor(sf::Color::White);
     menu[QUIT].setString("   Exit   ");
-    menu[QUIT].setPosition(sf::Vector2f(width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 4 + 75));
+    menu[QUIT].setPosition(sf::Vector2f(width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 4 + 85));
 
     selectedItemIndex = PLAY;
 
