@@ -10,7 +10,8 @@ HEADERS += \
     map.h \
     menu.h \
     chooselevel.h \
-    statemanger.h
+    statemanger.h \
+    gameobjectcreator.h
 
 SOURCES += \
     main.cpp \
@@ -23,7 +24,8 @@ SOURCES += \
     exceptions.cpp \
     game.cpp \
     menu.cpp \
-    statemanager.cpp
+    statemanager.cpp \
+    gameobjectcreator.cpp
 
 LIBS += -LC:/SFML/lib
 

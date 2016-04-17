@@ -3,7 +3,7 @@
 #include <statemanger.h>
 #define GAME_TITLE "Edu Defense"
 #include <statemanger.h>
-
+#include <gameobjectcreator.h>
 class Game {
   public:
     Game(size_t width, size_t height);
