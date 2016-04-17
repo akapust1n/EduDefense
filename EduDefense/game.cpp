@@ -9,17 +9,17 @@ Game::Game(size_t width, size_t height)
 void Game::run() {
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
-       /* switch (event.type) {
+        switch (event.type) {
         case sf::Event::Closed:
             window.close();
-        }*/
+        }
         switch (menu.process(window)) {
         case PLAY: {
             window.clear();
             Waiter waiter;
             UsualMapBuilder umap(window, "maps/map.png");
             waiter.SetMapBuilder(&umap);
-            waiter.ConstructPizza();
+            waiter.ConstructMap();
             break;
         }
         case OPTIONS:

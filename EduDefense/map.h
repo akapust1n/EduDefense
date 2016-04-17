@@ -126,7 +126,7 @@ class Waiter {
 
     void SetMapBuilder(MapBuilder *b) { mapBuilder = b; }
     std::shared_ptr<Map> GetMap() { return mapBuilder->GetMap(); }
-    void ConstructPizza() {
+    void ConstructMap() {
         mapBuilder->createNewMapProduct();
         mapBuilder->buildParams();
         mapBuilder->buildTexture();

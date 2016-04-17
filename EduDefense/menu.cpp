@@ -88,9 +88,9 @@ void Menu::moveDown() {
 }
 
 MenuItem Menu::process(sf::RenderWindow &window) {
-    {
+    while (window.isOpen()) {
         sf::Event event;
-
+        while (window.pollEvent(event)) {
             switch (event.type) {
             case sf::Event::KeyReleased:
                 switch (event.key.code) {
@@ -106,16 +106,16 @@ MenuItem Menu::process(sf::RenderWindow &window) {
                     break;
                 }
                 break;
-         /*   case sf::Event::Closed:
+            case sf::Event::Closed:
                 window.close();
-                break;*/
+                break;
             default:
                 break;
             }
-
+        }
         window.clear();
         draw(window);
         window.display();
     }
-    return (MenuItem)selectedItemIndex;
+    return QUIT;
 }

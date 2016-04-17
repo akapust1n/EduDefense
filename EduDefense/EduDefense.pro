@@ -8,7 +8,8 @@ HEADERS += \
     exceptions.h \
     game.h \
     map.h \
-    menu.h
+    menu.h \
+    chooselevel.h
 
 SOURCES += \
     main.cpp \
