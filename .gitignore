@@ -1,4 +1,8 @@
 *.o
-MakeFile
-Makefile
+MakeFile.*
+Makefile.*
+Makefile*
+MakeFile*
 *.user
+debug*
+Debug*
