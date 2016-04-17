@@ -11,28 +11,32 @@ Menu::Menu(double width, double height) {
     }
     menuItemsCount = 4;
     FontSize = 60;
-    for(size_t i = 0; i < menuItemsCount; i++)
+    for (size_t i = 0; i < menuItemsCount; i++)
         menu[i].setCharacterSize(FontSize);
 
     menu[PLAY].setFont(font);
     menu[PLAY].setColor(sf::Color::Red);
     menu[PLAY].setString("   Play   ");
-    menu[PLAY].setPosition(sf::Vector2f(width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 1 + 85));
+    menu[PLAY].setPosition(sf::Vector2f(
+        width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 1 + 85));
 
     menu[OPTIONS].setFont(font);
     menu[OPTIONS].setColor(sf::Color::White);
     menu[OPTIONS].setString("  Options  ");
-    menu[OPTIONS].setPosition(sf::Vector2f(width / 2.75 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 2 + 85));
+    menu[OPTIONS].setPosition(sf::Vector2f(
+        width / 2.75 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 2 + 85));
 
     menu[STATS].setFont(font);
     menu[STATS].setColor(sf::Color::White);
     menu[STATS].setString("Statistics");
-    menu[STATS].setPosition(sf::Vector2f(width / 2.8 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 3 + 85));
+    menu[STATS].setPosition(sf::Vector2f(
+        width / 2.8 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 3 + 85));
 
     menu[QUIT].setFont(font);
     menu[QUIT].setColor(sf::Color::White);
     menu[QUIT].setString("   Exit   ");
-    menu[QUIT].setPosition(sf::Vector2f(width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 4 + 85));
+    menu[QUIT].setPosition(sf::Vector2f(
+        width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 4 + 85));
 
     selectedItemIndex = PLAY;
 
@@ -54,11 +58,12 @@ Menu::Menu(double width, double height) {
 
 Menu::Menu() {}
 
-Menu::~Menu(){}
+Menu::~Menu() {}
 
-void Menu::draw(sf::RenderWindow& window) {
+void Menu::draw(sf::RenderWindow &window) {
     window.draw(sprite);
-    //sprite.setTextureRect(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
+    // sprite.setTextureRect(sf::IntRect(0, 0, window.getSize().x,
+    // window.getSize().y));
     for (size_t i = 0; i < MAX_NUMBER_OF_ITEMS; i++) {
         window.draw(menu[i]);
     }
@@ -96,7 +101,7 @@ MenuItem Menu::process(sf::RenderWindow &window) {
                     moveDown();
                     break;
                 case sf::Keyboard::Return:
-                    return (MenuItem) selectedItemIndex;
+                    return (MenuItem)selectedItemIndex;
                 default:
                     break;
                 }

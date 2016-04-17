@@ -1,36 +1,56 @@
+#include "map.h"
 #include <game.h>
 #include <iostream>
-#include "map.h"
+
 using namespace std;
 Game::Game(size_t width, size_t height)
-    : window(sf::VideoMode(width, height), GAME_TITLE)
-    , window_width(width)
-    , window_height(height)
-    , menu(width, height) {
-
-}
+    : window(sf::VideoMode(width, height), GAME_TITLE), window_width(width),
+      window_height(height), menu(width, height), m_Exit(false) {}
 
 void Game::run() {
-    switch (menu.process(window)) {
-    case PLAY: {
-        window.clear();
-        Waiter waiter;
-        UsualMapBuilder umap(window,"maps/map.png");
-        waiter.SetMapBuilder(&umap);
-        waiter.ConstructPizza();
-        break;
+    while (window.isOpen() && !m_Exit) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                Exit();
+            }
+
+            switch (m_stateManager.getcurrentState()) {
+            case MenuMain: {
+                MenuItem i = menu.process(window);
+                m_stateManager.setState(fromMenuItemtoState(i));
+                break;
+            };
+            case Levelchoose: { // потом тут будет выбор уровня, но пока его нет
+                window.clear();
+                Waiter waiter;
+                UsualMapBuilder umap(window, "maps/map.png");
+                waiter.SetMapBuilder(&umap);
+                waiter.ConstructMap();
+                break;
+            }
+            case Quit: {
+                Exit();
+                break;
+            }
+            default:
+                cout << "Smth strange happend";
+            }
+        }
     }
+}
+
+state Game::fromMenuItemtoState(MenuItem i) {
+    switch (i) {
+    case PLAY:
+        return Levelchoose;
     case OPTIONS:
-        cout << "OPTIONS";
-        break;
+        return Options;
     case STATS:
-        cout << "STATS";
-        break;
+        return Stats;
     case QUIT:
-        cout << "QUIT";
-        return;
+        return Quit;
     default:
-        cout << "This should not happen";
-        break;
+        return MenuMain; //такого не должно произойти
     }
 }
