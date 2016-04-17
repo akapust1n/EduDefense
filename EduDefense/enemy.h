@@ -2,9 +2,8 @@
 #define ENEMY_H
 
 #include "moveable.h"
-#include "activegameobject.h"
 
-class Enemy : public Moveable, public ActiveGameObject {
+class Enemy : public Moveable {
 public:
     virtual ~Enemy() = 0;
 
