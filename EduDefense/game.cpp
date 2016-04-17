@@ -1,6 +1,7 @@
 #include "map.h"
 #include <game.h>
 #include <iostream>
+
 using namespace std;
 Game::Game(size_t width, size_t height)
     : window(sf::VideoMode(width, height), GAME_TITLE), window_width(width),
@@ -9,12 +10,18 @@ Game::Game(size_t width, size_t height)
 void Game::run() {
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
-        switch (event.type) {
-        case sf::Event::Closed:
-            window.close();
+
+        if (event.type == sf::Event::Closed) {
+            Exit();
         }
-        switch (menu.process(window)) {
-        case PLAY: {
+
+        switch (m_stateManager.getcurrentState()) {
+        case MenuMain: {
+            MenuItem i = menu.process(window);
+            m_stateManager.setState(fromMenuItemtoState(i));
+            break;
+        };
+        case Levelchoose: { // потом тут будет выбор уровня, но пока его нет
             window.clear();
             Waiter waiter;
             UsualMapBuilder umap(window, "maps/map.png");
@@ -22,18 +29,27 @@ void Game::run() {
             waiter.ConstructMap();
             break;
         }
-        case OPTIONS:
-            cout << "OPTIONS";
-            break;
-        case STATS:
-            cout << "STATS";
-            break;
-        case QUIT:
-            cout << "QUIT";
-            return;
-        default:
-            cout << "This should not happen";
+        case Quit: {
+            Exit();
             break;
         }
+        default:
+            cout << "Smth strange happend";
+        }
+    }
+}
+
+state Game::fromMenuItemtoState(MenuItem i) {
+    switch (i) {
+    case PLAY:
+        return Levelchoose;
+    case OPTIONS:
+        return Options;
+    case STATS:
+        return Stats;
+    case QUIT:
+        return Quit;
+    default:
+        return MenuMain; //такого не должно произойти
     }
 }
