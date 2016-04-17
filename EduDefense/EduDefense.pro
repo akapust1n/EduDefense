@@ -11,7 +11,8 @@ HEADERS += \
     menu.h \
     chooselevel.h \
     statemanger.h \
-    gameobjectcreator.h
+    gameobjectcreator.h \
+    kind_maps.h
 
 SOURCES += \
     main.cpp \
