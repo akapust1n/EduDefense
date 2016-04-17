@@ -3,10 +3,9 @@
 
 #include <cstring>
 #include "moveable.h"
-#include "activegameobject.h"
 #include "enemy.h"
 
-class Missle : public Moveable, public ActiveGameObject {
+class Missle : public Moveable {
 public:
     virtual ~Missle() = 0;
     double getDamage();

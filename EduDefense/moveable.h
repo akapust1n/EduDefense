@@ -1,9 +1,9 @@
 #ifndef MOVEABLE_H
 #define MOVEABLE_H
 
-#include "gameobject.h"
+#include "activegameobject.h"
 
-class Moveable : public GameObject {
+class Moveable : public ActiveGameObject {
 public:
     virtual ~Moveable() = 0;
     double getSpeed();
