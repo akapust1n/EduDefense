@@ -8,8 +8,8 @@ class GameView {
     // GameView(std::shared_ptr<StateManager>& temp);
     // std::shared_ptr<StateManager> m_statemanager;
   public:
-    void drawMainMenu(sf::RenderWindow &windo, const Menu &menu);
-    void drawMap();
+    void drawMainMenu(sf::RenderWindow &window, const Menu &menu);
+    void drawMap(sf::RenderWindow &window, const Menu &menu);
     void drawLevelChoose();
     void drawSettings();
     void drawStats();

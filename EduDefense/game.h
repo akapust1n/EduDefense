@@ -23,6 +23,7 @@ class Game {
     sf::RenderWindow window;
     GameView gameview;
     bool m_Exit;
+    LevelMenu m_levelmenu;
     StateManager m_stateManager;
 };
 #endif
