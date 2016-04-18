@@ -15,6 +15,7 @@ HEADERS += \
     kind_maps.h \
     gamemanager.h \
     player.h \
+    gamemenu.h \
     gameview.h
 
 SOURCES += \

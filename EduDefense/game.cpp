@@ -1,4 +1,5 @@
 #include "map.h"
+#include "gamemenu.h"
 #include <game.h>
 #include <gameview.h>
 #include <iostream>
@@ -45,11 +46,15 @@ void Game::run() {
 }
 
 void Game::drawGame() {
-    window.clear();
     Waiter waiter;
     UsualMapBuilder umap(window, "maps/map.png");
     waiter.SetMapBuilder(&umap);
     waiter.ConstructMap();
+
+    WaiterMenu waiterMenu;
+    UsualGameMenuBuilder umenu(window, "maps/background.jpg");
+    waiterMenu.SetGameMenuBuilder(&umenu);
+    waiterMenu.ConstructGameMenu();
 }
 
 state Game::fromMenuItemtoState(MenuItem i) {
