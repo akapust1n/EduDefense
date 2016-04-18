@@ -33,6 +33,12 @@ class GameMenu {
         sprite_out.setTexture(texture); //заливаем текстуру спрайтом
     }
 
+    void statsIconsWork() {
+        image.loadFromFile("images/GUI/stats1.png");
+        texture.loadFromImage(image); //заряжаем текстуру картинкой
+        sprite_out.setTexture(texture); //заливаем текстуру спрайтом
+    }
+
     int getleft_margin() { return left_margin; }
     int getright_margin() { return right_margin; }
     int gettop_margin() { return top_margin; }
@@ -92,20 +98,39 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
         mymenu->towersIconsWork();
 
         mymenu->sprite_out.setTextureRect(IntRect(0, 0, 100, 100));
-        mymenu->sprite_out.setPosition(794, 100);
+        mymenu->sprite_out.setPosition(792, 136);
         window2->draw(mymenu->sprite_out);
 
         mymenu->sprite_out.setTextureRect(IntRect(101, 0, 100, 100));
-        mymenu->sprite_out.setPosition(906, 100);
+        mymenu->sprite_out.setPosition(908, 136);
         window2->draw(mymenu->sprite_out);
 
         mymenu->sprite_out.setTextureRect(IntRect(203, 0, 100, 100));
-        mymenu->sprite_out.setPosition(794, 210);
+        mymenu->sprite_out.setPosition(792, 279);
         window2->draw(mymenu->sprite_out);
 
         mymenu->sprite_out.setTextureRect(IntRect(305, 0, 100, 100));
-        mymenu->sprite_out.setPosition(906, 210);
+        mymenu->sprite_out.setPosition(908, 279);
         window2->draw(mymenu->sprite_out);
+
+        mymenu->statsIconsWork();
+
+        mymenu->sprite_out.setTextureRect(IntRect(0, 0, 35, 35));
+        mymenu->sprite_out.setPosition(786, 3);
+        window2->draw(mymenu->sprite_out);
+
+        mymenu->sprite_out.setTextureRect(IntRect(70, 0, 35, 35));
+        mymenu->sprite_out.setPosition(978, 3);
+        window2->draw(mymenu->sprite_out);
+
+        mymenu->sprite_out.setTextureRect(IntRect(36, 0, 35, 35));
+        mymenu->sprite_out.setPosition(786, 46);
+        window2->draw(mymenu->sprite_out);
+
+        mymenu->sprite_out.setTextureRect(IntRect(70, 0, 35, 35));
+        mymenu->sprite_out.setPosition(978, 46);
+        window2->draw(mymenu->sprite_out);
+
         window2->display();
     }
 
