@@ -12,7 +12,7 @@ public:
     GameManager();
 
     Player getPlayer();
-    Player setPlayer(Player player);
+    void setPlayer(Player player);
     std::vector<GameObject *> getStones();
     void setStones(std::vector<GameObject *> stones);
     std::vector<GameObject *> getFreeAreas();
