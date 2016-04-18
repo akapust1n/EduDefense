@@ -1,6 +1,7 @@
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 
+#include "player.h"
 #include "gameobject.h"
 #include "tower.h"
 
@@ -10,6 +11,8 @@ class GameManager {
 public:
     GameManager();
 
+    Player getPlayer();
+    Player setPlayer(Player player);
     std::vector<GameObject *> getStones();
     void setStones(std::vector<GameObject *> stones);
     std::vector<GameObject *> getFreeAreas();
@@ -23,6 +26,7 @@ public:
     void loop(); // Основной цикл игры
 
 private:
+    Player player;
     // Списки получаем из GameObjectCreator
     std::vector<GameObject *> stones;
     std::vector<GameObject *> freeAreas;

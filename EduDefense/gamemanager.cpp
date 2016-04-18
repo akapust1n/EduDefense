@@ -1,7 +1,17 @@
 #include "gamemanager.h"
 
+#include <algorithm>
+
 GameManager::GameManager() {
 
+}
+
+Player GameManager::getPlayer() {
+    return player;
+}
+
+void GameManager::setPlayer(Player player) {
+    this->player = player;
 }
 
 std::vector<GameObject *> GameManager::getStones() {
@@ -40,6 +50,6 @@ std::vector<Missle *> GameManager::getMissles() {
     return missles;
 }
 
-GameManager::loop() {
+void GameManager::loop() {
 
 }
