@@ -1,5 +1,6 @@
 #ifndef GAMEOBJECTCREATOR_H
 #define GAMEOBJECTCREATOR_H
+
 #include "gameobject.h"
 #include <string>
 #include <vector>
@@ -9,21 +10,23 @@
 class ObjectsCreator {
   public:
     ObjectsCreator(std::string filename);
-   std:: vector<GameObject> stones;
-    std::vector<GameObject> freeareas;
-    std::vector<GameObject> roads;
-    int get_num_stones() { return num_stones; }
-    int get_num_freeares() { return num_freeares; }
-    int get_num_roads() { return num_roads; }
-
+    int getStonesCount() { return stonesCount; }
+    int getFreeAreasCount() { return freeAreasCount; }
+    int getNumRoads() { return roadsCount; }
+    std::vector<GameObject> getStones() { return stones; }
+    std::vector<GameObject> getFreeAreas() { return freeAreas; }
+    std::vector<GameObject> getRoads() { return roads; }
   private:
     void readfile();
-    map_state case_map_state(char temp);
+    map_state charToMapState(char c);
     std::string file;
-    std::string map_states;
-    int num_stones;
-    int num_freeares;
-    int num_roads;
+    std::string mapStates;
+    std::vector<GameObject> stones;
+    std::vector<GameObject> freeAreas;
+    std::vector<GameObject> roads;
+    int stonesCount;
+    int freeAreasCount;
+    int roadsCount;
     const int texture_size = 32; //размер текстурки
 };
 

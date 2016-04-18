@@ -3,9 +3,9 @@
 #include <gameobjectcreator.h>
 
 ObjectsCreator::ObjectsCreator(std::string filename) : file(filename) {
-    map_states.append(" "); //пустое пространство
-    map_states.append("0"); //дорога
-    map_states.append("s"); //камень
+    mapStates.append(" "); //пустое пространство
+    mapStates.append("0"); //дорога
+    mapStates.append("s"); //камень
 }
 
 void ObjectsCreator::readfile() {
@@ -22,7 +22,7 @@ void ObjectsCreator::readfile() {
     for (int i = 0; i < num_string; i++)
         for (int j = 0; j < string_len; j++) {
             fin >> temp;
-            map_state u = case_map_state(temp);
+            map_state u = charToMapState(temp);
             if (u != not_map_element) {
                 MapObject z(texture_size * j, texture_size, u);
                 switch (u) {
@@ -42,12 +42,12 @@ void ObjectsCreator::readfile() {
         }
 }
 
-map_state ObjectsCreator::case_map_state(char temp) {
-    if (temp == map_states[0])
+map_state ObjectsCreator::charToMapState(char c) {
+    if (c == mapStates[0])
         return freearea;
-    if (temp == map_states[1])
+    if (c == mapStates[1])
         return road;
-    if (temp == map_states[2])
+    if (c == mapStates[2])
         return stone;
     return not_map_element; // этого не должно происходить
 }
