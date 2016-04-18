@@ -63,8 +63,7 @@ void Menu::moveUp(sf::Text *menu1) {
     if (selectedItemIndex - 1 >= 0) {
         menu1[selectedItemIndex].setColor(sf::Color::White);
         selectedItemIndex--;
-
-        menu[selectedItemIndex].setColor(sf::Color::Black);
+        menu1[selectedItemIndex].setColor(sf::Color::Black);
 
     }
 }
@@ -73,7 +72,7 @@ void Menu::moveDown(sf::Text *menu1, int max_number) {
     if (selectedItemIndex + 1 < max_number) {
         menu1[selectedItemIndex].setColor(sf::Color::White);
         selectedItemIndex++;
-       menu[selectedItemIndex].setColor(sf::Color::Black);
+       menu1[selectedItemIndex].setColor(sf::Color::Black);
     }
 }
 
