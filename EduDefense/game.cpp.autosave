@@ -42,6 +42,7 @@ void Game::run() {
     cout << i;
 }
 
+
 state Game::fromMenuItemtoState(MenuItem i) {
     switch (i) {
     case PLAY:

@@ -1,12 +1,13 @@
 #include "menu.h"
 #include <SFML/Graphics.hpp>
 #include <statemanger.h>
-#define GAME_TITLE "Edu Defense"
-#include <statemanger.h>
 #include <gameobjectcreator.h>
+#define GAME_TITLE "Edu Defense"
+
 class Game {
   public:
     Game(size_t width, size_t height);
+
     void run();
     Menu menu;
     void Exit() { m_Exit = true; }
