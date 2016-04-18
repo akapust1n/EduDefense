@@ -2,13 +2,14 @@
 #include <fstream>
 #include <gameobjectcreator.h>
 
-ObjectsCreator::ObjectsCreator(std::string filename) : file(filename) {
+UsualMapCreator::UsualMapCreator(std::string filename)
+    : ObjectsCreator(filename) {
     mapStates.append(" "); //пустое пространство
     mapStates.append("0"); //дорога
     mapStates.append("s"); //камень
 }
 
-void ObjectsCreator::readfile() {
+void UsualMapCreator::readfile() {
     int num_string = 0;
     int string_len = 0;
     char temp;
@@ -24,16 +25,17 @@ void ObjectsCreator::readfile() {
             fin >> temp;
             map_state u = charToMapState(temp);
             if (u != not_map_element) {
-                MapObject *mapObject = new MapObject(texture_size * j, texture_size, u);
+                MapObject *mapObject =
+                    new MapObject(texture_size * j, texture_size, u);
                 switch (u) {
                 case freearea:
-                    freeAreas.push_back(mapObject);
+                    usualmap.freeAreas.push_back(mapObject);
                     break;
                 case stone:
-                    stones.push_back(mapObject);
+                    usualmap.stones.push_back(mapObject);
                     break;
                 case road:
-                    roads.push_back(mapObject);
+                    usualmap.roads.push_back(mapObject);
                     break;
                 default:
                     break;
@@ -42,7 +44,7 @@ void ObjectsCreator::readfile() {
         }
 }
 
-map_state ObjectsCreator::charToMapState(char c) {
+map_state UsualMapCreator::charToMapState(char c) {
     if (c == mapStates[0])
         return freearea;
     if (c == mapStates[1])

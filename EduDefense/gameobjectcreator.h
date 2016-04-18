@@ -1,33 +1,53 @@
 #ifndef GAMEOBJECTCREATOR_H
 #define GAMEOBJECTCREATOR_H
-
+//---------------Что-то похожее на строителя, но без директора и в вольной
+//трактовке---------
 #include "gameobject.h"
+#include "kind_maps.h"
 #include <string>
 #include <vector>
-#include "kind_maps.h"
-
-//Чтение из файла и создание игровых объектов
-class ObjectsCreator {
+//базовый класс для карт
+class MapObjects {
   public:
-    ObjectsCreator(std::string filename);
-    int getStonesCount() { return stonesCount; }
-    int getFreeAreasCount() { return freeAreasCount; }
-    int getNumRoads() { return roadsCount; }
-    std::vector<GameObject *> getStones() { return stones; }
-    std::vector<GameObject *> getFreeAreas() { return freeAreas; }
-    std::vector<GameObject *> getRoads() { return roads; }
-  private:
-    void readfile();
-    map_state charToMapState(char c);
-    std::string file;
-    std::string mapStates;
-    std::vector<GameObject *> stones;
     std::vector<GameObject *> freeAreas;
     std::vector<GameObject *> roads;
-    int stonesCount;
+};
+//обычная карта с камнями
+class UsualMap : public MapObjects {
+  public:
+    std::vector<GameObject *> stones;
+};
+
+//Чтение из файла и создание игровых объектов - Абстрактный класс
+class ObjectsCreator {
+  public:
+    ObjectsCreator(std::string filename) : file(filename) {}
+    int getFreeAreasCount() { return freeAreasCount; }
+    int getNumRoads() { return roadsCount; }
+
+  protected:
     int freeAreasCount;
     int roadsCount;
+    virtual void readfile() = 0;
+    virtual map_state charToMapState(char c) = 0;
+    std::string file;
+    int stonesCount;
     const int texture_size = 32; //размер текстурки
+    std::string mapStates;
+};
+
+class UsualMapCreator : public ObjectsCreator {
+  public:
+    UsualMap usualmap;
+
+    UsualMapCreator(std::string filename);
+    int getStonesCount() { return stonesCount; }
+
+  protected:
+    virtual void readfile();
+    virtual map_state charToMapState(char c);
+
+  private:
 };
 
 #endif // GAMEOBJECTCREATOR_H
