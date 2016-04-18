@@ -21,6 +21,8 @@ public:
     double getDamage();
     double getRange();
     void setRange(double range);
+    Enemy *getTarget();
+    void setTarget(Enemy *target);
     void upgrade();
 
     /**
@@ -34,6 +36,7 @@ protected:
     double baseDamage;
     double damage = baseDamage;
     double range;
+    Enemy *target;
 };
 
 #endif // TOWER_H

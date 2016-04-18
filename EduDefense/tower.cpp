@@ -28,6 +28,14 @@ void Tower::setRange(double range) {
     this->range = range;
 }
 
+Enemy *Tower::getTarget() {
+    return target;
+}
+
+void Tower::setTarget(Enemy *target) {
+    this->target = target;
+}
+
 void Tower::upgrade() {
     if (grade < MAX_GRADE) {
         grade++;
