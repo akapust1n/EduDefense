@@ -102,7 +102,7 @@ MenuItem Menu::process(sf::RenderWindow &window, GameView &gameview) {
                 break;
             }
         }
-        gameview.drawMainMenu(window, *this);
+        gameview.drawMainMenu( *this);
     }
     return QUIT;
 }
@@ -188,7 +188,7 @@ int LevelMenu::process(sf::RenderWindow &window,GameView& gameview)
             }
         }
        // gameview.drawLevelChoose(window, *this);
-        gameview.drawLevelChoose(window,*this);
+        gameview.drawLevelChoose(*this);
     }
     return 0;
 

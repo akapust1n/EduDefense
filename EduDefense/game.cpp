@@ -1,5 +1,5 @@
-#include "map.h"
 #include "gamemenu.h"
+#include "map.h"
 #include <game.h>
 #include <gameview.h>
 #include <iostream>
@@ -7,12 +7,15 @@
 using namespace std;
 Game::Game(size_t width, size_t height)
     : window(sf::VideoMode(width, height), GAME_TITLE), window_width(width),
-      m_levelmenu(width, height),
-      window_height(height), menu(width, height), m_Exit(false) {}
+      m_levelmenu(width, height), window_height(height), menu(width, height),
+      m_Exit(false) {
+    gameview.setWindow(window);
+}
 
 void Game::run() {
     int i = 0;
-    int level_num = 0; // по-хорошему, это надо бы куда-то унести, но пока хз куда
+    int level_num =
+        0; // по-хорошему, это надо бы куда-то унести, но пока хз куда
 
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
@@ -24,20 +27,21 @@ void Game::run() {
         }
         switch (m_stateManager.getcurrentState()) {
         case MenuMain: {
-            gameview.drawMainMenu(window, menu);
+            gameview.drawMainMenu(menu);
             MenuItem i = menu.process(window, gameview);
             m_stateManager.setState(fromMenuItemtoState(i));
             break;
         }
         case Levelchoose: { // потом тут будет выбор уровня, но пока его нет
-            //gameview.drawLevelChoose(window,LevelMenu);
+            // gameview.drawLevelChoose(window,LevelMenu);
             level_num = m_levelmenu.process(window, gameview);
             m_stateManager.setState(LevelRun);
             break;
         }
         case LevelRun:
             //тут должен использовать level_num
-            drawGame();
+           gameview.drawLevel(level_num);
+            // gameview.drawLevelCh;
             break;
         case Quit: {
             Exit();

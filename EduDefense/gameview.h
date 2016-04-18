@@ -5,14 +5,19 @@
 #include <memory>
 #include <statemanger.h>
 class GameView {
-    // GameView(std::shared_ptr<StateManager>& temp);
-    // std::shared_ptr<StateManager> m_statemanager;
+
+    sf::RenderWindow *window;
+    std::shared_ptr<StateManager> m_statemanager;
+
   public:
-    void drawMainMenu(sf::RenderWindow &window, const Menu &menu);
+     GameView() {}
+    void setWindow(sf::RenderWindow &window2) { window = &window2; }
+    void drawMainMenu(const Menu &menu);
     void drawMap();
-    void drawLevelChoose(sf::RenderWindow &window, const LevelMenu &menu);
+    void drawLevelChoose(const LevelMenu &menu);
     void drawSettings();
     void drawStats();
+    void drawLevel(int level_num);
 };
 /*
 enum state{
