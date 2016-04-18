@@ -23,20 +23,17 @@ public:
     void setRange(double range);
     Enemy *getTarget();
     void setTarget(Enemy *target);
+    bool isReady();
     void upgrade();
-
-    /**
-     * @brief Запускает снаряд во врага
-     * @param enemy
-     */
-    void shoot(Enemy *enemy);
+    void action() override;
 
 protected:
     size_t grade;
     double baseDamage;
     double damage = baseDamage;
     double range;
-    Enemy *target;
+    Enemy *target = NULL;
+    bool ready = true;
 };
 
 #endif // TOWER_H

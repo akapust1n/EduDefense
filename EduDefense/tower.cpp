@@ -36,6 +36,10 @@ void Tower::setTarget(Enemy *target) {
     this->target = target;
 }
 
+bool Tower::isReady() {
+    return ready;
+}
+
 void Tower::upgrade() {
     if (grade < MAX_GRADE) {
         grade++;
@@ -43,7 +47,14 @@ void Tower::upgrade() {
     }
 }
 
-void Tower::shoot(Enemy *enemy) {
-
+void Tower::action() {
+    ready = true;
+    if (target == NULL) {
+        return;
+    }
+    if (distance(target) > range) {
+        target = NULL;
+        return;
+    }
+    ready = false;
 }
-
