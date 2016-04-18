@@ -1,5 +1,13 @@
 #include "missle.h"
 
+Missle::Missle(double x, double y, double speed, double damage, Enemy *target) {
+    this->x = x;
+    this->y = y;
+    this->speed = speed;
+    this->damage = damage;
+    this->target = target;
+}
+
 double Missle::getDamage() {
     return damage;
 }

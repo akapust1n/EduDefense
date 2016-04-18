@@ -2,6 +2,8 @@
 
 #include <math.h>
 
+Moveable::~Moveable() {}
+
 double Moveable::getSpeed() {
     return speed;
 }

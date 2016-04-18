@@ -7,7 +7,7 @@
 
 class Missle : public Moveable {
 public:
-    virtual ~Missle() = 0;
+    Missle(double x, double y, double speed, double damage, Enemy *target);
     double getDamage();
     void setDamage(double damage);
     Enemy *getTarget();
