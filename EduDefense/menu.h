@@ -32,7 +32,8 @@ class Menu {
     size_t menuItemsCount;
 };
 class LevelMenu : public Menu {
-    LevelMenu(double width, double height) : Menu(width, height) {}
+public:
+    LevelMenu(double width, double height) ;
 
   private:
     sf::Text levelMenu[MAX_NUMBER_OF_LEVEL_ITEMS];
