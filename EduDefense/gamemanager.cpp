@@ -51,5 +51,38 @@ std::vector<Missle *> GameManager::getMissles() {
 }
 
 void GameManager::loop() {
-
+    for (std::vector<Enemy *>::iterator it = enemies.begin(); it != enemies.end(); ) {
+        if (!(*it)->isAlive()) {
+            // удаляем мертвых и начисляем игроку награду
+            player.setMoney(player.getMoney() + (*it)->getBounty());
+            enemies.erase(it);
+        } else {
+            // TODO: перемещение врага
+            it++;
+        }
+    }
+    for (Tower *tower : towers) {
+        // Установка цели башни на враге в зоне досягаемости
+        if (tower->getTarget() == NULL) {
+            for (Enemy *enemy : enemies) {
+                if (tower->distance(enemy) < tower->getRange()) {
+                    tower->setTarget(enemy);
+                    break;
+                }
+            }
+        }
+        if (tower->getTarget() != NULL) {
+            // запускаем ракету (скорость пока магическое число)
+            missles.push_back(new Missle(tower->getX, tower->getY, 0.1, tower->getDamage(), tower->getTarget()));
+        }
+        tower->loop();
+    }
+    for (std::vector<Missle *>::iterator it = missles.begin(); it != missles.end(); ) {
+        if ((*it)->isExploded()) {
+            missles.erase(it);
+        } else {
+            (*it)->loop();
+            it++;
+        }
+    }
 }
