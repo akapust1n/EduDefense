@@ -12,6 +12,7 @@ Game::Game(size_t width, size_t height)
 
 void Game::run() {
     int i = 0;
+    int level_num = 0; // по-хорошему, это надо бы куда-то унести, но пока хз куда
 
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
@@ -29,11 +30,15 @@ void Game::run() {
             break;
         }
         case Levelchoose: { // потом тут будет выбор уровня, но пока его нет
-            drawGame();
-            //gameview.drawLevelChoose(window,);
-
+            //gameview.drawLevelChoose(window,LevelMenu);
+            level_num = m_levelmenu.process(window, gameview);
+            m_stateManager.setState(LevelRun);
             break;
         }
+        case LevelRun:
+            //тут должен использовать level_num
+            drawGame();
+            break;
         case Quit: {
             Exit();
             break;
