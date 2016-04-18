@@ -6,17 +6,21 @@
 
 #include <vector>
 
-class GameManager
-{
+class GameManager {
 public:
     GameManager();
 
-    std::vector<GameObject *> getStones() { return stones; }
-    std::vector<GameObject *> getFreeAreas() { return freeAreas; }
-    std::vector<GameObject *> getRoads() { return roads; }
-    std::vector<Tower *> getTowers() { return towers; }
-    std::vector<Enemy *> getEnemies() { return enemies; }
-    std::vector<Missle *> getMissles() { return missles; }
+    std::vector<GameObject *> getStones();
+    void setStones(std::vector<GameObject *> stones);
+    std::vector<GameObject *> getFreeAreas();
+    void setFreeAreas(std::vector<GameObject *> freeAreas);
+    std::vector<GameObject *> getRoads();
+    void setRoads(std::vector<GameObject *> roads);
+    std::vector<Tower *> getTowers();
+    std::vector<Enemy *> getEnemies();
+    std::vector<Missle *> getMissles();
+
+    void loop(); // Основной цикл игры
 
 private:
     // Списки получаем из GameObjectCreator
