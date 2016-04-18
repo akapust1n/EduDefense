@@ -24,11 +24,7 @@ void Game::run() {
             break;
         }
         case Levelchoose: { // потом тут будет выбор уровня, но пока его нет
-            window.clear();
-            Waiter waiter;
-            UsualMapBuilder umap(window, "maps/map.png");
-            waiter.SetMapBuilder(&umap);
-            waiter.ConstructMap();
+            drawGame();
             break;
         }
         case Quit: {
@@ -40,6 +36,14 @@ void Game::run() {
         }
     }
     cout << i;
+}
+
+void Game::drawGame() {
+    window.clear();
+    Waiter waiter;
+    UsualMapBuilder umap(window, "maps/map.png");
+    waiter.SetMapBuilder(&umap);
+    waiter.ConstructMap();
 }
 
 state Game::fromMenuItemtoState(MenuItem i) {
