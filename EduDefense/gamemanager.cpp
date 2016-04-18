@@ -73,7 +73,7 @@ void GameManager::loop() {
         }
         if (tower->getTarget() != NULL) {
             // запускаем ракету (скорость пока магическое число)
-            missles.push_back(new Missle(tower->getX, tower->getY, 0.1, tower->getDamage(), tower->getTarget()));
+            missles.push_back(new Missle(tower->getX(), tower->getY(), 0.1, tower->getDamage(), tower->getTarget()));
         }
         tower->loop();
     }
