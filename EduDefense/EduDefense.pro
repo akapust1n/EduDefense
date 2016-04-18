@@ -14,7 +14,8 @@ HEADERS += \
     gameobjectcreator.h \
     kind_maps.h \
     gamemanager.h \
-    player.h
+    player.h \
+    gameview.h
 
 SOURCES += \
     main.cpp \
@@ -30,7 +31,8 @@ SOURCES += \
     statemanager.cpp \
     gameobjectcreator.cpp \
     gamemanager.cpp \
-    player.cpp
+    player.cpp \
+    gameview.cpp
 
 LIBS += -LC:/SFML/lib
 

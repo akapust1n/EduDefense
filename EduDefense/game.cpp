@@ -1,14 +1,20 @@
 #include "map.h"
 #include <game.h>
 #include <iostream>
+#include <gameview.h>
 
 using namespace std;
 Game::Game(size_t width, size_t height)
     : window(sf::VideoMode(width, height), GAME_TITLE), window_width(width),
-      window_height(height), menu(width, height), m_Exit(false) {}
+      window_height(height), menu(width, height), m_Exit(false) {
+}
 
 void Game::run() {
     int i = 0;
+    std::shared_ptr<StateManager>m_stateManager;
+    m_stateManager.reset(new StateManager);
+
+
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
         i++;
@@ -17,10 +23,11 @@ void Game::run() {
                 Exit();
             }
         }
-        switch (m_stateManager.getcurrentState()) {
+        switch (m_stateManager->getcurrentState()) {
         case MenuMain: {
-            MenuItem i = menu.process(window);
-            m_stateManager.setState(fromMenuItemtoState(i));
+            gameview.drawMainMenu(window,menu);
+            MenuItem i = menu.process(window,gameview);
+            m_stateManager->setState(fromMenuItemtoState(i));
             break;
         }
         case Levelchoose: { // потом тут будет выбор уровня, но пока его нет

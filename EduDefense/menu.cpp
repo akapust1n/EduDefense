@@ -1,6 +1,6 @@
 #include "menu.h"
 #include <exceptions.h>
-
+#include <gameview.h>
 static const char *FONT = "fonts/9711.otf";
 static const char *BG_IMG = "images/fon.jpg";
 static const char *MUSIC = "music/MenuMusic.ogg";
@@ -60,17 +60,6 @@ Menu::Menu() {}
 
 Menu::~Menu() {}
 
-void Menu::draw(sf::RenderWindow &window) {
-    window.draw(sprite);
-    // sprite.setTextureRect(sf::IntRect(0, 0, window.getSize().x,
-    // window.getSize().y));
-    for (size_t i = 0; i < MAX_NUMBER_OF_ITEMS; i++) {
-        window.draw(menu[i]);
-    }
-
-    // внутри главного цикла, между window.clear() и window.display()
-}
-
 void Menu::moveUp() {
     if (selectedItemIndex - 1 >= 0) {
         menu[selectedItemIndex].setColor(sf::Color::White);
@@ -87,7 +76,7 @@ void Menu::moveDown() {
     }
 }
 
-MenuItem Menu::process(sf::RenderWindow &window) {
+MenuItem Menu::process(sf::RenderWindow &window, GameView &gameview) {
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -113,9 +102,7 @@ MenuItem Menu::process(sf::RenderWindow &window) {
                 break;
             }
         }
-        window.clear();
-        draw(window);
-        window.display();
+        gameview.drawMainMenu(window, *this);
     }
     return QUIT;
 }
