@@ -1,7 +1,5 @@
 #include "gamemanager.h"
 
-#include <algorithm>
-
 GameManager::GameManager() {
 
 }
