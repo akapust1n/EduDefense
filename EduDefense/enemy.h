@@ -9,10 +9,13 @@ public:
 
     double getHealth();
     void setHealth(double health);
+    size_t getBounty();
+    void setBounty(size_t bounty);
     bool isAlive();
 
 private:
     double health;
+    size_t bounty;
 };
 
 #endif // ENEMY_H
