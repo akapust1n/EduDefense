@@ -36,8 +36,8 @@ class Map {
   private:
     int HEIGHT_MAP; //размер карты высота
     int WIDTH_MAP;  //размер карты ширина
-    int top_margin = 6;
-    int left_margin = 6;
+    int top_margin = 0;
+    int left_margin = 0;
     int bot_margin = 10;   //  пока не используетс
     int right_margin = 10; //пока не используется
     String File; //файл с картинками для создания текстуры

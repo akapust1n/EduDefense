@@ -14,7 +14,8 @@ HEADERS += \
     gameobjectcreator.h \
     kind_maps.h \
     gamemanager.h \
-    player.h
+    player.h \
+    gamemenu.h
 
 SOURCES += \
     main.cpp \
