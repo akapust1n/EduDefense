@@ -26,6 +26,13 @@ class GameMenu {
         texture.loadFromImage(image); //заряжаем текстуру картинкой
         sprite_out.setTexture(texture); //заливаем текстуру спрайтом
     }
+
+    void towersIconsWork() {
+        image.loadFromFile("images/GUI/towers.png");
+        texture.loadFromImage(image); //заряжаем текстуру картинкой
+        sprite_out.setTexture(texture); //заливаем текстуру спрайтом
+    }
+
     int getleft_margin() { return left_margin; }
     int getright_margin() { return right_margin; }
     int gettop_margin() { return top_margin; }
@@ -82,6 +89,23 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
             window2->draw(mymenu->sprite_out);
         }
 
+        mymenu->towersIconsWork();
+
+        mymenu->sprite_out.setTextureRect(IntRect(0, 0, 100, 100));
+        mymenu->sprite_out.setPosition(794, 100);
+        window2->draw(mymenu->sprite_out);
+
+        mymenu->sprite_out.setTextureRect(IntRect(101, 0, 100, 100));
+        mymenu->sprite_out.setPosition(906, 100);
+        window2->draw(mymenu->sprite_out);
+
+        mymenu->sprite_out.setTextureRect(IntRect(203, 0, 100, 100));
+        mymenu->sprite_out.setPosition(794, 210);
+        window2->draw(mymenu->sprite_out);
+
+        mymenu->sprite_out.setTextureRect(IntRect(305, 0, 100, 100));
+        mymenu->sprite_out.setPosition(906, 210);
+        window2->draw(mymenu->sprite_out);
         window2->display();
     }
 
