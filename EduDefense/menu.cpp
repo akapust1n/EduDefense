@@ -2,7 +2,7 @@
 #include <exceptions.h>
 #include <gameview.h>
 static const char *FONT = "fonts/9711.otf";
-static const char *BG_IMG = "images/fon.jpg";
+static const char *BG_IMG = "images/back.jpg";
 static const char *MUSIC = "music/MenuMusic.ogg";
 
 Menu::Menu(double width, double height) {
@@ -15,7 +15,7 @@ Menu::Menu(double width, double height) {
         menu[i].setCharacterSize(FontSize);
 
     menu[PLAY].setFont(font);
-    menu[PLAY].setColor(sf::Color::Red);
+    menu[PLAY].setColor(sf::Color::Black);
     menu[PLAY].setString("   Play   ");
     menu[PLAY].setPosition(sf::Vector2f(
         width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 1 + 85));
@@ -64,7 +64,7 @@ void Menu::moveUp() {
     if (selectedItemIndex - 1 >= 0) {
         menu[selectedItemIndex].setColor(sf::Color::White);
         selectedItemIndex--;
-        menu[selectedItemIndex].setColor(sf::Color::Red);
+        menu[selectedItemIndex].setColor(sf::Color::Black);
     }
 }
 
@@ -72,7 +72,7 @@ void Menu::moveDown() {
     if (selectedItemIndex + 1 < MAX_NUMBER_OF_ITEMS) {
         menu[selectedItemIndex].setColor(sf::Color::White);
         selectedItemIndex++;
-        menu[selectedItemIndex].setColor(sf::Color::Red);
+        menu[selectedItemIndex].setColor(sf::Color::Black);
     }
 }
 
