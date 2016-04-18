@@ -14,27 +14,29 @@ class Menu {
     ~Menu();
 
     void draw(sf::RenderWindow &window);
-    void moveUp();
-    void moveDown();
-    MenuItem process(sf::RenderWindow &window,GameView& gameview);
+    void moveUp(sf::Text *menu1);
+    void moveDown(sf::Text *menu1, int max_number);
+     MenuItem process(sf::RenderWindow &window,GameView& gameview);
     sf::Sprite getSprite() const { return sprite; }
-    const sf::Text *getMenuList() const { return &menu[0]; }
+    virtual const sf::Text *getMenuList() const { return &menu[0]; }
 
   protected:
     int selectedItemIndex;
     sf::Font font;
-    sf::Text menu[MAX_NUMBER_OF_ITEMS];
     sf::Texture texture;
     sf::Sprite sprite;
     sf::SoundBuffer buffer;
     sf::Sound sound;
     size_t FontSize;
-    size_t menuItemsCount;
+    size_t menuItemsCount;\
+private:
+     sf::Text menu[MAX_NUMBER_OF_ITEMS];
 };
 class LevelMenu : public Menu {
 public:
     LevelMenu(double width, double height) ;
-
+    int process(sf::RenderWindow &window,GameView& gameview);
+    virtual const sf::Text *getMenuList() const { return &levelMenu[0]; }
   private:
     sf::Text levelMenu[MAX_NUMBER_OF_LEVEL_ITEMS];
 };
