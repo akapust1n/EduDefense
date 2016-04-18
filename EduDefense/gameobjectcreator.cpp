@@ -24,16 +24,16 @@ void ObjectsCreator::readfile() {
             fin >> temp;
             map_state u = charToMapState(temp);
             if (u != not_map_element) {
-                MapObject z(texture_size * j, texture_size, u);
+                MapObject *mapObject = new MapObject(texture_size * j, texture_size, u);
                 switch (u) {
                 case freearea:
-                    freeAreas.push_back(z);
+                    freeAreas.push_back(mapObject);
                     break;
                 case stone:
-                    stones.push_back(z);
+                    stones.push_back(mapObject);
                     break;
                 case road:
-                    roads.push_back(z);
+                    roads.push_back(mapObject);
                     break;
                 default:
                     break;

@@ -6,11 +6,11 @@ enum map_state { freearea, road, stone,not_map_element };
 //что есть на карте
 class MapObject : public GameObject {
   public:
-    MapObject(double x1, double y1, map_state kind1)
-        : GameObject(), kind(kind1) {
+    MapObject(double x1, double y1, map_state kind1) : kind(kind1) {
         x = x1;
         y = y1;
     }
+    ~MapObject() {}
 
 
     map_state kind;

@@ -13,17 +13,17 @@ class ObjectsCreator {
     int getStonesCount() { return stonesCount; }
     int getFreeAreasCount() { return freeAreasCount; }
     int getNumRoads() { return roadsCount; }
-    std::vector<GameObject> getStones() { return stones; }
-    std::vector<GameObject> getFreeAreas() { return freeAreas; }
-    std::vector<GameObject> getRoads() { return roads; }
+    std::vector<GameObject *> getStones() { return stones; }
+    std::vector<GameObject *> getFreeAreas() { return freeAreas; }
+    std::vector<GameObject *> getRoads() { return roads; }
   private:
     void readfile();
     map_state charToMapState(char c);
     std::string file;
     std::string mapStates;
-    std::vector<GameObject> stones;
-    std::vector<GameObject> freeAreas;
-    std::vector<GameObject> roads;
+    std::vector<GameObject *> stones;
+    std::vector<GameObject *> freeAreas;
+    std::vector<GameObject *> roads;
     int stonesCount;
     int freeAreasCount;
     int roadsCount;

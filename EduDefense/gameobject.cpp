@@ -2,6 +2,8 @@
 
 #include "math.h"
 
+GameObject::~GameObject() {}
+
 double GameObject::getX() {
     return x;
 }

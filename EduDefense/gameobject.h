@@ -3,7 +3,7 @@
 
 class GameObject {
 public:
-   // virtual ~GameObject() = 0; а зачем?
+    virtual ~GameObject() = 0; // а зачем? Потому что класс абстрактный
 
     double getX();
     void setX(double x);
