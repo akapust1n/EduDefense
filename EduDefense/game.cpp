@@ -46,7 +46,6 @@ void Game::run() {
 }
 
 void Game::drawGame() {
-    window.clear();
     Waiter waiter;
     UsualMapBuilder umap(window, "maps/map.png");
     waiter.SetMapBuilder(&umap);
