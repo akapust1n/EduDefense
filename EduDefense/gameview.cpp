@@ -15,6 +15,7 @@ void GameView::drawMainMenu(const Menu &menu) {
     }
     window->display();
 }
+
 void GameView::drawLevelChoose(const LevelMenu &menu){
     window->clear();
     window->draw(menu.getSprite());

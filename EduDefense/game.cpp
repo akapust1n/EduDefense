@@ -14,8 +14,7 @@ Game::Game(size_t width, size_t height)
 
 void Game::run() {
     int i = 0;
-    int level_num =
-        0; // по-хорошему, это надо бы куда-то унести, но пока хз куда
+    int level_num = 0; // по-хорошему, это надо бы куда-то унести, но пока хз куда
 
     while (window.isOpen() && !m_Exit) {
         sf::Event event;

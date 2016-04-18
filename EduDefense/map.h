@@ -95,10 +95,12 @@ class UsualMapBuilder : public MapBuilder {
 
                 if (TileMap[i][j] == ' ')
                     mymap->sprite_out.setTextureRect(IntRect(0, 0, 60, 60));
-                if (TileMap[i][j] == 's')
-                    mymap->sprite_out.setTextureRect(IntRect(
-                        60, 0, 60,
-                        60)); //если встретили символ s, то рисуем 2й квадратик
+                if (TileMap[i][j] == 's') {
+                    if (i % 2 != 0 || j > 7)
+                        mymap->sprite_out.setTextureRect(IntRect(60, 0, 60, 60));
+                    else
+                        mymap->sprite_out.setTextureRect(IntRect(180, 0, 60, 60));
+                }
                 if (TileMap[i][j] == '0')
                     mymap->sprite_out.setTextureRect(IntRect(
                         120, 0, 60,
