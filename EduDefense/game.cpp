@@ -30,14 +30,13 @@ void Game::run() {
             break;
         }
         case Levelchoose: { // потом тут будет выбор уровня, но пока его нет
-            drawGame();
             //gameview.drawLevelChoose(window,LevelMenu);
             level_num = m_levelmenu.process(window, gameview);
             m_stateManager.setState(LevelRun);
             break;
         }
         case LevelRun:
-            //тут должен использовать levelnum
+            //тут должен использовать level_num
             drawGame();
             break;
         case Quit: {

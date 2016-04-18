@@ -15,7 +15,6 @@ Menu::Menu(double width, double height) {
        { menu[i].setCharacterSize(FontSize);
         menu[i].setFont(font);}
 
-
     menu[PLAY].setFont(font);
     menu[PLAY].setColor(sf::Color::Black);
 
@@ -112,14 +111,14 @@ LevelMenu::LevelMenu(double width, double height) : Menu(width, height) {
     if (!font.loadFromFile(FONT)) {
         throw(file_load_error());
     }
-    menuItemsCount = 4;
+    menuItemsCount = 5;
     FontSize = 60;
     for (size_t i = 0; i < menuItemsCount; i++) {
         levelMenu[i].setCharacterSize(FontSize);
-        levelMenu[0].setFont(font);
+        levelMenu[i].setFont(font);
     }
 
-    levelMenu[0].setColor(sf::Color::Red);
+    levelMenu[0].setColor(sf::Color::Black);
     levelMenu[0].setString("   level 1   ");
     levelMenu[0].setPosition(sf::Vector2f(
         width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 1 + 85));
@@ -127,12 +126,12 @@ LevelMenu::LevelMenu(double width, double height) : Menu(width, height) {
     levelMenu[1].setColor(sf::Color::White);
     levelMenu[1].setString("   level 2   ");
     levelMenu[1].setPosition(sf::Vector2f(
-        width / 2.75 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 2 + 85));
+        width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 2 + 85));
 
     levelMenu[2].setColor(sf::Color::White);
     levelMenu[2].setString("   level 3   ");
     levelMenu[2].setPosition(sf::Vector2f(
-        width / 2.8 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 3 + 85));
+        width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 3 + 85));
 
     levelMenu[3].setColor(sf::Color::White);
     levelMenu[3].setString("   level 4   ");
