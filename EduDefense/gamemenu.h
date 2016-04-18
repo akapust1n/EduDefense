@@ -39,6 +39,12 @@ class GameMenu {
         sprite_out.setTexture(texture); //заливаем текстуру спрайтом
     }
 
+    void playIconsWork() {
+        image.loadFromFile("images/GUI/play.png");
+        texture.loadFromImage(image); //заряжаем текстуру картинкой
+        sprite_out.setTexture(texture); //заливаем текстуру спрайтом
+    }
+
     int getleft_margin() { return left_margin; }
     int getright_margin() { return right_margin; }
     int gettop_margin() { return top_margin; }
@@ -129,6 +135,12 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
 
         mymenu->sprite_out.setTextureRect(IntRect(70, 0, 35, 35));
         mymenu->sprite_out.setPosition(978, 46);
+        window2->draw(mymenu->sprite_out);
+
+        mymenu->playIconsWork();
+
+        mymenu->sprite_out.setTextureRect(IntRect(0, 0, 221, 130));
+        mymenu->sprite_out.setPosition(790, 527);
         window2->draw(mymenu->sprite_out);
 
         window2->display();
