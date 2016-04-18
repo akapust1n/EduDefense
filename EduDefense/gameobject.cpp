@@ -27,7 +27,11 @@ void GameObject::setRadius(double radius) {
 }
 
 bool GameObject::isCollided(GameObject *gameObject) {
+    return distance(gameObject) < 0;
+}
+
+double GameObject::distance(GameObject *gameObject) {
     return sqrt((x - gameObject->x) * (x - gameObject->x) +
-                (y - gameObject->y) * (y - gameObject->y)) <
-            radius + gameObject->radius;
+                (y - gameObject->y) * (y - gameObject->y)) - radius -
+            gameObject->radius;
 }

@@ -27,7 +27,7 @@ void ObjectsCreator::readfile() {
                 MapObject z(texture_size * j, texture_size, u);
                 switch (u) {
                 case freearea:
-                    freeareas.push_back(z);
+                    freeAreas.push_back(z);
                     break;
                 case stone:
                     stones.push_back(z);

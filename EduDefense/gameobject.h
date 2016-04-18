@@ -18,6 +18,7 @@ public:
      * @return
      */
     bool isCollided(GameObject *gameObject);
+    double distance(GameObject *gameObject);
 
 protected:
     double x;
