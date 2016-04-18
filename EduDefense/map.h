@@ -69,33 +69,23 @@ class UsualMapBuilder : public MapBuilder {
     }
 
     virtual void buildParams() {
-        mymap->setHeight(21);
-        mymap->setWidth(22);
+        mymap->setHeight(11);
+        mymap->setWidth(13);
     }
 
     virtual void buildTexture() {
-        sf::String TileMap[21] = {
-            "                      ",
-            "0000000000000000      ",
-            "  s  s         0      ",
-            "               0      ",
-            "  s            0      ",
-            "               0      ",
-            "   s      000000      ",
-            "          0           ",
-            "      00000           ",
-            "    s 0               ",
-            "      00000000000     ",
-            "                0     ",
-            "          s     0     ",
-            "    s           0s    ",
-            "000000000000    0 s   ",
-            "           0  s 00000 ",
-            "           0        0 ",
-            "           0000000000 ",
-            "                      ",
-            "                      ",
-            "                      ",
+        sf::String TileMap[11] = {
+            "       s     ",
+            "0000000000   ",
+            "  s   s  0 s ",
+            "     00000   ",
+            " s   0   s   ",
+            " 000s0000000 ",
+            " 0 0  s    0 ",
+            " 0 0     s 0 ",
+            " 0 000000000 ",
+            "00   s       ",
+            "        s    ",
         };
 
         mymap->textureWork();
@@ -104,18 +94,18 @@ class UsualMapBuilder : public MapBuilder {
             for (int j = 0; j < mymap->getwidth(); j++) {
 
                 if (TileMap[i][j] == ' ')
-                    mymap->sprite_out.setTextureRect(IntRect(0, 0, 32, 32));
+                    mymap->sprite_out.setTextureRect(IntRect(0, 0, 60, 60));
                 if (TileMap[i][j] == 's')
                     mymap->sprite_out.setTextureRect(IntRect(
-                        32, 0, 32,
-                        32)); //если встретили символ s, то рисуем 2й квадратик
+                        60, 0, 60,
+                        60)); //если встретили символ s, то рисуем 2й квадратик
                 if (TileMap[i][j] == '0')
                     mymap->sprite_out.setTextureRect(IntRect(
-                        64, 0, 32,
-                        32)); //если встретили символ 0, то рисуем 3й квадратик
+                        120, 0, 60,
+                        60)); //если встретили символ 0, то рисуем 3й квадратик
 
-                mymap->sprite_out.setPosition(mymap->getleft_margin() + j * 32,
-                                              mymap->gettop_margin() + i * 32);
+                mymap->sprite_out.setPosition(mymap->getleft_margin() + j * 60,
+                                              mymap->gettop_margin() + i * 60);
                 window2->draw(mymap->sprite_out);
             }
         window2->display();
