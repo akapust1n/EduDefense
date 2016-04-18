@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <map.h>
 
-class ChooseLevel{
+class ChooseLevel {
 public:
     void loadLevel(sf::RenderWindow &window );
     void loadMenuLevels(sf::sRenderWindow &window);

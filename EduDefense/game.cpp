@@ -10,34 +10,40 @@ Game::Game(size_t width, size_t height)
 void Game::run() {
     int i = 0;
     while (window.isOpen() && !m_Exit) {
-        sf::Event event;i++;
-       while (window.pollEvent(event)) {
+        sf::Event event;
+        i++;
+        while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 Exit();
-            }}
-            switch (m_stateManager.getcurrentState()) {
-            case MenuMain: {
-                MenuItem i = menu.process(window);
-                m_stateManager.setState(fromMenuItemtoState(i));
-                break;
-            };
-            case Levelchoose: { // потом тут будет выбор уровня, но пока его нет
-                window.clear();
-                Waiter waiter;
-                UsualMapBuilder umap(window, "maps/map.png");
-                waiter.SetMapBuilder(&umap);
-                waiter.ConstructMap();
-                break;
-            }
-            case Quit: {
-                Exit();
-                break;
-            }
-            default:
-                cout << "Smth strange happend";
             }
         }
-cout<<i;
+        switch (m_stateManager.getcurrentState()) {
+        case MenuMain: {
+            MenuItem i = menu.process(window);
+            m_stateManager.setState(fromMenuItemtoState(i));
+            break;
+        }
+        case Levelchoose: { // потом тут будет выбор уровня, но пока его нет
+            drawGame();
+            break;
+        }
+        case Quit: {
+            Exit();
+            break;
+        }
+        default:
+            cout << "Smth strange happend";
+        }
+    }
+    cout << i;
+}
+
+void Game::drawGame() {
+    window.clear();
+    Waiter waiter;
+    UsualMapBuilder umap(window, "maps/map.png");
+    waiter.SetMapBuilder(&umap);
+    waiter.ConstructMap();
 }
 
 state Game::fromMenuItemtoState(MenuItem i) {

@@ -1,5 +1,6 @@
 #ifndef STATEMANGER_H
 #define STATEMANGER_H
+
 enum state{
     MenuMain,
     Levelchoose,
