@@ -143,7 +143,7 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
         mymenu->sprite_out.setPosition(790, 527);
         window2->draw(mymenu->sprite_out);
 
-        window2->display();
+        //window2->display(); // это вызывает мигания
     }
 
   private:
