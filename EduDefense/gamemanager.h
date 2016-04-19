@@ -10,7 +10,6 @@
 class GameManager {
 public:
     GameManager();
-
     Player getPlayer();
     void setPlayer(Player player);
     std::vector<GameObject *> getStones();

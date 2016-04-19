@@ -53,18 +53,6 @@ void Game::run() {
     cout << i;
 }
 
-void Game::drawGame() {
-    Waiter waiter;
-    UsualMapBuilder umap(window, "maps/map.png");
-    waiter.SetMapBuilder(&umap);
-    waiter.ConstructMap();
-
-    WaiterMenu waiterMenu;
-    UsualGameMenuBuilder umenu(window, "maps/background.jpg");
-    waiterMenu.SetGameMenuBuilder(&umenu);
-    waiterMenu.ConstructGameMenu();
-}
-
 state Game::fromMenuItemtoState(MenuItem i) {
     switch (i) {
     case PLAY:

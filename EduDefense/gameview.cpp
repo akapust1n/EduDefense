@@ -25,8 +25,8 @@ void GameView::drawLevelChoose(const LevelMenu &menu){
         window->draw(temp_menu[i]);
     }
     window->display();
-
 }
+
 void GameView::drawLevel(int level_num)
 {
    switch(level_num)
