@@ -3,7 +3,7 @@
 //---------------Что-то похожее на строителя, но без директора и в вольной
 //трактовке---------
 #include "gameobject.h"
-#include "kind_maps.h"
+#include "mapobject.h"
 #include <string>
 #include <vector>
 //базовый класс для карт

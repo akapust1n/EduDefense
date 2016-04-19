@@ -12,11 +12,11 @@ HEADERS += \
     chooselevel.h \
     statemanger.h \
     gameobjectcreator.h \
-    kind_maps.h \
     gamemanager.h \
     player.h \
     gamemenu.h \
-    gameview.h
+    gameview.h \
+    mapobject.h
 
 SOURCES += \
     main.cpp \
