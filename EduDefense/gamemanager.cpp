@@ -53,7 +53,7 @@ void GameManager::loop() {
         if (!(*it)->isAlive()) {
             // удаляем мертвых и начисляем игроку награду
             player.setMoney(player.getMoney() + (*it)->getBounty());
-            enemies.erase(it);
+            it = enemies.erase(it);
         } else {
             // TODO: перемещение врага
             it++;
