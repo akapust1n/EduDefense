@@ -23,18 +23,17 @@ void UsualMapCreator::readfile() {
     for (int i = 0; i < num_string; i++)
         for (int j = 0; j < string_len; j++) {
             fin >> temp;
-            map_state u = charToMapState(temp);
-            if (u != not_map_element) {
-                MapObject *mapObject =
-                    new MapObject(texture_size * j, texture_size, u);
+            Area u = getAreaByChar(temp);
+            if (u != ERROR) {
+                MapObject mapObject(texture_size * j, texture_size, u);
                 switch (u) {
-                case freearea:
+                case FREE:
                     usualmap.freeAreas.push_back(mapObject);
                     break;
-                case stone:
+                case STONE:
                     usualmap.stones.push_back(mapObject);
                     break;
-                case road:
+                case ROAD:
                     usualmap.roads.push_back(mapObject);
                     break;
                 default:
@@ -44,12 +43,12 @@ void UsualMapCreator::readfile() {
         }
 }
 
-map_state UsualMapCreator::charToMapState(char c) {
+Area UsualMapCreator::getAreaByChar(char c) {
     if (c == mapStates[0])
-        return freearea;
+        return FREE;
     if (c == mapStates[1])
-        return road;
+        return ROAD;
     if (c == mapStates[2])
-        return stone;
-    return not_map_element; // этого не должно происходить
+        return STONE;
+    return ERROR; // этого не должно происходить
 }

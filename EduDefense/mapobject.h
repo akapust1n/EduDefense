@@ -1,19 +1,24 @@
 #ifndef KIND_MAPS_H
 #define KIND_MAPS_H
+
 #include "gameobject.h"
-//что может быть на карте
-enum map_state { freearea, road, stone,not_map_element };
-//что есть на карте
+
+enum Area { ERROR, FREE, ROAD, STONE };
+
 class MapObject : public GameObject {
   public:
-    MapObject(double x1, double y1, map_state kind1) : kind(kind1) {
-        x = x1;
-        y = y1;
+    MapObject(double x, double y, Area area) {
+        this->x = x;
+        this->y = y;
+        this->area = area;
     }
     ~MapObject() {}
 
+    Area getArea() { return area; }
+    void setArea(Area area) { this->area = area; }
 
-    map_state kind;
+private:
+    Area area;
 };
 
 #endif // KIND_MAPS_H
