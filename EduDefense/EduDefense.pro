@@ -16,6 +16,7 @@ HEADERS += \
     player.h \
     gamemenu.h \
     gameview.h \
+    controller.h
     mapobject.h
 
 SOURCES += \
@@ -33,7 +34,8 @@ SOURCES += \
     gameobjectcreator.cpp \
     gamemanager.cpp \
     player.cpp \
-    gameview.cpp
+    gameview.cpp \
+    controller.cpp
 
 LIBS += -LC:/SFML/lib
 
