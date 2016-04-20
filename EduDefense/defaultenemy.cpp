@@ -7,6 +7,6 @@ DefaultEnemy::DefaultEnemy(double x1, double y1) {
     health = 100;
     bounty = 25;
     speed = 2;
-    loopCount = 1;
-    loadSprite("images/Enemies/EnemyMedium.png");
+    frequency = 0.2;
+    loadSprite("images/Enemies/EnemySmall.png");
 }

@@ -8,7 +8,7 @@ Missle::Missle(double x, double y, double speed, double damage, Enemy *target) {
     this->target = target;
     this->radius = 10;
     loadSprite("images/Bullets/Missle.png");
-    loopCount = 1; // например
+    frequency = 0.5;
 }
 
 double Missle::getDamage() {
