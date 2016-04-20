@@ -5,7 +5,7 @@
 #define MAX_NUMBER_OF_ITEMS 4
 #define MAX_NUMBER_OF_LEVEL_ITEMS 5
 class GameView;
-enum MenuItem { PLAY, OPTIONS, STATS, QUIT };
+enum MenuItem { PLAY, OPTIONS, STATS, QUIT,STAYHERE };
 
 class Menu {
   public:

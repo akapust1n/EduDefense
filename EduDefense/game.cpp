@@ -29,7 +29,7 @@ void Game::run() {
             switch (m_stateManager.getcurrentState()) {
             case MenuMain: {
                 MenuItem i = controller.MenuMain(menu, event);
-                // MenuItem i = menu.process(window, gameview);
+
                 m_stateManager.setState(fromMenuItemtoState(i));
                 break;
             }
@@ -57,8 +57,10 @@ void Game::run() {
             Exit();
             break;
         }
+        case STAYHERE:
+            break;
         default:
-            cout << "Smth strange happend";
+            cout << "Smth strange happend(or window.close)";
         }
     }
     cout << i;

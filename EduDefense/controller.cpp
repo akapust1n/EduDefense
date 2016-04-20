@@ -28,7 +28,14 @@ MenuItem Controller::MenuMain(Menu &menu1, sf::Event event) {
         default:
             break;
         }
+        break;
+    case sf::Event::Closed:
+        window->close();
+        break;
+    default:
+        break;
     }
+    return STAYHERE;
 }
 //проверяем подоходят ли координаты контроллера в меню
 //размер 120  40 -от балды

@@ -18,7 +18,6 @@ HEADERS += \
     gameview.h \
     controller.h
     mapobject.h
-
 SOURCES += \
     main.cpp \
     gameobject.cpp \
