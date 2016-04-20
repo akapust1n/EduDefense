@@ -75,28 +75,32 @@ bool Controller::ContainsMenuItem(Vector2f coord) {
     return false;
 }
 
-
-// "клики по итемам захаркдкожены". координаты взяты визуально, а надо их брать из gamemenu
+// "клики по итемам захаркдкожены". координаты взяты визуально, а надо их брать
+// из gamemenu
 int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
-    //GameMenu gamemenu1.GetGameMenu()
-    //std::cout<<"towerUNCLIK";
+    // GameMenu gamemenu1.GetGameMenu()
+    // std::cout<<"towerUNCLIK";
     std::shared_ptr<GameMenu> gamemenu = gamemenu1.GetGameMenu();
     switch (event.type) {
-    case Event::MouseButtonPressed: { //если нажата клавиша мыши
+    case Event::MouseButtonPressed: {             //если нажата клавиша мыши
         pixelPos = Mouse::getPosition(*window);
-        if (event.key.code == Mouse::Left) //а именно левая
-            //работаем с кликами по башням
-           /* if (pixelPos.x>729 and pixelPos.x<810)
-                if (pixelPos.y> 100 and pixelPos.y<200)*/
-                {//gamemenu1.GetGameMenu()->state=tower0;
-            gamemenu->state=tower0;
-                   // gamemenu->setImage("images/GUI/towers2.png"); //загружаем файл для меню
-                    //gamemenu->texture.loadFromImage(gamemenu->image); //заряжаем текстуру картинкой
-                    //gamemenu->sprite_gui.setTexture(gamemenu->texture);
+        if (event.key.code == Mouse::Left) { //а именно левая
+          //-------------------Выделяем конкретную башню--------------------------------
+            if (pixelPos.x > 792 and pixelPos.x < 892) //первая башня
+                if (pixelPos.y > 136 and pixelPos.y < 236) {
+                    gamemenu->state = tower0;
+                } else if ((pixelPos.y > 279 and pixelPos.y < 379)) {
+                    gamemenu->state = tower2;
                 }
-                std::cout << "towerCLICK";
+            if (pixelPos.x > 908 and pixelPos.x < 1008)
+                if (pixelPos.y > 136 and pixelPos.y < 236) {
+                    gamemenu->state = tower1;
+                } else if ((pixelPos.y > 279 and pixelPos.y < 379)) {
+                    gamemenu->state = tower3;
+                }
+        }
+        std::cout << "towerCLICK";
         break;
     }
     }
 }
-

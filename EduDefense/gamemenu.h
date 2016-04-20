@@ -100,9 +100,21 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
             mymenu->towersIconsWork("images/GUI/towers.png");
             break;
         case tower0:
-            mymenu->towersIconsWork("images/GUI/towers2.png");
+            mymenu->towersIconsWork("images/GUI/towers0_pick.png");
+            break;
+        case tower1:
+            mymenu->towersIconsWork("images/GUI/towers1_pick.png");
+            break;
+        case tower2:
+            mymenu->towersIconsWork("images/GUI/towers2_pick.png");
+            break;
+        case tower3:
+            mymenu->towersIconsWork("images/GUI/towers3_pick.png");
+            break;
+         default:
             break;
         }
+
 
 
 
