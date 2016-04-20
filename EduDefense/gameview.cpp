@@ -33,7 +33,7 @@ void GameView::drawLevel(int level_num)
    {
    case 0:{
        Waiter waiter;
-       UsualMapBuilder umap(*window, "maps/map.png");
+       UsualMapBuilder umap(*window, "maps/map.png", "maps/level1.txt");
        waiter.SetMapBuilder(&umap);
        waiter.ConstructMap();
 
