@@ -11,6 +11,7 @@ class GameView {
     sf::RenderWindow *window;
     std::shared_ptr<StateManager> m_statemanager;
 
+
   public:
      GameView() {}
     void setWindow(sf::RenderWindow &window2) { window = &window2; }
@@ -20,7 +21,7 @@ class GameView {
     void drawSettings();
     void drawStats();
     void drawLevel(int level_num);
-    void drawGameMenu();
+    void drawGameMenu(WaiterMenu &waiterMenu);
 };
 /*
 enum state{

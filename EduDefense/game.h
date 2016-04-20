@@ -10,6 +10,7 @@
 #include "controller.h"
 #include "player.h"
 #include "gamemanager.h"
+#include <gamemenu.h>
 class Game {
   public:
     Game(size_t width, size_t height);
@@ -30,5 +31,7 @@ class Game {
     Controller controller;
     GameManager gameManager;
     Player player;
+    WaiterMenu waiterMenu;
+
 };
 #endif

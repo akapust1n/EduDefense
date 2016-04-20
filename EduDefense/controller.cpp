@@ -77,7 +77,7 @@ bool Controller::ContainsMenuItem(Vector2f coord) {
 
 int Controller::GameLevelCont(GameMenu &gamemenu,sf::Event event)
 {
-  /*  switch(event.type){
+   /* switch(event.type){
     if (event.type == Event::MouseButtonPressed)//если нажата клавиша мыши
         if (event.key.code == Mouse::Left)//а именно левая
             if (p.sprite.getGlobalBounds().contains(pos.x, pos.y))//и при этом координата курсора попадает в спрайт

@@ -43,9 +43,8 @@ void GameView::drawLevel(int level_num)
    }
 }
 
-void GameView::drawGameMenu() {
-    WaiterMenu waiterMenu;
-    UsualGameMenuBuilder umenu(*window, "maps/background.jpg");
+void GameView::drawGameMenu(WaiterMenu &waiterMenu) {
+UsualGameMenuBuilder umenu(*window, "maps/background.jpg");
     waiterMenu.SetGameMenuBuilder(&umenu);
     waiterMenu.ConstructGameMenu();
 }

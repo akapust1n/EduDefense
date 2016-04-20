@@ -41,8 +41,11 @@ void Game::run() {
                     m_stateManager.setState(LevelRun);
                 if (level_num == 5)
                     m_stateManager.setState(MenuMain);
-
                 break;
+            }
+            case LevelRun:
+            {
+//                /controller.GameLevelCont(gameMenu,event)
             }
             default:
                 break;
@@ -58,7 +61,7 @@ void Game::run() {
             break;
         case LevelRun:
             gameview.drawLevel(level_num);
-            gameview.drawGameMenu();
+            gameview.drawGameMenu(waiterMenu);
             break;
         case Quit:
             Exit();
