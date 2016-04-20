@@ -61,15 +61,11 @@ void Game::run() {
         case Levelchoose:
             gameview.drawLevelChoose(m_levelmenu);
             break;
-        case LevelRun:{
+        case LevelRun:
             gameview.drawLevel(level_num);
-
-
             gameview.drawGameMenu(waiterMenu);
-
             gameManager.loop();
-            for (Enemy *enemy : gameManager.getEnemies()) enemy->draw(&window);}
-
+            for (Enemy *enemy : gameManager.getEnemies()) enemy->draw(&window);
             break;
         case Quit:
             Exit();

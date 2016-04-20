@@ -9,9 +9,6 @@ void DrawableObject::draw(sf::RenderWindow *window) {
 }
 
 void DrawableObject::loadSprite(std::string filename) {
-    sf::Image image;
-    image.loadFromFile(filename);
-    sf::Texture texture;
-    texture.loadFromImage(image);
+    texture.loadFromFile(filename);
     sprite.setTexture(texture);
 }

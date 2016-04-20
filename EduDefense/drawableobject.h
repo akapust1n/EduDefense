@@ -12,6 +12,7 @@ public:
     void loadSprite(std::string filename);
 protected:
     sf::Sprite sprite;
+    sf::Texture texture;
 };
 
 #endif // DRAWABLE_H
