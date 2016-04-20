@@ -27,11 +27,8 @@ bool Enemy::isPassed() {
 }
 
 void Enemy::action() {
-    if (distance(&(*path.it)) < speed) {
-        x = path.it->getX();
-        y = path.it->getY();
+    moveToward((path.it)->getX(), (path.it)->getY());
+    if (distance(&(*path.it)) < 1e-5) {
         path.it++;
-    } else {
-        moveToward((path.it)->getX(), (path.it)->getY());
     }
 }
