@@ -52,7 +52,8 @@ std::vector<Missle> GameManager::getMissles() {
 
 void GameManager::loop() {
     // тут в enemies должен добавляться следующий монстр из волны, если прошла задержка
-    enemies.push_back(new DefaultEnemy(0, 0));
+    DefaultEnemy *t = new DefaultEnemy(0, 0);
+    enemies.push_back(t);
     //---------
 
     for (std::vector<Enemy *>::iterator it = enemies.begin(); it != enemies.end(); ) {

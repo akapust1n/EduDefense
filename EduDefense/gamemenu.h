@@ -9,7 +9,7 @@
 #include <vector>
 
 using namespace sf;
-//---------------------паттерн Строитель----------
+//---------------------паттерн Строитель(нет)----------
 
 //класс карты
 class GameMenu {
@@ -45,20 +45,10 @@ class GameMenu {
         sprite_out.setTexture(texture); //заливаем текстуру спрайтом
     }
 
-    int getleft_margin() { return left_margin; }
-    int getright_margin() { return right_margin; }
-    int gettop_margin() { return top_margin; }
-    int getbot_margin() { return bot_margin; }
-    int getheight() { return HEIGHT_MENU; }
-    int getwidth() { return WIDTH_MENU; }
 
   private:
-    int HEIGHT_MENU; //высота меню
-    int WIDTH_MENU;  //ширина меню
-    int top_margin = 0;
-    int left_margin = 0;
-    int bot_margin = 10;   //  пока не используетс
-    int right_margin = 10; //пока не используется
+    int HEIGHT_MENU;
+    int WIDTH_MENU;
     String File; //файл с картинками для создания текстуры
     Image image;
     Texture texture;

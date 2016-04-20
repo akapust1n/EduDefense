@@ -37,7 +37,7 @@ void Game::run() {
                 break;
             }
             case Levelchoose: {
-                int level_num = controller.MenuCont(
+                level_num = controller.MenuCont(
                     m_levelmenu, event, MAX_NUMBER_OF_LEVEL_ITEMS, -1);
                 if (level_num == 0)
                     m_stateManager.setState(LevelRun);

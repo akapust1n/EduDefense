@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <statemanger.h>
+#include <gamemenu.h>
+
 class GameView {
 
     sf::RenderWindow *window;

@@ -1,8 +1,8 @@
 #include "player.h"
 
-Player::Player(size_t money, size_t life)
+Player::Player(size_t money1, size_t life1)
 {
-    this->money = money;
-    this->life = life;
+    money = money1;
+    life = life1;
 }
 
