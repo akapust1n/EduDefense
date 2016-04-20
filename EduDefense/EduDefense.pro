@@ -18,7 +18,8 @@ HEADERS += \
     gameview.h \
     controller.h \
     path.h \
-    defaultenemy.h
+    defaultenemy.h \
+    drawable.h
     mapobject.h
 SOURCES += \
     main.cpp \
@@ -38,7 +39,8 @@ SOURCES += \
     gameview.cpp \
     controller.cpp \
     path.cpp \
-    defaultenemy.cpp
+    defaultenemy.cpp \
+    drawable.cpp
 
 LIBS += -LC:/SFML/lib
 
