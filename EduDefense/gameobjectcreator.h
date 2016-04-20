@@ -42,9 +42,8 @@ class UsualMapCreator : public ObjectsCreator {
 
     UsualMapCreator(std::string filename);
     int getStonesCount() { return stonesCount; }
-
-  protected:
     virtual void readfile();
+  protected:
     virtual Area getAreaByChar(char c);
 
   private:

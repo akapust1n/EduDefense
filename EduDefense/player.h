@@ -5,7 +5,8 @@
 
 class Player {
 public:
-    Player();
+    Player() {}
+    Player(size_t money, size_t life);
 
     size_t getMoney() { return money; }
     void setMoney(size_t money) { this->money = money; }

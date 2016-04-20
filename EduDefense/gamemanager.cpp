@@ -1,5 +1,7 @@
 #include "gamemanager.h"
 
+#include "defaultenemy.h"
+
 GameManager::GameManager() {
 
 }
@@ -49,13 +51,18 @@ std::vector<Missle> GameManager::getMissles() {
 }
 
 void GameManager::loop() {
+    // тут в enemies должен добавляться следующий монстр из волны, если прошла задержка
+    enemies.push_back(new DefaultEnemy(0, 0));
+    //---------
+
     for (std::vector<Enemy *>::iterator it = enemies.begin(); it != enemies.end(); ) {
         if (!(*it)->isAlive()) {
             // удаляем мертвых и начисляем игроку награду
             player.setMoney(player.getMoney() + (*it)->getBounty());
+            delete *it;
             it = enemies.erase(it);
         } else {
-            // TODO: перемещение врага
+            (*it)->loop();
             it++;
         }
     }

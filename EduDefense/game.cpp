@@ -3,6 +3,7 @@
 #include <game.h>
 #include <gameview.h>
 #include <iostream>
+#include "gamemanager.h"
 
 using namespace std;
 Game::Game(size_t width, size_t height)
@@ -14,6 +15,11 @@ Game::Game(size_t width, size_t height)
 }
 
 void Game::run() {
+    sf::Clock clock;
+    float delay = 1;
+    GameManager gameManager;
+    Player player(100, 10);
+    gameManager.setPlayer(player);
     int level_num = 0;
     // по-хорошему, это надо бы куда-то унести, но пока хз куда
     while (window.isOpen() && !m_Exit) {
@@ -58,11 +64,16 @@ void Game::run() {
             // m_stateManager.setState(LevelRun);
             break;
         }
-        case LevelRun:
+        case LevelRun: {
             //тут должен использовать level_num
             gameview.drawLevel(level_num);
             // gameview.drawLevelCh;
+            if (clock.getElapsedTime().asSeconds() > delay) {
+                gameManager.loop();
+                clock.restart();
+            }
             break;
+        }
         case Quit: {
             Exit();
             break;

@@ -16,7 +16,9 @@ HEADERS += \
     player.h \
     gamemenu.h \
     gameview.h \
-    controller.h
+    controller.h \
+    path.h \
+    defaultenemy.h
     mapobject.h
 SOURCES += \
     main.cpp \
@@ -34,7 +36,9 @@ SOURCES += \
     gamemanager.cpp \
     player.cpp \
     gameview.cpp \
-    controller.cpp
+    controller.cpp \
+    path.cpp \
+    defaultenemy.cpp
 
 LIBS += -LC:/SFML/lib
 

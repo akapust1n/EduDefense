@@ -2,6 +2,7 @@
 #define ENEMY_H
 
 #include "moveable.h"
+#include "path.h"
 
 class Enemy : public Moveable {
 public:
@@ -12,10 +13,12 @@ public:
     size_t getBounty();
     void setBounty(size_t bounty);
     bool isAlive();
-
-private:
+    bool isPassed();
+    void action() override;
+protected:
     double health;
     size_t bounty;
+    Path path;
 };
 
 #endif // ENEMY_H
