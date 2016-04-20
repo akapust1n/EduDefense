@@ -12,7 +12,7 @@ int Controller::MenuCont(Menu &menu1, sf::Event event, int max_items, int def) {
         int i = 0;
         for (; i < max_items;
              i++) { //такая штука с циклом это плоховато, но т.к мало вариантов
-                    //клика -сойдет
+            //клика -сойдет
             const Vector2f temp = menu1.getposition(menu1.ncgetMenuList(), i);
             if (ContainsMenuItem(temp))
                 break;
@@ -53,6 +53,7 @@ int Controller::MenuCont(Menu &menu1, sf::Event event, int max_items, int def) {
                                             max_items);
                 return menu1.getselectedItemIndex();
             }
+        break;
     }
     case sf::Event::Closed:
         window->close();
@@ -74,39 +75,29 @@ bool Controller::ContainsMenuItem(Vector2f coord) {
     return false;
 }
 
-int Controller::GameLevelCont(GameMenu &gamemenu,sf::Event event)
-{
-  /*  switch(event.type){
-    if (event.type == Event::MouseButtonPressed)//если нажата клавиша мыши
-        if (event.key.code == Mouse::Left)//а именно левая
-            if (p.sprite.getGlobalBounds().contains(pos.x, pos.y))//и при этом координата курсора попадает в спрайт
-                {
-    }*/
+// "клики по итемам захаркдкожены". координаты взяты визуально, а надо их брать из gamemenu
+int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
+    //GameMenu gamemenu1.GetGameMenu()
+    //std::cout<<"towerUNCLIK";
+    std::shared_ptr<GameMenu> gamemenu = gamemenu1.GetGameMenu();
+    switch (event.type) {
+    case Event::MouseButtonPressed: { //если нажата клавиша мыши
+        pixelPos = Mouse::getPosition(*window);
+        if (event.key.code == Mouse::Left) //а именно левая
+            //работаем с кликами по башням
+           /* if (pixelPos.x>729 and pixelPos.x<810)
+                if (pixelPos.y> 100 and pixelPos.y<200)*/
+                {//gamemenu1.GetGameMenu()->state=tower0;
+            gamemenu->state=tower2;
+                   // gamemenu->setImage("images/GUI/towers2.png"); //загружаем файл для меню
+                    //gamemenu->texture.loadFromImage(gamemenu->image); //заряжаем текстуру картинкой
+                    //gamemenu->sprite_gui.setTexture(gamemenu->texture);
+                }
+                std::cout << "towerCLICK";
+        break;
+    }
 
+    default:
+        break;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

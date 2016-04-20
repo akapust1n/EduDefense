@@ -10,9 +10,11 @@ class GameView {
 
     sf::RenderWindow *window;
     std::shared_ptr<StateManager> m_statemanager;
+    WaiterMenu *waiterMenu1;
 
   public:
-     GameView() {}
+     GameView(){}
+     void setMenu(WaiterMenu &temp){waiterMenu1=&temp;}
     void setWindow(sf::RenderWindow &window2) { window = &window2; }
     void drawMainMenu(const Menu &menu);
     void drawMap();
@@ -20,6 +22,7 @@ class GameView {
     void drawSettings();
     void drawStats();
     void drawLevel(int level_num);
+    void highcolorTower(GameMenu &menu, hc item);
 };
 /*
 enum state{

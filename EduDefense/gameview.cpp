@@ -1,9 +1,9 @@
 #include "gamemenu.h"
 #include "map.h"
 #include <gameview.h>
-
-/*GameView::GameView(std::shared_ptr<StateManager> &temp)   {
-    m_statemanager=temp;
+/*
+GameView::GameView(WaiterMenu &temp)   {
+    m_WaiterMenu = *temp;
 }*/
 
 void GameView::drawMainMenu(const Menu &menu) {
@@ -37,10 +37,12 @@ void GameView::drawLevel(int level_num)
        waiter.SetMapBuilder(&umap);
        waiter.ConstructMap();
 
-       WaiterMenu waiterMenu;
+
        UsualGameMenuBuilder umenu(*window, "maps/background.jpg");
-       waiterMenu.SetGameMenuBuilder(&umenu);
-       waiterMenu.ConstructGameMenu();
+       waiterMenu1->SetGameMenuBuilder(&umenu);
+       waiterMenu1->ConstructGameMenu();
+      // waiterMenu.GetGameMenu()
+               //std::shared_ptr<Pizza> pizza = waiter.GetPizza()
        break;
    }
    case 1:
@@ -48,5 +50,6 @@ void GameView::drawLevel(int level_num)
    }
 }
 
+void GameView::highcolorTower(GameMenu &menu,hc item){
 
-//void GameView::Dr
+}

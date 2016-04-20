@@ -18,7 +18,8 @@ HEADERS += \
     gameview.h \
     controller.h \
     path.h \
-    defaultenemy.h
+    defaultenemy.h \
+    gamemenu2.h
     mapobject.h
 SOURCES += \
     main.cpp \

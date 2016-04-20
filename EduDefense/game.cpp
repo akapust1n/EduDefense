@@ -10,6 +10,7 @@ Game::Game(size_t width, size_t height)
     : window(sf::VideoMode(width, height), GAME_TITLE), window_width(width),
       m_levelmenu(width, height), window_height(height), menu(width, height),
       m_Exit(false) {
+    gameview.setMenu(waiterMenu);
     gameview.setWindow(window);
     controller.setWindow(window);
 }
@@ -25,7 +26,7 @@ void Game::run() {
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
         //контроллеры
-        while (window.pollEvent(event)) {
+         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) { //временное решение
                 Exit();
             }
@@ -45,6 +46,10 @@ void Game::run() {
                     m_stateManager.setState(MenuMain);
 
                 break;
+            }
+            case LevelRun:{
+                std::cout<<"here";
+                controller.GameLevelCont(waiterMenu,  event);
             }
             default:
                 break;
@@ -68,10 +73,12 @@ void Game::run() {
             //тут должен использовать level_num
             gameview.drawLevel(level_num);
             // gameview.drawLevelCh;
+
             if (clock.getElapsedTime().asSeconds() > delay) {
                 gameManager.loop();
                 clock.restart();
             }
+
             break;
         }
         case Quit: {
