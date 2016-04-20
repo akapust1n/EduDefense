@@ -16,7 +16,9 @@ class Menu {
     void draw(sf::RenderWindow &window);
     void moveUp(sf::Text *menu1);
     void moveDown(sf::Text *menu1, int max_number);
-    MenuItem process(sf::RenderWindow &window, GameView &gameview);
+    void setselectedItemIndex(sf::Text *menu1,int index_num,int max_number);
+    void clearselectedItemIdex(sf::Text *menu1, int index_num,
+                                    int max_number);
     sf::Sprite getSprite() const { return sprite; }
     virtual const sf::Text *getMenuList() const  { return &menu[0]; }
     virtual  sf::Text *ncgetMenuList() { return &menu[0]; } //такой же, но неконстантый метод

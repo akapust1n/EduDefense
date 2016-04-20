@@ -11,9 +11,10 @@ Menu::Menu(double width, double height) {
     }
     menuItemsCount = 4;
     FontSize = 60;
-    for (size_t i = 0; i < menuItemsCount; i++)
-       { menu[i].setCharacterSize(FontSize);
-        menu[i].setFont(font);}
+    for (size_t i = 0; i < menuItemsCount; i++) {
+        menu[i].setCharacterSize(FontSize);
+        menu[i].setFont(font);
+    }
 
     menu[PLAY].setFont(font);
     menu[PLAY].setColor(sf::Color::Black);
@@ -64,7 +65,6 @@ void Menu::moveUp(sf::Text *menu1) {
         menu1[selectedItemIndex].setColor(sf::Color::White);
         selectedItemIndex--;
         menu1[selectedItemIndex].setColor(sf::Color::Black);
-
     }
 }
 
@@ -72,40 +72,26 @@ void Menu::moveDown(sf::Text *menu1, int max_number) {
     if (selectedItemIndex + 1 < max_number) {
         menu1[selectedItemIndex].setColor(sf::Color::White);
         selectedItemIndex++;
-       menu1[selectedItemIndex].setColor(sf::Color::Black);
+        menu1[selectedItemIndex].setColor(sf::Color::Black);
     }
 }
 
-MenuItem Menu::process(sf::RenderWindow &window, GameView &gameview) {
-    while (window.isOpen()) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            switch (event.type) {
-            case sf::Event::KeyReleased:
-                switch (event.key.code) {
-                case sf::Keyboard::Up:
-                    moveUp(menu);
-                    break;
-                case sf::Keyboard::Down:
-                    moveDown(menu, MAX_NUMBER_OF_ITEMS);
-                    break;
-                case sf::Keyboard::Return:
-                    return (MenuItem)selectedItemIndex;
-                default:
-                    break;
-                }
-                break;
-            case sf::Event::Closed:
-                window.close();
-                break;
-            default:
-                break;
-            }
-        }
-        gameview.drawMainMenu( *this);
+void Menu::setselectedItemIndex(sf::Text *menu1, int index_num,
+                                int max_number) {
+    if (index_num > -1 and index_num <= max_number) {
+        menu1[selectedItemIndex].setColor(sf::Color::White);
+        selectedItemIndex = index_num;
+        menu1[selectedItemIndex].setColor(sf::Color::Black);
     }
-    return QUIT;
 }
+void Menu::clearselectedItemIdex(sf::Text *menu1, int index_num,
+                                int max_number) {
+    if (index_num > -1 and index_num <= max_number){
+           menu1[selectedItemIndex].setColor(sf::Color::White);
+    }
+
+}
+
 LevelMenu::LevelMenu(double width, double height) : Menu(width, height) {
     if (!font.loadFromFile(FONT)) {
         throw(file_load_error());
@@ -160,8 +146,7 @@ LevelMenu::LevelMenu(double width, double height) : Menu(width, height) {
     // sound.play();
     // sound.setLoop(true);
 }
-int LevelMenu::process(sf::RenderWindow &window,GameView& gameview)
-{
+int LevelMenu::process(sf::RenderWindow &window, GameView &gameview) {
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -187,9 +172,8 @@ int LevelMenu::process(sf::RenderWindow &window,GameView& gameview)
                 break;
             }
         }
-       // gameview.drawLevelChoose(window, *this);
+        // gameview.drawLevelChoose(window, *this);
         gameview.drawLevelChoose(*this);
     }
     return 0;
-
 }
