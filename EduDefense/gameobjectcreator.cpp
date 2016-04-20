@@ -4,7 +4,7 @@
 
 UsualMapCreator::UsualMapCreator(std::string filename)
     : ObjectsCreator(filename) {
-    mapStates.append(" "); //пустое пространство
+    mapStates.append("+"); //пустое пространство
     mapStates.append("0"); //дорога
     mapStates.append("s"); //камень
 }
