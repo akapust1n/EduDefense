@@ -17,7 +17,7 @@ Menu::Menu(double width, double height) {
     }
 
     menu[PLAY].setFont(font);
-    menu[PLAY].setColor(sf::Color::Black);
+    menu[PLAY].setColor(sf::Color::White);
 
     menu[PLAY].setString("   Play   ");
     menu[PLAY].setPosition(sf::Vector2f(
@@ -38,7 +38,7 @@ Menu::Menu(double width, double height) {
     menu[QUIT].setPosition(sf::Vector2f(
         width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 4 + 85));
 
-    selectedItemIndex = PLAY;
+    selectedItemIndex = -1;
 
     if (!texture.loadFromFile(BG_IMG)) {
         throw(file_load_error());
