@@ -12,7 +12,8 @@ class Controller {
   public:
     Controller() {}
     void setWindow(sf::RenderWindow &window2) { window = &window2; }
-    MenuItem MenuMain(Menu &menu1, sf::Event event);
+    int MenuCont(Menu &menu1, sf::Event event, int max_items,
+                      int def = (int)STAYHERE);
 };
 
 #endif // CONTROLLER_H

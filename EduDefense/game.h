@@ -13,7 +13,6 @@ class Game {
     Game(size_t width, size_t height);
 
     void run();
-    void drawGame();
     Menu menu;
     void Exit() { m_Exit = true; }
     state fromMenuItemtoState(MenuItem a);

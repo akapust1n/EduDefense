@@ -14,38 +14,46 @@ Game::Game(size_t width, size_t height)
 }
 
 void Game::run() {
-    int i = 1;
     int level_num = 0;
     // по-хорошему, это надо бы куда-то унести, но пока хз куда
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
-        // sf::Event::MouseMoved event2;
-
+        //контроллеры
         while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
+            if (event.type == sf::Event::Closed) { //временное решение
                 Exit();
             }
-            i--;
             switch (m_stateManager.getcurrentState()) {
             case MenuMain: {
-                MenuItem i = controller.MenuMain(menu, event);
-
+                MenuItem i = (MenuItem)controller.MenuCont(menu, event,
+                                                           MAX_NUMBER_OF_ITEMS);
                 m_stateManager.setState(fromMenuItemtoState(i));
                 break;
             }
+            case Levelchoose: {
+                int level_num = controller.MenuCont(
+                    m_levelmenu, event, MAX_NUMBER_OF_LEVEL_ITEMS, -1);
+                if (level_num == 0)
+                    m_stateManager.setState(LevelRun);
+
+                break;
+            }
+            defualt:
+                break;
             }
         }
-
+       //отрисовки
         switch (m_stateManager.getcurrentState()) {
         case MenuMain: {
             gameview.drawMainMenu(menu);
 
             break;
         }
-        case Levelchoose: { // потом тут будет выбор уровня, но пока его нет
-            // gameview.drawLevelChoose(window,LevelMenu);
-            level_num = m_levelmenu.process(window, gameview);
-            m_stateManager.setState(LevelRun);
+        case Levelchoose: {
+
+            gameview.drawLevelChoose(m_levelmenu);
+            // level_num = m_levelmenu.process(window, gameview);
+            // m_stateManager.setState(LevelRun);
             break;
         }
         case LevelRun:
@@ -57,29 +65,19 @@ void Game::run() {
             Exit();
             break;
         }
-        case STAYHERE:
-            break;
+
+        break;
         default:
             cout << "Smth strange happend(or window.close)";
         }
     }
-    cout << i;
 }
 
-void Game::drawGame() {
-    Waiter waiter;
-    UsualMapBuilder umap(window, "maps/map.png");
-    waiter.SetMapBuilder(&umap);
-    waiter.ConstructMap();
-
-    WaiterMenu waiterMenu;
-    UsualGameMenuBuilder umenu(window, "maps/background.jpg");
-    waiterMenu.SetGameMenuBuilder(&umenu);
-    waiterMenu.ConstructGameMenu();
-}
-
+//что-то мне подсказывает, что можно обойтись одним enum
 state Game::fromMenuItemtoState(MenuItem i) {
     switch (i) {
+    case STAYHERE:
+        return MenuMain;
     case PLAY:
         return Levelchoose;
     case OPTIONS:

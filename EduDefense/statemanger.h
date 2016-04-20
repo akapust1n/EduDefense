@@ -7,7 +7,8 @@ enum state{
     LevelRun,
     Options,
     Stats,
-    Quit
+    Quit,
+    StayHere
 };
 
 class StateManager {

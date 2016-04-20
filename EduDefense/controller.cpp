@@ -3,30 +3,32 @@
 #include <math.h>
 using namespace sf;
 //контроллер главного меню
-MenuItem Controller::MenuMain(Menu &menu1, sf::Event event) {
+int Controller::MenuCont(Menu &menu1, sf::Event event,int max_items,int def) {
     static int choose_flag = 0; //Флаг того, что что-то выбрано
+     std::cout<<"hey";
     switch (event.type) {
     case Event::MouseMoved: {
         pixelPos = Mouse::getPosition(*window); //забираем координаты курсора
         int i = 0;
-        for (; i < MAX_NUMBER_OF_ITEMS;
+        for (; i < max_items;
              i++) { //такая штука с циклом это плоховато, но т.к мало вариантов
                     //клика -сойдет
             const Vector2f temp = menu1.getposition(i);
             if (ContainsMenuItem(temp))
                 break;
         }
-        if (i != MAX_NUMBER_OF_ITEMS) {
+        if (i !=  max_items) {
             choose_flag = 1;
             menu1.setselectedItemIndex(menu1.ncgetMenuList(), i,
-                                       MAX_NUMBER_OF_ITEMS);
+                                       max_items);
         } else {
             choose_flag = 0;
             menu1.clearselectedItemIdex(menu1.ncgetMenuList(), i,
-                                        MAX_NUMBER_OF_ITEMS);
+                                         max_items);
         }
         break;
     }
+
     case sf::Event::KeyReleased:
         switch (event.key.code) {
         case sf::Keyboard::Up: {
@@ -35,7 +37,7 @@ MenuItem Controller::MenuMain(Menu &menu1, sf::Event event) {
         } break;
         case sf::Keyboard::Down: {
             choose_flag = 1;
-            menu1.moveDown(menu1.ncgetMenuList(), MAX_NUMBER_OF_ITEMS);
+            menu1.moveDown(menu1.ncgetMenuList(), max_items);
         } break;
         case sf::Keyboard::Return:
             if (choose_flag == 1)
@@ -48,7 +50,7 @@ MenuItem Controller::MenuMain(Menu &menu1, sf::Event event) {
     case Event::MouseButtonPressed: { //если нажата клавиша мыши
         if (event.key.code == Mouse::Left)
           if (choose_flag == 1) //если у нас выбран какой-то пункт меню
-              return (MenuItem)menu1.getselectedItemIndex();
+              return menu1.getselectedItemIndex();
 
     }
     case sf::Event::Closed:
@@ -57,7 +59,7 @@ MenuItem Controller::MenuMain(Menu &menu1, sf::Event event) {
     default:
         break;
     }
-    return STAYHERE;
+    return def;
 }
 
 //проверяем подоходят ли координаты контроллера в меню

@@ -46,6 +46,7 @@ class LevelMenu : public Menu {
     LevelMenu(double width, double height);
     int process(sf::RenderWindow &window, GameView &gameview);
     virtual const sf::Text *getMenuList() const { return &levelMenu[0]; }
+    virtual  sf::Text *ncgetMenuList() { return &levelMenu[0]; }
 
   private:
     sf::Text levelMenu[MAX_NUMBER_OF_LEVEL_ITEMS];

@@ -103,7 +103,7 @@ LevelMenu::LevelMenu(double width, double height) : Menu(width, height) {
         levelMenu[i].setFont(font);
     }
 
-    levelMenu[0].setColor(sf::Color::Black);
+    levelMenu[0].setColor(sf::Color::White);
     levelMenu[0].setString("   level 1   ");
     levelMenu[0].setPosition(sf::Vector2f(
         width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 1 + 85));
@@ -128,7 +128,7 @@ LevelMenu::LevelMenu(double width, double height) : Menu(width, height) {
     levelMenu[4].setPosition(sf::Vector2f(
         width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 5 + 85));
 
-    selectedItemIndex = 0;
+    selectedItemIndex = -1;
 
     if (!texture.loadFromFile(BG_IMG)) {
         throw(file_load_error());
