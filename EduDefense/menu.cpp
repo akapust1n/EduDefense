@@ -85,18 +85,17 @@ void Menu::setselectedItemIndex(sf::Text *menu1, int index_num,
     }
 }
 void Menu::clearselectedItemIdex(sf::Text *menu1, int index_num,
-                                int max_number) {
-    if (index_num > -1 and index_num <= max_number){
-           menu1[selectedItemIndex].setColor(sf::Color::White);
+                                 int max_number) {
+    if (index_num > -1 and index_num <= max_number) {
+        menu1[selectedItemIndex].setColor(sf::Color::White);
     }
-
 }
 
 LevelMenu::LevelMenu(double width, double height) : Menu(width, height) {
     if (!font.loadFromFile(FONT)) {
         throw(file_load_error());
     }
-    menuItemsCount = 5;
+    menuItemsCount = 6; // 5 пунктов + кнопочка назад
     FontSize = 60;
     for (size_t i = 0; i < menuItemsCount; i++) {
         levelMenu[i].setCharacterSize(FontSize);
@@ -127,6 +126,11 @@ LevelMenu::LevelMenu(double width, double height) : Menu(width, height) {
     levelMenu[4].setString("   level 5   ");
     levelMenu[4].setPosition(sf::Vector2f(
         width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 5 + 85));
+    //кнопочка назад
+
+    levelMenu[5].setColor(sf::Color::White);
+    levelMenu[5].setString(" < Back ");
+    levelMenu[5].setPosition(sf::Vector2f(10, 20));
 
     selectedItemIndex = -1;
 

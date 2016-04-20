@@ -3,7 +3,7 @@
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
 #define MAX_NUMBER_OF_ITEMS 4
-#define MAX_NUMBER_OF_LEVEL_ITEMS 5
+#define MAX_NUMBER_OF_LEVEL_ITEMS 6 // 5 пунктов+ назад
 class GameView;
 enum MenuItem { PLAY, OPTIONS, STATS, QUIT, STAYHERE };
 

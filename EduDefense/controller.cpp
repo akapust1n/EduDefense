@@ -3,9 +3,9 @@
 #include <math.h>
 using namespace sf;
 //контроллер главного меню
-int Controller::MenuCont(Menu &menu1, sf::Event event,int max_items,int def) {
+int Controller::MenuCont(Menu &menu1, sf::Event event, int max_items, int def) {
     static int choose_flag = 0; //Флаг того, что что-то выбрано
-     std::cout<<"hey";
+    std::cout << "hey";
     switch (event.type) {
     case Event::MouseMoved: {
         pixelPos = Mouse::getPosition(*window); //забираем координаты курсора
@@ -17,14 +17,12 @@ int Controller::MenuCont(Menu &menu1, sf::Event event,int max_items,int def) {
             if (ContainsMenuItem(temp))
                 break;
         }
-        if (i !=  max_items) {
+        if (i != max_items) {
             choose_flag = 1;
-            menu1.setselectedItemIndex(menu1.ncgetMenuList(), i,
-                                       max_items);
+            menu1.setselectedItemIndex(menu1.ncgetMenuList(), i, max_items);
         } else {
             choose_flag = 0;
-            menu1.clearselectedItemIdex(menu1.ncgetMenuList(), i,
-                                         max_items);
+            menu1.clearselectedItemIdex(menu1.ncgetMenuList(), i, max_items);
         }
         break;
     }
@@ -49,9 +47,12 @@ int Controller::MenuCont(Menu &menu1, sf::Event event,int max_items,int def) {
         break;
     case Event::MouseButtonPressed: { //если нажата клавиша мыши
         if (event.key.code == Mouse::Left)
-          if (choose_flag == 1) //если у нас выбран какой-то пункт меню
-              return menu1.getselectedItemIndex();
-
+            if (choose_flag == 1) { //если у нас выбран какой-то пункт меню
+                menu1.clearselectedItemIdex(menu1.ncgetMenuList(),
+                                            menu1.getselectedItemIndex(),
+                                            max_items);
+                return menu1.getselectedItemIndex();
+            }
     }
     case sf::Event::Closed:
         window->close();
@@ -68,7 +69,7 @@ int Controller::MenuCont(Menu &menu1, sf::Event event,int max_items,int def) {
 //от длины её текста. но пока вот так
 bool Controller::ContainsMenuItem(Vector2f coord) {
     if ((coord.x) < pixelPos.x and (pixelPos.x) < (coord.x + 240))
-        if ((coord.y ) < pixelPos.y and (pixelPos.y) < (coord.y + 80))
+        if ((coord.y) < pixelPos.y and (pixelPos.y) < (coord.y + 80))
             return true;
     return false;
 }
