@@ -66,7 +66,7 @@ class GameMenuBuilder {
 
   public:
     GameMenuBuilder(String filename) { temp1 = filename; }
-    void createNewGameMenuProduct() { mymenu.reset(new GameMenu(temp1)); }
+    //void createNewGameMenuProduct() { mymenu.reset(new GameMenu(temp1)); }
     std::shared_ptr<GameMenu> GetGameMenu() { return mymenu; }
 
     virtual void buildParams() = 0;
@@ -79,6 +79,7 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
     UsualGameMenuBuilder(RenderWindow &window, String mapsname)
         : GameMenuBuilder(mapsname) {
         window2 = &window;
+        mymenu.reset(new GameMenu(temp1));
     }
 
     virtual void buildParams() {
@@ -165,7 +166,7 @@ class WaiterMenu {
         return menuBuilder->GetGameMenu();
     }
     void ConstructGameMenu() {
-        menuBuilder->createNewGameMenuProduct();
+       // menuBuilder->createNewGameMenuProduct();
         menuBuilder->buildParams();
         menuBuilder->buildTexture();
     }
