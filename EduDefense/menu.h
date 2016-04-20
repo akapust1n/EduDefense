@@ -18,7 +18,13 @@ class Menu {
     void moveDown(sf::Text *menu1, int max_number);
     MenuItem process(sf::RenderWindow &window, GameView &gameview);
     sf::Sprite getSprite() const { return sprite; }
-    virtual const sf::Text *getMenuList() const { return &menu[0]; }
+    virtual const sf::Text *getMenuList() const  { return &menu[0]; }
+    virtual  sf::Text *ncgetMenuList() { return &menu[0]; } //такой же, но неконстантый метод
+
+    int getselectedItemIndex(){return selectedItemIndex;}
+    const sf::Vector2f getposition(int i) const {  //ну предположим возвращает позицию элемента начала элемента меню
+        return menu[(MenuItem)i].getPosition();
+    }
 
   protected:
     int selectedItemIndex;

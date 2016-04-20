@@ -7,6 +7,7 @@
 #include <memory>
 #define GAME_TITLE "Edu Defense"
 #include <gameview.h>
+#include "controller.h"
 class Game {
   public:
     Game(size_t width, size_t height);
@@ -25,5 +26,6 @@ class Game {
     bool m_Exit;
     LevelMenu m_levelmenu;
     StateManager m_stateManager;
+    Controller controller;
 };
 #endif

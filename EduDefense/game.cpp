@@ -10,25 +10,36 @@ Game::Game(size_t width, size_t height)
       m_levelmenu(width, height), window_height(height), menu(width, height),
       m_Exit(false) {
     gameview.setWindow(window);
+    controller.setWindow(window);
 }
 
 void Game::run() {
-    int i = 0;
-    int level_num = 0; // по-хорошему, это надо бы куда-то унести, но пока хз куда
-
+    int i = 1;
+    int level_num =
+        0; // по-хорошему, это надо бы куда-то унести, но пока хз куда
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
-        i++;
+        // sf::Event::MouseMoved event2;
+
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 Exit();
             }
+            i--;
+            switch (m_stateManager.getcurrentState()) {
+            case MenuMain: {
+                MenuItem i = controller.MenuMain(menu, event);
+                // MenuItem i = menu.process(window, gameview);
+                m_stateManager.setState(fromMenuItemtoState(i));
+                break;
+            }
+            }
         }
+
         switch (m_stateManager.getcurrentState()) {
         case MenuMain: {
             gameview.drawMainMenu(menu);
-            MenuItem i = menu.process(window, gameview);
-            m_stateManager.setState(fromMenuItemtoState(i));
+
             break;
         }
         case Levelchoose: { // потом тут будет выбор уровня, но пока его нет
@@ -39,7 +50,7 @@ void Game::run() {
         }
         case LevelRun:
             //тут должен использовать level_num
-           gameview.drawLevel(level_num);
+            gameview.drawLevel(level_num);
             // gameview.drawLevelCh;
             break;
         case Quit: {
@@ -51,6 +62,18 @@ void Game::run() {
         }
     }
     cout << i;
+}
+
+void Game::drawGame() {
+    Waiter waiter;
+    UsualMapBuilder umap(window, "maps/map.png");
+    waiter.SetMapBuilder(&umap);
+    waiter.ConstructMap();
+
+    WaiterMenu waiterMenu;
+    UsualGameMenuBuilder umenu(window, "maps/background.jpg");
+    waiterMenu.SetGameMenuBuilder(&umenu);
+    waiterMenu.ConstructGameMenu();
 }
 
 state Game::fromMenuItemtoState(MenuItem i) {
