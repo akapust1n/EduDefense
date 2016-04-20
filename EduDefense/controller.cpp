@@ -10,9 +10,9 @@ int Controller::MenuCont(Menu &menu1, sf::Event event, int max_items, int def) {
     case Event::MouseMoved: {
         pixelPos = Mouse::getPosition(*window); //забираем координаты курсора
         int i = 0;
-        for (; i < max_items;
-             i++) { //такая штука с циклом это плоховато, но т.к мало вариантов
+        for (; i < max_items; i++) { //такая штука с циклом это плоховато, но т.к мало вариантов
             //клика -сойдет
+           // std::cout << "dsd\n";
             const Vector2f temp = menu1.getposition(menu1.ncgetMenuList(), i);
             if (ContainsMenuItem(temp))
                 break;
