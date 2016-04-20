@@ -13,7 +13,7 @@ int Controller::MenuCont(Menu &menu1, sf::Event event,int max_items,int def) {
         for (; i < max_items;
              i++) { //такая штука с циклом это плоховато, но т.к мало вариантов
                     //клика -сойдет
-            const Vector2f temp = menu1.getposition(i);
+            const Vector2f temp = menu1.getposition(menu1.ncgetMenuList(), i);
             if (ContainsMenuItem(temp))
                 break;
         }
@@ -41,7 +41,7 @@ int Controller::MenuCont(Menu &menu1, sf::Event event,int max_items,int def) {
         } break;
         case sf::Keyboard::Return:
             if (choose_flag == 1)
-                return (MenuItem)menu1.getselectedItemIndex();
+                return menu1.getselectedItemIndex();
             break;
         default:
             break;

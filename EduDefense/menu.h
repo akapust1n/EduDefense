@@ -5,7 +5,7 @@
 #define MAX_NUMBER_OF_ITEMS 4
 #define MAX_NUMBER_OF_LEVEL_ITEMS 5
 class GameView;
-enum MenuItem { PLAY, OPTIONS, STATS, QUIT,STAYHERE };
+enum MenuItem { PLAY, OPTIONS, STATS, QUIT, STAYHERE };
 
 class Menu {
   public:
@@ -16,16 +16,20 @@ class Menu {
     void draw(sf::RenderWindow &window);
     void moveUp(sf::Text *menu1);
     void moveDown(sf::Text *menu1, int max_number);
-    void setselectedItemIndex(sf::Text *menu1,int index_num,int max_number);
-    void clearselectedItemIdex(sf::Text *menu1, int index_num,
-                                    int max_number);
+    void setselectedItemIndex(sf::Text *menu1, int index_num, int max_number);
+    void clearselectedItemIdex(sf::Text *menu1, int index_num, int max_number);
     sf::Sprite getSprite() const { return sprite; }
-    virtual const sf::Text *getMenuList() const  { return &menu[0]; }
-    virtual  sf::Text *ncgetMenuList() { return &menu[0]; } //такой же, но неконстантый метод
+    virtual const sf::Text *getMenuList() const { return &menu[0]; }
+    virtual sf::Text *ncgetMenuList() {
+        return &menu[0];
+    } //такой же, но неконстантый метод
 
-    int getselectedItemIndex(){return selectedItemIndex;}
-    const sf::Vector2f getposition(int i) const {  //ну предположим возвращает позицию элемента начала элемента меню
-        return menu[(MenuItem)i].getPosition();
+    int getselectedItemIndex() { return selectedItemIndex; }
+    const sf::Vector2f getposition(sf::Text *menu1,
+                                   int i) const { //ну предположим возвращает
+                                                  //позицию элемента начала
+                                                  //элемента меню
+        return menu1[i].getPosition();
     }
 
   protected:
@@ -46,7 +50,7 @@ class LevelMenu : public Menu {
     LevelMenu(double width, double height);
     int process(sf::RenderWindow &window, GameView &gameview);
     virtual const sf::Text *getMenuList() const { return &levelMenu[0]; }
-    virtual  sf::Text *ncgetMenuList() { return &levelMenu[0]; }
+    virtual sf::Text *ncgetMenuList() { return &levelMenu[0]; }
 
   private:
     sf::Text levelMenu[MAX_NUMBER_OF_LEVEL_ITEMS];
