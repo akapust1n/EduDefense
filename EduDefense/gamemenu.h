@@ -98,7 +98,7 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
         case empty:
             mymenu->towersIconsWork("images/GUI/towers.png");
             break;
-        case tower1:
+        case tower0:
             mymenu->towersIconsWork("images/GUI/towers2.png");
             break;
         }
