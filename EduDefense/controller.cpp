@@ -82,25 +82,39 @@ int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
     // std::cout<<"towerUNCLIK";
     std::shared_ptr<GameMenu> gamemenu = gamemenu1.GetGameMenu();
     switch (event.type) {
-    case Event::MouseButtonPressed: {             //если нажата клавиша мыши
+    case Event::MouseButtonPressed: { //если нажата клавиша мыши
         pixelPos = Mouse::getPosition(*window);
         if (event.key.code == Mouse::Left) { //а именно левая
-          //-------------------Выделяем конкретную башню--------------------------------
+            //-------------------Выделяем конкретную
+            //башню--------------------------------
             if (pixelPos.x > 792 and pixelPos.x < 892) //первая башня
                 if (pixelPos.y > 136 and pixelPos.y < 236) {
                     gamemenu->state = tower0;
+                    break;
                 } else if ((pixelPos.y > 279 and pixelPos.y < 379)) {
                     gamemenu->state = tower2;
+                    break;
                 }
+
             if (pixelPos.x > 908 and pixelPos.x < 1008)
                 if (pixelPos.y > 136 and pixelPos.y < 236) {
                     gamemenu->state = tower1;
+                    break;
                 } else if ((pixelPos.y > 279 and pixelPos.y < 379)) {
                     gamemenu->state = tower3;
+                    break;
                 }
         }
+        //смотрим не нажали мы кнопку play
+        if (pixelPos.x > 790 and pixelPos.x < 1011)
+            if (pixelPos.y > 527 and pixelPos.y < 657) {
+                gamemenu->state = btnPlay;
+                break;
+            }
         std::cout << "towerCLICK";
         break;
     }
+    default:
+        break;
     }
 }
