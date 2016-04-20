@@ -98,7 +98,7 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
         case empty:
             mymenu->towersIconsWork("images/GUI/towers.png");
             break;
-        case tower1:
+        case tower0:
             mymenu->towersIconsWork("images/GUI/towers2.png");
             break;
         }
@@ -137,7 +137,7 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
 
         mymenu->sprite_temp.setTextureRect(IntRect(70, 0, 35, 35));
         mymenu->sprite_temp.setPosition(978, 46);
-        window2->draw(mymenu->sprite_gui);
+        window2->draw(mymenu->sprite_temp);
 
         mymenu->playIconsWork();
 
