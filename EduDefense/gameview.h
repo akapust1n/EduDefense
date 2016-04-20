@@ -12,6 +12,7 @@ class GameView {
     std::shared_ptr<StateManager> m_statemanager;
     WaiterMenu *waiterMenu1;
 
+
   public:
      GameView(){}
      void setMenu(WaiterMenu &temp){waiterMenu1=&temp;}
@@ -23,6 +24,8 @@ class GameView {
     void drawStats();
     void drawLevel(int level_num);
     void highcolorTower(GameMenu &menu, hc item);
+    void drawGameMenu(WaiterMenu &waiterMenu);
+
 };
 /*
 enum state{

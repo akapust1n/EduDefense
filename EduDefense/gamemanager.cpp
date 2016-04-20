@@ -3,7 +3,8 @@
 #include "defaultenemy.h"
 
 GameManager::GameManager() {
-
+    enemies.push_back(new DefaultEnemy(0, 0));
+    //---------
 }
 
 Player GameManager::getPlayer() {
@@ -52,9 +53,7 @@ std::vector<Missle> GameManager::getMissles() {
 
 void GameManager::loop() {
     // тут в enemies должен добавляться следующий монстр из волны, если прошла задержка
-    DefaultEnemy *t = new DefaultEnemy(0, 0);
-    enemies.push_back(t);
-    //---------
+
 
     for (std::vector<Enemy *>::iterator it = enemies.begin(); it != enemies.end(); ) {
         if (!(*it)->isAlive()) {

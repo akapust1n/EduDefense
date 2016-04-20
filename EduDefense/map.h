@@ -121,7 +121,7 @@ class UsualMapBuilder : public MapBuilder {
                                               mymap->gettop_margin() + i * 60);
                 window2->draw(mymap->sprite_out);
             }
-        window2->display();
+        //window2->display();
     }
 
   private:

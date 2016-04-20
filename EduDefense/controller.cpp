@@ -75,6 +75,7 @@ bool Controller::ContainsMenuItem(Vector2f coord) {
     return false;
 }
 
+
 // "клики по итемам захаркдкожены". координаты взяты визуально, а надо их брать из gamemenu
 int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
     //GameMenu gamemenu1.GetGameMenu()
@@ -88,7 +89,7 @@ int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
            /* if (pixelPos.x>729 and pixelPos.x<810)
                 if (pixelPos.y> 100 and pixelPos.y<200)*/
                 {//gamemenu1.GetGameMenu()->state=tower0;
-            gamemenu->state=tower2;
+            gamemenu->state=tower0;
                    // gamemenu->setImage("images/GUI/towers2.png"); //загружаем файл для меню
                     //gamemenu->texture.loadFromImage(gamemenu->image); //заряжаем текстуру картинкой
                     //gamemenu->sprite_gui.setTexture(gamemenu->texture);
@@ -96,8 +97,6 @@ int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
                 std::cout << "towerCLICK";
         break;
     }
-
-    default:
-        break;
     }
 }
+
