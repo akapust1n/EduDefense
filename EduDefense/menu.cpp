@@ -79,14 +79,15 @@ void Menu::moveDown(sf::Text *menu1, int max_number) {
 void Menu::setselectedItemIndex(sf::Text *menu1, int index_num,
                                 int max_number) {
     if (index_num > -1 and index_num <= max_number) {
-        menu1[selectedItemIndex].setColor(sf::Color::White);
+        if (selectedItemIndex > -1)
+            menu1[selectedItemIndex].setColor(sf::Color::White);
         selectedItemIndex = index_num;
         menu1[selectedItemIndex].setColor(sf::Color::Black);
     }
 }
 void Menu::clearselectedItemIdex(sf::Text *menu1, int index_num,
                                  int max_number) {
-    if (index_num > -1 and index_num <= max_number) {
+    if (selectedItemIndex > -1 and selectedItemIndex <= max_number) {
         menu1[selectedItemIndex].setColor(sf::Color::White);
     }
 }
