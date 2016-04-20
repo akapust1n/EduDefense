@@ -40,7 +40,7 @@ void Game::run() {
 
                 break;
             }
-            defualt:
+            default:
                 break;
             }
         }
