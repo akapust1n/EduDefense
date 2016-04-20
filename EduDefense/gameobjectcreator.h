@@ -3,19 +3,19 @@
 //---------------Что-то похожее на строителя, но без директора и в вольной
 //трактовке---------
 #include "gameobject.h"
-#include "kind_maps.h"
+#include "mapobject.h"
 #include <string>
 #include <vector>
 //базовый класс для карт
 class MapObjects {
   public:
-    std::vector<GameObject *> freeAreas;
-    std::vector<GameObject *> roads;
+    std::vector<MapObject> freeAreas;
+    std::vector<MapObject> roads;
 };
 //обычная карта с камнями
 class UsualMap : public MapObjects {
   public:
-    std::vector<GameObject *> stones;
+    std::vector<MapObject> stones;
 };
 
 //Чтение из файла и создание игровых объектов - Абстрактный класс
@@ -29,7 +29,7 @@ class ObjectsCreator {
     int freeAreasCount;
     int roadsCount;
     virtual void readfile() = 0;
-    virtual map_state charToMapState(char c) = 0;
+    virtual Area getAreaByChar(char c) = 0;
     std::string file;
     int stonesCount;
     const int texture_size = 32; //размер текстурки
@@ -45,7 +45,7 @@ class UsualMapCreator : public ObjectsCreator {
 
   protected:
     virtual void readfile();
-    virtual map_state charToMapState(char c);
+    virtual Area getAreaByChar(char c);
 
   private:
 };

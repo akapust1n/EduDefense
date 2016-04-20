@@ -2,7 +2,7 @@
 #define GAMEMANAGER_H
 
 #include "player.h"
-#include "gameobject.h"
+#include "mapobject.h"
 #include "tower.h"
 
 #include <vector>
@@ -12,28 +12,28 @@ public:
     GameManager();
     Player getPlayer();
     void setPlayer(Player player);
-    std::vector<GameObject *> getStones();
-    void setStones(std::vector<GameObject *> stones);
-    std::vector<GameObject *> getFreeAreas();
-    void setFreeAreas(std::vector<GameObject *> freeAreas);
-    std::vector<GameObject *> getRoads();
-    void setRoads(std::vector<GameObject *> roads);
+    std::vector<MapObject> getStones();
+    void setStones(std::vector<MapObject> stones);
+    std::vector<MapObject> getFreeAreas();
+    void setFreeAreas(std::vector<MapObject> freeAreas);
+    std::vector<MapObject> getRoads();
+    void setRoads(std::vector<MapObject> roads);
     std::vector<Tower *> getTowers();
     std::vector<Enemy *> getEnemies();
-    std::vector<Missle *> getMissles();
+    std::vector<Missle> getMissles();
 
     void loop(); // Основной цикл игры
 
 private:
     Player player;
     // Списки получаем из GameObjectCreator
-    std::vector<GameObject *> stones;
-    std::vector<GameObject *> freeAreas;
-    std::vector<GameObject *> roads;
+    std::vector<MapObject> stones;
+    std::vector<MapObject> freeAreas;
+    std::vector<MapObject> roads;
 
     std::vector<Tower *> towers;
     std::vector<Enemy *> enemies;
-    std::vector<Missle *> missles;
+    std::vector<Missle> missles;
 };
 
 #endif // GAMEMANAGER_H

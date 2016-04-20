@@ -12,27 +12,27 @@ void GameManager::setPlayer(Player player) {
     this->player = player;
 }
 
-std::vector<GameObject *> GameManager::getStones() {
+std::vector<MapObject> GameManager::getStones() {
     return stones;
 }
 
-void GameManager::setStones(std::vector<GameObject *> stones) {
+void GameManager::setStones(std::vector<MapObject> stones) {
     this->stones = stones;
 }
 
-std::vector<GameObject *> GameManager::getFreeAreas() {
+std::vector<MapObject> GameManager::getFreeAreas() {
     return freeAreas;
 }
 
-void GameManager::setFreeAreas(std::vector<GameObject *> freeAreas) {
+void GameManager::setFreeAreas(std::vector<MapObject> freeAreas) {
     this->freeAreas = freeAreas;
 }
 
-std::vector<GameObject *> GameManager::getRoads() {
+std::vector<MapObject> GameManager::getRoads() {
     return roads;
 }
 
-void GameManager::setRoads(std::vector<GameObject *> roads) {
+void GameManager::setRoads(std::vector<MapObject> roads) {
     this->roads = roads;
 }
 
@@ -44,7 +44,7 @@ std::vector<Enemy *> GameManager::getEnemies() {
     return enemies;
 }
 
-std::vector<Missle *> GameManager::getMissles() {
+std::vector<Missle> GameManager::getMissles() {
     return missles;
 }
 
@@ -71,15 +71,17 @@ void GameManager::loop() {
         }
         if (tower->getTarget() != NULL) {
             // запускаем ракету (скорость пока магическое число)
-            missles.push_back(new Missle(tower->getX(), tower->getY(), 0.1, tower->getDamage(), tower->getTarget()));
+            Missle missle(tower->getX(), tower->getY(), 0.1, tower->getDamage(),
+                          tower->getTarget());
+            missles.push_back(missle);
         }
         tower->loop();
     }
-    for (std::vector<Missle *>::iterator it = missles.begin(); it != missles.end(); ) {
-        if ((*it)->isExploded()) {
-            missles.erase(it);
+    for (std::vector<Missle>::iterator it = missles.begin(); it != missles.end(); ) {
+        if (it->isExploded()) {
+            it = missles.erase(it);
         } else {
-            (*it)->loop();
+            it->loop();
             it++;
         }
     }
