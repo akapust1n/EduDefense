@@ -3,11 +3,11 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "gameobject.h"
+#include "activegameobject.h"
 
-class Drawable : public GameObject {
+class DrawableObject : public ActiveGameObject {
 public:
-    ~Drawable() = 0;
+    ~DrawableObject() = 0;
     void draw(sf::RenderWindow *window);
     void loadSprite(std::string filename);
 protected:

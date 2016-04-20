@@ -19,7 +19,7 @@ HEADERS += \
     controller.h \
     path.h \
     defaultenemy.h \
-    drawable.h
+    drawableobject.h
     mapobject.h
 SOURCES += \
     main.cpp \
@@ -40,7 +40,7 @@ SOURCES += \
     controller.cpp \
     path.cpp \
     defaultenemy.cpp \
-    drawable.cpp
+    drawableobject.cpp
 
 LIBS += -LC:/SFML/lib
 

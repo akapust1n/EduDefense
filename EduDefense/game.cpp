@@ -4,7 +4,7 @@
 #include <gameview.h>
 #include <iostream>
 #include "gamemanager.h"
-
+#include "defaultenemy.h"
 using namespace std;
 Game::Game(size_t width, size_t height)
     : window(sf::VideoMode(width, height), GAME_TITLE), window_width(width),
@@ -15,10 +15,8 @@ Game::Game(size_t width, size_t height)
 }
 
 void Game::run() {
-    sf::Clock clock;
-    float delay = 1;
-    GameManager gameManager;
-    Player player(100, 10);
+    player.setLife(10);
+    player.setMoney(100);
     gameManager.setPlayer(player);
     int level_num = 0;
     // по-хорошему, это надо бы куда-то унести, но пока хз куда
@@ -52,37 +50,24 @@ void Game::run() {
         }
        //отрисовки
         switch (m_stateManager.getcurrentState()) {
-        case MenuMain: {
+        case MenuMain:
             gameview.drawMainMenu(menu);
-
             break;
-        }
-        case Levelchoose: {
-
+        case Levelchoose:
             gameview.drawLevelChoose(m_levelmenu);
-            // level_num = m_levelmenu.process(window, gameview);
-            // m_stateManager.setState(LevelRun);
             break;
-        }
-        case LevelRun: {
-            //тут должен использовать level_num
+        case LevelRun:
             gameview.drawLevel(level_num);
-            // gameview.drawLevelCh;
-            if (clock.getElapsedTime().asSeconds() > delay) {
-                gameManager.loop();
-                clock.restart();
-            }
+            gameview.drawGameMenu();
             break;
-        }
-        case Quit: {
+        case Quit:
             Exit();
             break;
-        }
-
-        break;
         default:
             cout << "Smth strange happend(or window.close)";
+            break;
         }
+        window.display();
     }
 }
 

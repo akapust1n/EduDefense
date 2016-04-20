@@ -8,6 +8,8 @@
 #define GAME_TITLE "Edu Defense"
 #include <gameview.h>
 #include "controller.h"
+#include "player.h"
+#include "gamemanager.h"
 class Game {
   public:
     Game(size_t width, size_t height);
@@ -26,5 +28,7 @@ class Game {
     LevelMenu m_levelmenu;
     StateManager m_stateManager;
     Controller controller;
+    GameManager gameManager;
+    Player player;
 };
 #endif

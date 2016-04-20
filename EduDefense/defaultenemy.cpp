@@ -8,4 +8,5 @@ DefaultEnemy::DefaultEnemy(double x1, double y1) {
     bounty = 25;
     speed = 2;
     loopCount = 1;
+    loadSprite("images/Enemies/EnemyMedium.png");
 }

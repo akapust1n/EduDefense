@@ -20,6 +20,7 @@ class GameView {
     void drawSettings();
     void drawStats();
     void drawLevel(int level_num);
+    void drawGameMenu();
 };
 /*
 enum state{
