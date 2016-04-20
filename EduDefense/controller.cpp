@@ -53,6 +53,7 @@ int Controller::MenuCont(Menu &menu1, sf::Event event, int max_items, int def) {
                                             max_items);
                 return menu1.getselectedItemIndex();
             }
+        break;
     }
     case sf::Event::Closed:
         window->close();
