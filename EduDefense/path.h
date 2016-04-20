@@ -11,8 +11,9 @@ public:
      * !!!!!!!!!!!!!!!!!!HARD CODE
      */
     Path() {
-        path.push_back(MapObject(0, 0, ROAD));
-        path.push_back(MapObject(200, 200, ROAD));
+        path.push_back(MapObject(0, 60, ROAD));
+        path.push_back(MapObject(560, 60, ROAD));
+        path.push_back(MapObject(560, 180, ROAD));
         it = path.begin();
     }
 
