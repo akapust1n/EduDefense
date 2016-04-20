@@ -12,6 +12,7 @@ class MapObjects {
     std::vector<MapObject> freeAreas;
     std::vector<MapObject> roads;
 };
+
 //обычная карта с камнями
 class UsualMap : public MapObjects {
   public:
@@ -39,14 +40,12 @@ class ObjectsCreator {
 class UsualMapCreator : public ObjectsCreator {
   public:
     UsualMap usualmap;
-
     UsualMapCreator(std::string filename);
     int getStonesCount() { return stonesCount; }
     virtual void readfile();
+
   protected:
     virtual Area getAreaByChar(char c);
-
-  private:
 };
 
 #endif // GAMEOBJECTCREATOR_H

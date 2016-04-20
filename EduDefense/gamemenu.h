@@ -95,6 +95,7 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
             mymenu->sprite_temp.setPosition(780, i);
             window2->draw(mymenu->sprite_temp);
         }
+
         switch(mymenu->state){
         case empty:
             mymenu->towersIconsWork("images/GUI/towers.png");
@@ -114,9 +115,6 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
          default:
             break;
         }
-
-
-
 
         mymenu->sprite_tower.setTextureRect(IntRect(0, 0, 100, 100));
         mymenu->sprite_tower.setPosition(792, 136);

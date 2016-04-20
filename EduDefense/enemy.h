@@ -15,6 +15,7 @@ public:
     bool isAlive();
     bool isPassed();
     void action() override;
+
 protected:
     double health;
     size_t bounty;

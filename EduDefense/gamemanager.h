@@ -10,6 +10,7 @@
 class GameManager {
 public:
     GameManager();
+
     Player getPlayer();
     void setPlayer(Player player);
     std::vector<MapObject> getStones();
@@ -21,7 +22,6 @@ public:
     std::vector<Tower *> getTowers();
     std::vector<Enemy *> getEnemies();
     std::vector<Missle> getMissles();
-
     void loop(); // Основной цикл игры
 
 private:
@@ -30,7 +30,6 @@ private:
     std::vector<MapObject> stones;
     std::vector<MapObject> freeAreas;
     std::vector<MapObject> roads;
-
     std::vector<Tower *> towers;
     std::vector<Enemy *> enemies;
     std::vector<Missle> missles;

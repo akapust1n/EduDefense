@@ -1,7 +1,7 @@
 #ifndef STATEMANGER_H
 #define STATEMANGER_H
 
-enum state{
+enum state {
     MenuMain,
     Levelchoose,
     LevelRun,
@@ -13,9 +13,10 @@ enum state{
 
 class StateManager {
   public:
-    StateManager():currentState(MenuMain){}
-    state getcurrentState(){return currentState;}
-    void setState(state newstate){currentState = newstate;}
+    StateManager():currentState(MenuMain) {}
+    state getcurrentState() { return currentState; }
+    void setState(state newstate) { currentState = newstate; }
+
 private:
     state currentState;
 

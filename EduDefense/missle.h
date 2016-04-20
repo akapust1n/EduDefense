@@ -8,11 +8,13 @@
 class Missle : public Moveable {
 public:
     Missle(double x, double y, double speed, double damage, Enemy *target);
+
     double getDamage();
     void setDamage(double damage);
     Enemy *getTarget();
     void setTarget(Enemy *target);
     bool isExploded();
+
 protected:
     double damage;
     Enemy *target;

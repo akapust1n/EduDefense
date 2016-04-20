@@ -1,18 +1,19 @@
 #include <controller.h>
 #include <iostream>
 #include <math.h>
+
 using namespace sf;
+
 //контроллер главного меню
 int Controller::MenuCont(Menu &menu1, sf::Event event, int max_items, int def) {
     static int choose_flag = 0; //Флаг того, что что-то выбрано
-    std::cout << "hey";
     switch (event.type) {
     case Event::MouseMoved: {
         pixelPos = Mouse::getPosition(*window); //забираем координаты курсора
         int i = 0;
         for (; i < max_items; i++) { //такая штука с циклом это плоховато, но т.к мало вариантов
             //клика -сойдет
-           // std::cout << "dsd\n";
+            // std::cout << "dsd\n";
             const Vector2f temp = menu1.getposition(menu1.ncgetMenuList(), i);
             if (ContainsMenuItem(temp))
                 break;
@@ -45,6 +46,7 @@ int Controller::MenuCont(Menu &menu1, sf::Event event, int max_items, int def) {
             break;
         }
         break;
+
     case Event::MouseButtonPressed: { //если нажата клавиша мыши
         if (event.key.code == Mouse::Left)
             if (choose_flag == 1) { //если у нас выбран какой-то пункт меню
@@ -85,19 +87,21 @@ int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
     case Event::MouseButtonPressed: {             //если нажата клавиша мыши
         pixelPos = Mouse::getPosition(*window);
         if (event.key.code == Mouse::Left) { //а именно левая
-          //-------------------Выделяем конкретную башню--------------------------------
+            //-------------------Выделяем конкретную башню--------------------------------
             if (pixelPos.x > 792 and pixelPos.x < 892) //первая башня
-                if (pixelPos.y > 136 and pixelPos.y < 236) {
+                if (pixelPos.y > 136 and pixelPos.y < 236)
                     gamemenu->state = tower0;
-                } else if ((pixelPos.y > 279 and pixelPos.y < 379)) {
-                    gamemenu->state = tower2;
-                }
+                else
+                    if ((pixelPos.y > 279 and pixelPos.y < 379))
+                        gamemenu->state = tower2;
+
             if (pixelPos.x > 908 and pixelPos.x < 1008)
-                if (pixelPos.y > 136 and pixelPos.y < 236) {
+                if (pixelPos.y > 136 and pixelPos.y < 236)
                     gamemenu->state = tower1;
-                } else if ((pixelPos.y > 279 and pixelPos.y < 379)) {
-                    gamemenu->state = tower3;
-                }
+                else
+                    if ((pixelPos.y > 279 and pixelPos.y < 379))
+                        gamemenu->state = tower3;
+
         }
         std::cout << "towerCLICK";
         break;

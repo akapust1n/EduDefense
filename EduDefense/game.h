@@ -11,6 +11,7 @@
 #include "player.h"
 #include "gamemanager.h"
 #include <gamemenu.h>
+
 class Game {
   public:
     Game(size_t width, size_t height);
@@ -32,6 +33,5 @@ class Game {
     WaiterMenu waiterMenu;
     GameManager gameManager;
     Player player;
-
 };
 #endif

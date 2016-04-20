@@ -8,8 +8,10 @@
 class DrawableObject : public ActiveGameObject {
 public:
     ~DrawableObject() = 0;
+
     void draw(sf::RenderWindow *window);
     void loadSprite(std::string filename);
+
 protected:
     sf::Sprite sprite;
     sf::Texture texture;

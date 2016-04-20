@@ -3,8 +3,7 @@
 
 #include "enemy.h"
 
-class DefaultEnemy : public Enemy
-{
+class DefaultEnemy : public Enemy {
 public:
     DefaultEnemy() {}
     DefaultEnemy(double x, double y);

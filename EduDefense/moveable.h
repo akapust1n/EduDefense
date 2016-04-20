@@ -6,6 +6,7 @@
 class Moveable : public DrawableObject {
 public:
     virtual ~Moveable() = 0;
+
     double getSpeed();
     void setSpeed(double speed);
 
