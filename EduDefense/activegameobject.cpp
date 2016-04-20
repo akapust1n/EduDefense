@@ -3,8 +3,8 @@
 ActiveGameObject::~ActiveGameObject() {}
 
 void ActiveGameObject::loop() {
-    if (++loopCount == loopCountThreshold) {
-        loopCount = 0;
+    if (clock.getElapsedTime().asSeconds() > frequency) {
         action();
+        clock.restart();
     }
 }

@@ -4,7 +4,7 @@
 #include <gameview.h>
 #include <iostream>
 #include "gamemanager.h"
-#include "defaultenemy.h"
+
 using namespace std;
 Game::Game(size_t width, size_t height)
     : window(sf::VideoMode(width, height), GAME_TITLE), window_width(width),
@@ -61,7 +61,11 @@ void Game::run() {
             break;
         case LevelRun:
             gameview.drawLevel(level_num);
+
             gameview.drawGameMenu(waiterMenu);
+
+            gameManager.loop();
+            for (Enemy *enemy : gameManager.getEnemies()) enemy->draw(&window);
             break;
         case Quit:
             Exit();
