@@ -23,7 +23,7 @@ bool Enemy::isAlive() {
 }
 
 bool Enemy::isPassed() {
-    return path.it == path.path.end() - 1;
+    return path.it == path.path.end();
 }
 
 void Enemy::action() {

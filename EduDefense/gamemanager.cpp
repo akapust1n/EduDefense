@@ -63,7 +63,13 @@ void GameManager::loop() {
             it = enemies.erase(it);
         } else {
             (*it)->loop();
-            it++;
+            if ((*it)->isPassed()) {
+                delete *it;
+                it = enemies.erase(it);
+                player.setLife(player.getLife() - 1);
+            } else {
+                it++;
+            }
         }
     }
     for (Tower *tower : towers) {
