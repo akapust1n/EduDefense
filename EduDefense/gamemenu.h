@@ -7,7 +7,7 @@
 #include <memory>
 #include <string>
 #include <vector>
-enum hc { tower0, tower1, tower2, tower3, btnPlay, addGold,empty};
+enum hc { tower0, tower1, tower2, tower3, btnPlay, addGold, empty };
 
 using namespace sf;
 //---------------------паттерн Строитель(нет)----------
@@ -17,10 +17,15 @@ class GameMenu {
   public:
     GameMenu(String filename) : File(filename) {}
     GameMenu() {}
-    hc state=empty;
+    hc state = empty;
     Sprite sprite_temp;
     Sprite sprite_tower;
     Sprite sprite_gui;
+    Sprite sprite_play;
+    Texture texture_temp;
+    Texture texture_tower;
+    Texture texture_gui;
+    Texture texture_play;
 
     Texture texture;
     void setImage(String filename) { image.loadFromFile(filename); }
@@ -29,30 +34,30 @@ class GameMenu {
     void setWidth(int width) { WIDTH_MENU = width; }
     void textureWork() {
         image.loadFromFile(File); //загружаем файл для меню
-        texture.loadFromImage(image); //заряжаем текстуру картинкой
-        sprite_temp.setTexture(texture); //заливаем текстуру спрайтом
+        texture_temp.loadFromImage(image); //заряжаем текстуру картинкой
+        sprite_temp.setTexture(texture_temp); //заливаем текстуру спрайтом
     }
 
     void towersIconsWork(String filename) {
         image.loadFromFile(filename);
-        texture.loadFromImage(image); //заряжаем текстуру картинкой
-        sprite_tower.setTexture(texture); //заливаем текстуру спрайтом
+        texture_tower.loadFromImage(image); //заряжаем текстуру картинкой
+        sprite_tower.setTexture(texture_tower); //заливаем текстуру спрайтом
     }
 
     void statsIconsWork() {
         image.loadFromFile("images/GUI/stats1.png");
-        texture.loadFromImage(image); //заряжаем текстуру картинкой
-        sprite_gui.setTexture(texture); //заливаем текстуру спрайтом
+        texture_gui.loadFromImage(image); //заряжаем текстуру картинкой
+        sprite_gui.setTexture(texture_gui); //заливаем текстуру спрайтом
     }
 
-    void playIconsWork() {
-        image.loadFromFile("images/GUI/play.png");
+    void playIconsWork(String filename) {
+        image.loadFromFile(filename);
         texture.loadFromImage(image); //заряжаем текстуру картинкой
-        sprite_temp.setTexture(texture); //заливаем текстуру спрайтом
+        sprite_play.setTexture(texture); //заливаем текстуру спрайтом
     }
-Image image;
+    Image image;
+
   private:
-
     int HEIGHT_MENU;
     int WIDTH_MENU;
     String File; //файл с картинками для создания текстуры
@@ -66,7 +71,7 @@ class GameMenuBuilder {
 
   public:
     GameMenuBuilder(String filename) { temp1 = filename; }
-    //void createNewGameMenuProduct() { mymenu.reset(new GameMenu(temp1)); }
+    // void createNewGameMenuProduct() { mymenu.reset(new GameMenu(temp1)); }
     std::shared_ptr<GameMenu> GetGameMenu() { return mymenu; }
 
     virtual void buildParams() = 0;
@@ -96,7 +101,9 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
             window2->draw(mymenu->sprite_temp);
         }
 
-        switch(mymenu->state){
+        mymenu->playIconsWork("images/GUI/play.png"); //дефолт
+
+        switch (mymenu->state) {
         case empty:
             mymenu->towersIconsWork("images/GUI/towers.png");
             break;
@@ -112,7 +119,12 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
         case tower3:
             mymenu->towersIconsWork("images/GUI/towers3_pick.png");
             break;
-         default:
+        case btnPlay: {
+            mymenu->towersIconsWork("images/GUI/towers.png");
+            mymenu->playIconsWork("images/GUI/play_pick.png");
+            break;
+        }
+        default:
             break;
         }
 
@@ -146,16 +158,13 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
         mymenu->sprite_gui.setPosition(786, 46);
         window2->draw(mymenu->sprite_gui);
 
-        mymenu->sprite_temp.setTextureRect(IntRect(70, 0, 35, 35));
-        mymenu->sprite_temp.setPosition(978, 46);
-        window2->draw(mymenu->sprite_temp);
+        mymenu->sprite_gui.setTextureRect(IntRect(70, 0, 35, 35));
+        mymenu->sprite_gui.setPosition(978, 46);
+        window2->draw(mymenu->sprite_gui);
 
-        mymenu->playIconsWork();
-
-        mymenu->sprite_temp.setTextureRect(IntRect(0, 0, 221, 130));
-        mymenu->sprite_temp.setPosition(790, 527);
-        window2->draw(mymenu->sprite_temp);
-
+        mymenu->sprite_play.setTextureRect(IntRect(0, 0, 221, 130));
+        mymenu->sprite_play.setPosition(790, 527);
+        window2->draw(mymenu->sprite_play);
     }
 
   private:
@@ -176,7 +185,7 @@ class WaiterMenu {
         return menuBuilder->GetGameMenu();
     }
     void ConstructGameMenu() {
-       // menuBuilder->createNewGameMenuProduct();
+        // menuBuilder->createNewGameMenuProduct();
         menuBuilder->buildParams();
         menuBuilder->buildTexture();
     }
