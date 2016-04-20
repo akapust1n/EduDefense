@@ -10,6 +10,7 @@ Game::Game(size_t width, size_t height)
     : window(sf::VideoMode(width, height), GAME_TITLE), window_width(width),
       m_levelmenu(width, height), window_height(height), menu(width, height),
       m_Exit(false) {
+    gameview.setMenu(waiterMenu);
     gameview.setWindow(window);
     controller.setWindow(window);
 }
@@ -23,7 +24,7 @@ void Game::run() {
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
         //контроллеры
-        while (window.pollEvent(event)) {
+         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) { //временное решение
                 Exit();
             }
@@ -43,10 +44,11 @@ void Game::run() {
                     m_stateManager.setState(MenuMain);
                 break;
             }
-            case LevelRun:
-            {
-//                /controller.GameLevelCont(gameMenu,event)
-            }
+            case LevelRun:{
+                std::cout<<"here";
+                controller.GameLevelCont(waiterMenu,  event);
+                break;
+}
             default:
                 break;
             }
@@ -59,13 +61,15 @@ void Game::run() {
         case Levelchoose:
             gameview.drawLevelChoose(m_levelmenu);
             break;
-        case LevelRun:
+        case LevelRun:{
             gameview.drawLevel(level_num);
+
 
             gameview.drawGameMenu(waiterMenu);
 
             gameManager.loop();
-            for (Enemy *enemy : gameManager.getEnemies()) enemy->draw(&window);
+            for (Enemy *enemy : gameManager.getEnemies()) enemy->draw(&window);}
+
             break;
         case Quit:
             Exit();

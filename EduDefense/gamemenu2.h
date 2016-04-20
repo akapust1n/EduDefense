@@ -1,5 +1,5 @@
-#ifndef GAMEMENU_H
-#define GAMEMENU_H
+#ifndef GAMEMENU2_H
+#define GAMEMENU2_H
 #include <SFML/Graphics.hpp>
 #include <fstream>
 #include <iomanip>
@@ -7,12 +7,6 @@
 #include <memory>
 #include <string>
 #include <vector>
-enum hc { tower0, tower1, tower2, tower3, btnPlay, addGold,empty};
-
-using namespace sf;
-//---------------------паттерн Строитель(нет)----------
-
-//класс карты
 class GameMenu {
   public:
     GameMenu(String filename) : File(filename) {}
@@ -57,23 +51,6 @@ Image image;
     int WIDTH_MENU;
     String File; //файл с картинками для создания текстуры
 };
-
-//базовый класс строителя
-class GameMenuBuilder {
-  protected:
-    std::shared_ptr<GameMenu> mymenu;
-    String temp1;
-
-  public:
-    GameMenuBuilder(String filename) { temp1 = filename; }
-    void createNewGameMenuProduct() { mymenu.reset(new GameMenu(temp1)); }
-    std::shared_ptr<GameMenu> GetGameMenu() { return mymenu; }
-
-    virtual void buildParams() = 0;
-    virtual void buildTexture() = 0;
-};
-
-//Строитель обычной карты
 class UsualGameMenuBuilder : public GameMenuBuilder {
   public:
     UsualGameMenuBuilder(RenderWindow &window, String mapsname)
@@ -145,30 +122,10 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
         mymenu->sprite_temp.setPosition(790, 527);
         window2->draw(mymenu->sprite_temp);
 
+        // window2->display(); // это вызывает мигания
     }
 
   private:
     RenderWindow *window2;
 };
-
-//директор
-class WaiterMenu {
-  private:
-    GameMenuBuilder *menuBuilder;
-
-  public:
-    WaiterMenu() : menuBuilder(NULL) {}
-    ~WaiterMenu() {}
-
-    void SetGameMenuBuilder(GameMenuBuilder *b) { menuBuilder = b; }
-    std::shared_ptr<GameMenu> GetGameMenu() {
-        return menuBuilder->GetGameMenu();
-    }
-    void ConstructGameMenu() {
-        menuBuilder->createNewGameMenuProduct();
-        menuBuilder->buildParams();
-        menuBuilder->buildTexture();
-    }
-};
-
-#endif // GAMEMENU_H
+#endif // GAMEMENU2_H

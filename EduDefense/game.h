@@ -29,9 +29,9 @@ class Game {
     LevelMenu m_levelmenu;
     StateManager m_stateManager;
     Controller controller;
+    WaiterMenu waiterMenu;
     GameManager gameManager;
     Player player;
-    WaiterMenu waiterMenu;
 
 };
 #endif

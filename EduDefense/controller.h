@@ -15,7 +15,7 @@ class Controller {
     void setWindow(sf::RenderWindow &window2) { window = &window2; }
     int MenuCont(Menu &menu1, sf::Event event, int max_items,
                       int def = (int)STAYHERE);
-    int GameLevelCont(GameMenu &gamemenu, Event event);
+    int GameLevelCont(WaiterMenu &gamemenu, Event event);
 };
 
 #endif // CONTROLLER_H
