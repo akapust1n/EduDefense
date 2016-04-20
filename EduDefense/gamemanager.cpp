@@ -3,7 +3,7 @@
 #include "defaultenemy.h"
 
 GameManager::GameManager() {
-    enemies.push_back(new DefaultEnemy(0, 0));
+    enemies.push_back(new DefaultEnemy(-60, 60));
     //---------
 }
 
