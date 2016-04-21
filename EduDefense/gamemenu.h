@@ -7,7 +7,7 @@
 #include <memory>
 #include <string>
 #include <vector>
-enum hc { tower0, tower1, tower2, tower3, btnPlay, btnUnPlay,addGold, empty,monsterRun, stayhere,drawTower };
+enum  gameMenuItem { tower0, tower1, tower2, tower3, btnPlay, btnUnPlay,addGold, empty,monsterRun, stayhere,drawTower };
 
 using namespace sf;
 //---------------------паттерн Строитель(нет)----------
@@ -17,7 +17,7 @@ class GameMenu {
   public:
     GameMenu(String filename) : File(filename) {}
     GameMenu() {}
-    hc state = empty;
+    gameMenuItem state = empty;
     Sprite sprite_temp;
     Sprite sprite_tower;
     Sprite sprite_gui;

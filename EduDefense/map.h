@@ -91,7 +91,7 @@ public:
 
     virtual void loadMapFromFile() {
         std::ifstream fin(mapFilename);
-        if (!fin.is_open()) throw(file_load_error());
+        if (!fin.is_open()) throw(fileLoadError());
         size_t height, width;
         fin >> height;
         fin >> width;
