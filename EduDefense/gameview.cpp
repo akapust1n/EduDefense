@@ -86,7 +86,19 @@ void GameView::drawTowerMask(){
 
 
 
+void GameView::drawGameObjects(GameManager &gameManager)
+{
+    for (Enemy *enemy : gameManager.getEnemies()) {
+        enemy->draw(window);
+    }
+    for (Tower *tower : gameManager.getTowers()) {
+        tower->draw(window);
+    }
+    for (Missile missile : gameManager.getMissles()) {
+        missile.draw(window);
+    }
 
+}
 
 
 

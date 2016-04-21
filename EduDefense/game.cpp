@@ -67,15 +67,8 @@ void Game::run() {
             if (gamerun_state == monsterRun || gamerun_state == btnPlay ) { //по-хорошему тут нужен ОТДЕЛЬНЫЙ класс
                 gameManager.loop();
             }
-            for (Enemy *enemy : gameManager.getEnemies()) {
-                enemy->draw(&window);
-            }
-            for (Tower *tower : gameManager.getTowers()) {
-                tower->draw(&window);
-            }
-            for (Missile missile : gameManager.getMissles()) {
-                missile.draw(&window);
-            }
+            gameview.drawGameObjects(gameManager);
+
             break;
         case Quit:
             Exit();
