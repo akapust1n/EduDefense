@@ -104,29 +104,29 @@ LevelMenu::LevelMenu(double width, double height) : Menu(width, height) {
     }
 
     levelMenu[0].setColor(sf::Color::White);
-    levelMenu[0].setString("   level 1   ");
+    levelMenu[0].setString("   Level 1   ");
     levelMenu[0].setPosition(sf::Vector2f(
-        width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 1 + 85));
+        width / 2.7, height / (MAX_NUMBER_OF_ITEMS + 5) * 1 + 85));
 
     levelMenu[1].setColor(sf::Color::White);
-    levelMenu[1].setString("   level 2   ");
+    levelMenu[1].setString("   Level 2   ");
     levelMenu[1].setPosition(sf::Vector2f(
-        width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 2 + 85));
+        width / 2.7, height / (MAX_NUMBER_OF_ITEMS + 5) * 2 + 85));
 
     levelMenu[2].setColor(sf::Color::White);
-    levelMenu[2].setString("   level 3   ");
+    levelMenu[2].setString("   Level 3   ");
     levelMenu[2].setPosition(sf::Vector2f(
-        width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 3 + 85));
+        width / 2.7, height / (MAX_NUMBER_OF_ITEMS + 5) * 3 + 85));
 
     levelMenu[3].setColor(sf::Color::White);
-    levelMenu[3].setString("   level 4   ");
+    levelMenu[3].setString("   Level 4   ");
     levelMenu[3].setPosition(sf::Vector2f(
-        width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 4 + 85));
+        width / 2.7, height / (MAX_NUMBER_OF_ITEMS + 5) * 4 + 85));
 
     levelMenu[4].setColor(sf::Color::White);
-    levelMenu[4].setString("   level 5   ");
+    levelMenu[4].setString("   Level 5   ");
     levelMenu[4].setPosition(sf::Vector2f(
-        width / 2.6 + 10, height / (MAX_NUMBER_OF_ITEMS + 5) * 5 + 85));
+        width / 2.7, height / (MAX_NUMBER_OF_ITEMS + 5) * 5 + 85));
     //кнопочка назад
 
     levelMenu[5].setColor(sf::Color::White);
