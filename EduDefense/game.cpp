@@ -22,6 +22,7 @@ void Game::run() {
     gameManager.setPlayer(player);
     int level_num = 0;
     int gamerun_state = -1;
+    int tower_count = 0;
     // по-хорошему, это надо бы куда-то унести, но пока хз куда
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
@@ -48,6 +49,9 @@ void Game::run() {
             }
             case LevelRun: {
                 gamerun_state = controller.GameLevelCont(waiterMenu, event);
+                if(gamerun_state ==10)
+                    tower_count=1;
+
                 break;
             }
             default:
@@ -69,11 +73,14 @@ void Game::run() {
                 gameManager.loop();}
                 for (Enemy *enemy : gameManager.getEnemies())
                     enemy->draw(&window);
-             if(gamerun_state==drawTower){
-                gameview.drawTower(controller.TowerPickCont() ,gameManager,controller.getCurrentTower());
-                gameview.drawTowerMask();
+            // if(gamerun_state==drawTower){
+               if(tower_count){
+                   tower_count=0;
+                   gameview.drawTower(controller.TowerPickCont() ,gameManager,controller.getCurrentTower());
+}
 
-             }
+//             /}
+             gameview.drawTowerMask();
             break;}
         case Quit:
             Exit();

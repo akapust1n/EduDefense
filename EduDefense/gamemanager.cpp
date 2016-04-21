@@ -4,6 +4,9 @@
 
 GameManager::GameManager() {
     enemies.push_back(new DefaultEnemy(-60, 60));
+    MapObject temp(100,100,FREE);
+
+    freeAreas.push_back(temp);
     //---------
 }
 
