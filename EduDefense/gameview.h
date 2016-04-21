@@ -33,6 +33,8 @@ class GameView {
     void drawGameMenu(WaiterMenu &waiterMenu);
     void drawTower(sf::Vector2i coord, GameManager &gameManager, hc tower);
     void drawTowerMask();
+    void drawGameObjects(GameManager &gameManager);
+
 };
 
 /*
