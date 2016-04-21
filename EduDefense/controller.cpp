@@ -5,7 +5,7 @@ using namespace sf;
 //контроллер главного меню
 int Controller::MenuCont(Menu &menu1, sf::Event event, int max_items, int def) {
     static int choose_flag = 0; //Флаг того, что что-то выбрано
-
+    std::cout << "hey";
     switch (event.type) {
     case Event::MouseMoved: {
         pixelPos = Mouse::getPosition(*window); //забираем координаты курсора
@@ -80,6 +80,8 @@ bool Controller::ContainsMenuItem(Vector2f coord) {
 int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
     // GameMenu gamemenu1.GetGameMenu()
     // std::cout<<"towerUNCLIK";
+    static  bool  start_monster_flag =false;
+
     std::shared_ptr<GameMenu> gamemenu = gamemenu1.GetGameMenu();
     switch (event.type) {
     case Event::MouseButtonPressed: { //если нажата клавиша мыши
@@ -90,31 +92,33 @@ int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
             if (pixelPos.x > 792 and pixelPos.x < 892) //первая башня
                 if (pixelPos.y > 136 and pixelPos.y < 236) {
                     gamemenu->state = tower0;
-                    break;
+                    return tower0;
                 } else if ((pixelPos.y > 279 and pixelPos.y < 379)) {
                     gamemenu->state = tower2;
-                    break;
+                    return tower2;
                 }
 
             if (pixelPos.x > 908 and pixelPos.x < 1008)
                 if (pixelPos.y > 136 and pixelPos.y < 236) {
                     gamemenu->state = tower1;
-                    break;
+                    return tower1;
                 } else if ((pixelPos.y > 279 and pixelPos.y < 379)) {
                     gamemenu->state = tower3;
-                    break;
+                    return tower3;
                 }
         }
         //смотрим не нажали мы кнопку play
         if (pixelPos.x > 790 and pixelPos.x < 1011)
             if (pixelPos.y > 527 and pixelPos.y < 657) {
                 gamemenu->state = btnPlay;
-                break;
+                start_monster_flag = !
+                        start_monster_flag;
+                return btnPlay;
             }
         std::cout << "towerCLICK";
         break;
     }
     default:
-        break;
+        return (start_monster_flag?monsterRun:stayhere);
     }
 }
