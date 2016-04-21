@@ -1,5 +1,7 @@
 #include "tower.h"
 
+Tower::~Tower() {}
+
 size_t Tower::getGrade() {
     return grade;
 }

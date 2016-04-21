@@ -26,7 +26,7 @@ public:
     void action() override;
 
 protected:
-    size_t grade;
+    size_t grade = 0;
     double baseDamage;
     double damage = baseDamage;
     double range;
