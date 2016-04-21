@@ -7,7 +7,7 @@
 #include <memory>
 #include <string>
 #include <vector>
-enum hc { tower0, tower1, tower2, tower3, btnPlay, addGold, empty,monsterRun, stayhere };
+enum hc { tower0, tower1, tower2, tower3, btnPlay, btnUnPlay,addGold, empty,monsterRun, stayhere };
 
 using namespace sf;
 //---------------------паттерн Строитель(нет)----------
@@ -122,6 +122,11 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
         case btnPlay: {
             mymenu->towersIconsWork("images/GUI/towers.png");
             mymenu->playIconsWork("images/GUI/play_pick.png");
+            break;
+        }
+        case btnUnPlay: {
+            mymenu->towersIconsWork("images/GUI/towers.png");
+            mymenu->playIconsWork("images/GUI/play.png");
             break;
         }
         default:
