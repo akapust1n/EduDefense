@@ -10,7 +10,7 @@ class Controller {
     bool ContainsMenuItem(sf::Vector2f coord);
     const int accuracy_x = 10;
     const int accuracy_y = 10;
-    hc currentTower;
+    hc currentTower = empty;
   public:
     Controller() {}
     hc getCurrentTower(){return currentTower;}

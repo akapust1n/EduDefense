@@ -113,6 +113,7 @@ int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
                 } else if ((pixelPos.y > 279 and pixelPos.y < 379)) {
                     gamemenu->state = tower3;
                     currentTower = tower3;
+
                     return tower3;
                 }
         }
@@ -121,10 +122,12 @@ int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
             if (pixelPos.y > 527 and pixelPos.y < 657) {
                 gamemenu->state = btnPlay;
                 start_monster_flag = !start_monster_flag;
+                currentTower = empty;
                 return btnPlay;
             }
         if (pixelPos.x > 0 and pixelPos.x < 780)
             if (pixelPos.y > 0 and pixelPos.y < 660)
+                if(currentTower !=empty)
                 return drawTower;
 
         std::cout << "towerCLICK";
@@ -133,6 +136,7 @@ int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
     case Event::MouseButtonReleased: {
         if (start_monster_flag) {
             gamemenu->state = btnUnPlay;
+
             return btnPlay;
         }
     }

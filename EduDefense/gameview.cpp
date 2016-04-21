@@ -80,8 +80,8 @@ void GameView::drawTowerMask(){
        sprite.setTextureRect(IntRect(0, 0, 60, 60));
        sprite.setPosition(mask[i].coord.x, mask[i].coord.y);
        window->draw(sprite);
-       window->display();
    }
+     window->display();
 }
 
 
