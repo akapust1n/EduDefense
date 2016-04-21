@@ -54,8 +54,8 @@ void GameView::drawTower(sf::Vector2i coord, GameManager &gameManager,
     int size_free_areas = gameManager.getFreeAreas().size();
     std::vector<MapObject> temp = gameManager.getFreeAreas();
     for (int i = 0; i < size_free_areas; i++) {
-    if( coord.x>temp[i].getX() and coord.x<(temp[i].getX()+60))
-             if ( coord.y>temp[i].getY() and coord.y<(temp[i].getY()+60))
+  //  if( coord.x>temp[i].getX() and coord.x<(temp[i].getX()+60))
+         //    if ( coord.y>temp[i].getY() and coord.y<(temp[i].getY()+60))
                  addTowerMask(tower,coord);
     }
 }
