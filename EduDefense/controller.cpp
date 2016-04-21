@@ -118,6 +118,11 @@ int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
         std::cout << "towerCLICK";
         break;
     }
+    case Event::MouseButtonReleased:{
+        if (start_monster_flag){
+            gamemenu->state = btnUnPlay;
+            return btnPlay;}
+    }
     default:
         return (start_monster_flag?monsterRun:stayhere);
     }
