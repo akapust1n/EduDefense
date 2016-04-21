@@ -13,6 +13,7 @@ Game::Game(size_t width, size_t height)
     gameview.setMenu(waiterMenu);
     gameview.setWindow(window);
     controller.setWindow(window);
+    map1= new UsualMapCreator("maps/level1");
 }
 
 void Game::run() {
@@ -61,15 +62,19 @@ void Game::run() {
         case Levelchoose:
             gameview.drawLevelChoose(m_levelmenu);
             break;
-        case LevelRun:
+        case LevelRun:{
             gameview.drawLevel(level_num);
             gameview.drawGameMenu(waiterMenu);
             if (gamerun_state == monsterRun || gamerun_state == btnPlay ) { //по-хорошему тут нужен ОТДЕЛЬНЫЙ класс
                 gameManager.loop();}
                 for (Enemy *enemy : gameManager.getEnemies())
                     enemy->draw(&window);
+             if(gamerun_state==drawTower){
+                gameview.drawTower(controller.TowerPickCont() ,gameManager,controller.getCurrentTower());
+                gameview.drawTowerMask();
 
-            break;
+             }
+            break;}
         case Quit:
             Exit();
             break;

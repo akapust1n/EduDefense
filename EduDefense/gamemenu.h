@@ -7,7 +7,7 @@
 #include <memory>
 #include <string>
 #include <vector>
-enum hc { tower0, tower1, tower2, tower3, btnPlay, btnUnPlay,addGold, empty,monsterRun, stayhere };
+enum hc { tower0, tower1, tower2, tower3, btnPlay, btnUnPlay,addGold, empty,monsterRun, stayhere,drawTower };
 
 using namespace sf;
 //---------------------паттерн Строитель(нет)----------

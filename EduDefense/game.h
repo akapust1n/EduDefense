@@ -33,5 +33,6 @@ class Game {
     WaiterMenu waiterMenu;
     GameManager gameManager;
     Player player;
+    UsualMapCreator *map1;
 };
 #endif

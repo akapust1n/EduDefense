@@ -10,14 +10,15 @@ class Controller {
     bool ContainsMenuItem(sf::Vector2f coord);
     const int accuracy_x = 10;
     const int accuracy_y = 10;
-
+    hc currentTower;
   public:
     Controller() {}
-
+    hc getCurrentTower(){return currentTower;}
     void setWindow(sf::RenderWindow &window2) { window = &window2; }
     int MenuCont(Menu &menu1, sf::Event event, int max_items,
                       int def = (int)STAYHERE);
     int GameLevelCont(WaiterMenu &gamemenu, Event event);
+     sf::Vector2i TowerPickCont();
 };
 
 #endif // CONTROLLER_H

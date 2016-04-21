@@ -10,9 +10,10 @@ int Controller::MenuCont(Menu &menu1, sf::Event event, int max_items, int def) {
     case Event::MouseMoved: {
         pixelPos = Mouse::getPosition(*window); //забираем координаты курсора
         int i = 0;
-        for (; i < max_items; i++) { //такая штука с циклом это плоховато, но т.к мало вариантов
+        for (; i < max_items;
+             i++) { //такая штука с циклом это плоховато, но т.к мало вариантов
             //клика -сойдет
-           // std::cout << "dsd\n";
+            // std::cout << "dsd\n";
             const Vector2f temp = menu1.getposition(menu1.ncgetMenuList(), i);
             if (ContainsMenuItem(temp))
                 break;
@@ -74,13 +75,17 @@ bool Controller::ContainsMenuItem(Vector2f coord) {
             return true;
     return false;
 }
+Vector2i Controller::TowerPickCont() {
+    return pixelPos;
+
+}
 
 // "клики по итемам захаркдкожены". координаты взяты визуально, а надо их брать
 // из gamemenu
 int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
     // GameMenu gamemenu1.GetGameMenu()
     // std::cout<<"towerUNCLIK";
-    static  bool  start_monster_flag =false;
+    static bool start_monster_flag = false;
 
     std::shared_ptr<GameMenu> gamemenu = gamemenu1.GetGameMenu();
     switch (event.type) {
@@ -92,18 +97,22 @@ int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
             if (pixelPos.x > 792 and pixelPos.x < 892) //первая башня
                 if (pixelPos.y > 136 and pixelPos.y < 236) {
                     gamemenu->state = tower0;
+                    currentTower = tower0;
                     return tower0;
                 } else if ((pixelPos.y > 279 and pixelPos.y < 379)) {
                     gamemenu->state = tower2;
+                    currentTower = tower2;
                     return tower2;
                 }
 
             if (pixelPos.x > 908 and pixelPos.x < 1008)
                 if (pixelPos.y > 136 and pixelPos.y < 236) {
                     gamemenu->state = tower1;
+                    currentTower = tower1;
                     return tower1;
                 } else if ((pixelPos.y > 279 and pixelPos.y < 379)) {
                     gamemenu->state = tower3;
+                    currentTower = tower3;
                     return tower3;
                 }
         }
@@ -111,19 +120,23 @@ int Controller::GameLevelCont(WaiterMenu &gamemenu1, sf::Event event) {
         if (pixelPos.x > 790 and pixelPos.x < 1011)
             if (pixelPos.y > 527 and pixelPos.y < 657) {
                 gamemenu->state = btnPlay;
-                start_monster_flag = !
-                        start_monster_flag;
+                start_monster_flag = !start_monster_flag;
                 return btnPlay;
             }
+        if (pixelPos.x > 0 and pixelPos.x < 780)
+            if (pixelPos.y > 0 and pixelPos.y < 660)
+                return drawTower;
+
         std::cout << "towerCLICK";
         break;
     }
-    case Event::MouseButtonReleased:{
-        if (start_monster_flag){
+    case Event::MouseButtonReleased: {
+        if (start_monster_flag) {
             gamemenu->state = btnUnPlay;
-            return btnPlay;}
+            return btnPlay;
+        }
     }
     default:
-        return (start_monster_flag?monsterRun:stayhere);
+        return (start_monster_flag ? monsterRun : stayhere);
     }
 }

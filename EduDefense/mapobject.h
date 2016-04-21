@@ -17,6 +17,7 @@ class MapObject : public GameObject {
     Area getArea() { return area; }
     void setArea(Area area) { this->area = area; }
 
+
 private:
     Area area;
 };
