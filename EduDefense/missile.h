@@ -5,9 +5,9 @@
 #include "moveable.h"
 #include "enemy.h"
 
-class Missle : public Moveable {
+class Missile : public Moveable {
 public:
-    Missle(double x, double y, double speed, double damage, Enemy *target);
+    Missile(double x, double y, double speed, double damage, Enemy *target);
 
     double getDamage();
     void setDamage(double damage);

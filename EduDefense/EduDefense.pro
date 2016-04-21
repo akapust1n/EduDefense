@@ -3,7 +3,6 @@ HEADERS += \
     enemy.h \
     moveable.h \
     tower.h \
-    missle.h \
     activegameobject.h \
     exceptions.h \
     game.h \
@@ -20,7 +19,8 @@ HEADERS += \
     path.h \
     defaultenemy.h \
     drawableobject.h \
-    defaulttower.h
+    defaulttower.h \
+    missile.h
     mapobject.h
 SOURCES += \
     main.cpp \
@@ -28,7 +28,6 @@ SOURCES += \
     enemy.cpp \
     moveable.cpp \
     tower.cpp \
-    missle.cpp \
     activegameobject.cpp \
     exceptions.cpp \
     game.cpp \
@@ -42,7 +41,8 @@ SOURCES += \
     path.cpp \
     defaultenemy.cpp \
     drawableobject.cpp \
-    defaulttower.cpp
+    defaulttower.cpp \
+    missile.cpp
 
 LIBS += -LC:/SFML/lib
 
