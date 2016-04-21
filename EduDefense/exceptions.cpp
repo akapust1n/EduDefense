@@ -15,4 +15,3 @@ file_load_error::file_load_error() {
 const char* file_load_error::what() const throw() {
      return "file load error  \n";
 }
-

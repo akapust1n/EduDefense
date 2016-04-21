@@ -7,7 +7,7 @@ Missile::Missile(double x, double y, double speed, double damage, Enemy *target)
     this->damage = damage;
     this->target = target;
     this->radius = 2;
-    loadSprite("images/Bullets/PoisonBullet.png");
+    loadSprite("images/Bullets/DefaultMissile.png");
     period = 0.01;
 }
 
