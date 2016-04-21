@@ -125,7 +125,7 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
             break;
         }
         case btnUnPlay: {
-            mymenu->towersIconsWork("images/GUI/towers.png");
+          //  mymenu->towersIconsWork("images/GUI/towers.png");
             mymenu->playIconsWork("images/GUI/play.png");
             break;
         }
