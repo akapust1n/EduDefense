@@ -49,7 +49,7 @@ std::vector<Enemy *> GameManager::getEnemies() {
     return enemies;
 }
 
-std::vector<Missile> GameManager::getMissles() {
+std::vector<Missile *> GameManager::getMissles() {
     return missiles;
 }
 
@@ -86,18 +86,18 @@ void GameManager::loop() {
         }
         if (tower->getTarget() != NULL && tower->isReady()) {
             // запускаем ракету (скорость пока магическое число)
-            Missile missile(tower->getX(), tower->getY(), 10, tower->getDamage(),
-                          tower->getTarget());
-            missiles.push_back(missile);
+            missiles.push_back(new Missile(tower->getX(), tower->getY(), 10, tower->getDamage(),
+                                           tower->getTarget()));
             tower->setReady(false);
         }
         tower->loop();
     }
-    for (std::vector<Missile>::iterator it = missiles.begin(); it != missiles.end(); ) {
-        if (it->isExploded()) {
+    for (std::vector<Missile *>::iterator it = missiles.begin(); it != missiles.end(); ) {
+        if ((*it)->isExploded()) {
+            delete *it;
             it = missiles.erase(it);
         } else {
-            it->loop();
+            (*it)->loop();
             it++;
         }
     }

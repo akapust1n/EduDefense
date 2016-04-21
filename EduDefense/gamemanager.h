@@ -21,7 +21,7 @@ public:
     void setRoads(std::vector<MapObject> roads);
     std::vector<Tower *> getTowers();
     std::vector<Enemy *> getEnemies();
-    std::vector<Missile> getMissles();
+    std::vector<Missile *> getMissles();
     void loop(); // Основной цикл игры
 
 private:
@@ -32,7 +32,7 @@ private:
     std::vector<MapObject> roads;
     std::vector<Tower *> towers;
     std::vector<Enemy *> enemies;
-    std::vector<Missile> missiles;
+    std::vector<Missile *> missiles;
 };
 
 #endif // GAMEMANAGER_H

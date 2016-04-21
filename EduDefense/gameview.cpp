@@ -82,7 +82,7 @@ void GameView::drawGameObjects(GameManager &gameManager) {
     for (Tower *tower : gameManager.getTowers()) {
         tower->draw(window);
     }
-    for (Missile missile : gameManager.getMissles()) {
-        missile.draw(window);
+    for (Missile *missile : gameManager.getMissles()) {
+        missile->draw(window);
     }
 }
