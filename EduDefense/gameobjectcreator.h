@@ -1,7 +1,6 @@
 #ifndef GAMEOBJECTCREATOR_H
 #define GAMEOBJECTCREATOR_H
-//---------------Что-то похожее на строителя, но без директора и в вольной
-//трактовке---------
+
 #include "gameobject.h"
 #include "mapobject.h"
 #include <string>
@@ -33,7 +32,7 @@ class ObjectsCreator {
     virtual Area getAreaByChar(char c) = 0;
     std::string file;
     int stonesCount;
-    const int texture_size = 32; //размер текстурки
+    const int texture_size = 60; //размер текстурки
     std::string mapStates;
 };
 

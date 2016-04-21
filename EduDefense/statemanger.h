@@ -19,7 +19,6 @@ class StateManager {
 
 private:
     state currentState;
-
 };
 
 #endif // STATEMANGER_H

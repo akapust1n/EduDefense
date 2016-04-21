@@ -27,7 +27,7 @@ public:
     }
 
     std::vector<MapObject> path;
-    std::vector<MapObject>::iterator it;
+    std::vector<MapObject>::iterator it; // следующий кусок пути
 };
 
 #endif // PATH_H

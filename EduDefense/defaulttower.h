@@ -3,8 +3,7 @@
 
 #include "tower.h"
 
-class DefaultTower : public Tower
-{
+class DefaultTower : public Tower {
 public:
     DefaultTower() {}
     ~DefaultTower() {}

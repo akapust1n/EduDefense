@@ -19,7 +19,7 @@ void Game::run() {
     player.setLife(10);
     player.setMoney(100);
     gameManager.setPlayer(player);
-    int level_num = 0;
+    int levelNum = 0;
     int gamerun_state = -1;
     // по-хорошему, это надо бы куда-то унести, но пока хз куда
     while (window.isOpen() && !m_Exit) {
@@ -37,11 +37,11 @@ void Game::run() {
                 break;
             }
             case Levelchoose: {
-                level_num = controller.MenuCont(m_levelmenu, event,
+                levelNum = controller.MenuCont(m_levelmenu, event,
                                                 MAX_NUMBER_OF_LEVEL_ITEMS, -1);
-                if (level_num == 0)
+                if (levelNum == 0)
                     m_stateManager.setState(LevelRun);
-                if (level_num == 5)
+                if (levelNum == 5)
                     m_stateManager.setState(MenuMain);
                 break;
             }
@@ -62,7 +62,7 @@ void Game::run() {
             gameview.drawLevelChoose(m_levelmenu);
             break;
         case LevelRun:
-            gameview.drawLevel(level_num);
+            gameview.drawLevel(levelNum);
             gameview.drawGameMenu(waiterMenu);
             if (gamerun_state == monsterRun || gamerun_state == btnPlay ) { //по-хорошему тут нужен ОТДЕЛЬНЫЙ класс
                 gameManager.loop();

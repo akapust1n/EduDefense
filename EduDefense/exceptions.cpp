@@ -1,17 +1,17 @@
 #include <exceptions.h>
 
-//------------------------------Реализация класса ошибки памяти---------------------------
-memory_alloc_error::memory_alloc_error() {
+// Реализация класса ошибки памяти
+memoryAllocError::memoryAllocError() {
 }
 
-const char* memory_alloc_error::what() const throw() {
+const char* memoryAllocError::what() const throw() {
      return "memory alloc error \n";
 }
 
-//------------------------------Реализация класса ошибки загрузки статического файла ---------------------------
-file_load_error::file_load_error() {
+// Реализация класса ошибки загрузки статического файла
+fileLoadError::fileLoadError() {
 }
 
-const char* file_load_error::what() const throw() {
-     return "file load error  \n";
+const char* fileLoadError::what() const throw() {
+     return "file load error \n";
 }

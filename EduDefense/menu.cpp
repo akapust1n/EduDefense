@@ -7,7 +7,7 @@ static const char *MUSIC = "music/MenuMusic.ogg";
 
 Menu::Menu(double width, double height) {
     if (!font.loadFromFile(FONT)) {
-        throw(file_load_error());
+        throw(fileLoadError());
     }
     menuItemsCount = 4;
     FontSize = 60;
@@ -41,7 +41,7 @@ Menu::Menu(double width, double height) {
     selectedItemIndex = -1;
 
     if (!texture.loadFromFile(BG_IMG)) {
-        throw(file_load_error());
+        throw(fileLoadError());
     }
 
     sprite.setTexture(texture);
@@ -49,7 +49,7 @@ Menu::Menu(double width, double height) {
     sprite.setPosition(0, 0);
 
     if (!buffer.loadFromFile(MUSIC)) {
-        throw(file_load_error());
+        throw(fileLoadError());
     }
     sound.setBuffer(buffer);
     sound.play();
@@ -94,7 +94,7 @@ void Menu::clearselectedItemIdex(sf::Text *menu1, int index_num,
 
 LevelMenu::LevelMenu(double width, double height) : Menu(width, height) {
     if (!font.loadFromFile(FONT)) {
-        throw(file_load_error());
+        throw(fileLoadError());
     }
     menuItemsCount = 6; // 5 пунктов + кнопочка назад
     FontSize = 60;
@@ -136,7 +136,7 @@ LevelMenu::LevelMenu(double width, double height) : Menu(width, height) {
     selectedItemIndex = -1;
 
     if (!texture.loadFromFile(BG_IMG)) {
-        throw(file_load_error());
+        throw(fileLoadError());
     }
 
     sprite.setTexture(texture);
@@ -144,7 +144,7 @@ LevelMenu::LevelMenu(double width, double height) : Menu(width, height) {
     sprite.setPosition(0, 0);
 
     if (!buffer.loadFromFile(MUSIC)) {
-        throw(file_load_error());
+        throw(fileLoadError());
     }
     sound.stop();
     // sound.setBuffer(buffer);

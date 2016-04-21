@@ -71,7 +71,6 @@ class GameMenuBuilder {
 
   public:
     GameMenuBuilder(String filename) { temp1 = filename; }
-    // void createNewGameMenuProduct() { mymenu.reset(new GameMenu(temp1)); }
     std::shared_ptr<GameMenu> GetGameMenu() { return mymenu; }
 
     virtual void buildParams() = 0;
@@ -125,7 +124,6 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
             break;
         }
         case btnUnPlay: {
-          //  mymenu->towersIconsWork("images/GUI/towers.png");
             mymenu->playIconsWork("images/GUI/play.png");
             break;
         }
@@ -149,7 +147,7 @@ class UsualGameMenuBuilder : public GameMenuBuilder {
         mymenu->sprite_tower.setPosition(908, 279);
         window2->draw(mymenu->sprite_tower);
 
-        mymenu->statsIconsWork(); //потом переделать под правильные спрайты
+        mymenu->statsIconsWork();
 
         mymenu->sprite_gui.setTextureRect(IntRect(0, 0, 35, 35));
         mymenu->sprite_gui.setPosition(786, 3);

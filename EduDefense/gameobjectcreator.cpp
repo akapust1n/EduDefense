@@ -10,20 +10,20 @@ UsualMapCreator::UsualMapCreator(std::string filename)
 }
 
 void UsualMapCreator::readfile() {
-    int num_string = 0;
-    int string_len = 0;
-    char temp;
+    int numString = 0;
+    int stringLen = 0;
+    char c;
     std::ifstream fin(file); // (ВВЕЛИ НЕ КОРРЕКТНОЕ ИМЯ ФАЙЛА)
 
     if (!fin.is_open()) // если файл не открыт
-        throw(file_load_error());
-    fin >> string_len;
-    fin >> num_string;
+        throw(fileLoadError());
+    fin >> stringLen;
+    fin >> numString;
 
-    for (int i = 0; i < num_string; i++)
-        for (int j = 0; j < string_len; j++) {
-            fin >> temp;
-            Area u = getAreaByChar(temp);
+    for (int i = 0; i < numString; i++)
+        for (int j = 0; j < stringLen; j++) {
+            fin >> c;
+            Area u = getAreaByChar(c);
             if (u != ERROR) {
                 MapObject mapObject(texture_size * j, texture_size, u);
                 switch (u) {

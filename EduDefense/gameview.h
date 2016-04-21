@@ -8,7 +8,7 @@
 #include <statemanger.h>
 class TowerDrawMask {
 public:
-    hc type;
+    gameMenuItem type;
     sf::Vector2i coord;
 };
 
@@ -20,7 +20,7 @@ class GameView {
 
   public:
     GameView() {}
-    void addTowerMask(hc type,sf::Vector2i coord);
+    void addTowerMask(gameMenuItem type,sf::Vector2i coord);
     void setMenu(WaiterMenu &temp) { waiterMenu1 = &temp; }
     void setWindow(sf::RenderWindow &window2) { window = &window2; }
     void drawMainMenu(const Menu &menu);
@@ -29,22 +29,12 @@ class GameView {
     void drawSettings();
     void drawStats();
     void drawLevel(int level_num);
-    void highcolorTower(GameMenu &menu, hc item);
+    void highcolorTower(GameMenu &menu, gameMenuItem item);
     void drawGameMenu(WaiterMenu &waiterMenu);
-    void drawTower(sf::Vector2i coord, GameManager &gameManager, hc tower);
+    void drawTower(sf::Vector2i coord, GameManager &gameManager, gameMenuItem tower);
     void drawTowerMask();
     void drawGameObjects(GameManager &gameManager);
 
 };
 
-/*
-enum state{
-    MenuMain,
-    Levelchoose,
-    LevelRun,
-    Options,
-    Stats,
-    Quit
-};
-*/
 #endif // GAMEVIEW_H
