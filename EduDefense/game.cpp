@@ -1,9 +1,9 @@
+#include "gamemanager.h"
 #include "gamemenu.h"
 #include "map.h"
 #include <game.h>
 #include <gameview.h>
 #include <iostream>
-#include "gamemanager.h"
 
 using namespace std;
 Game::Game(size_t width, size_t height)
@@ -20,11 +20,12 @@ void Game::run() {
     player.setMoney(100);
     gameManager.setPlayer(player);
     int level_num = 0;
+    int gamerun_state = -1;
     // по-хорошему, это надо бы куда-то унести, но пока хз куда
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
         //контроллеры
-         while (window.pollEvent(event)) {
+        while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) { //временное решение
                 Exit();
             }
@@ -36,24 +37,23 @@ void Game::run() {
                 break;
             }
             case Levelchoose: {
-                level_num = controller.MenuCont(
-                    m_levelmenu, event, MAX_NUMBER_OF_LEVEL_ITEMS, -1);
+                level_num = controller.MenuCont(m_levelmenu, event,
+                                                MAX_NUMBER_OF_LEVEL_ITEMS, -1);
                 if (level_num == 0)
                     m_stateManager.setState(LevelRun);
                 if (level_num == 5)
                     m_stateManager.setState(MenuMain);
                 break;
             }
-            case LevelRun:{
-                std::cout<<"here";
-                controller.GameLevelCont(waiterMenu,  event);
+            case LevelRun: {
+                gamerun_state = controller.GameLevelCont(waiterMenu, event);
                 break;
-}
+            }
             default:
                 break;
             }
         }
-       //отрисовки
+        //отрисовки
         switch (m_stateManager.getcurrentState()) {
         case MenuMain:
             gameview.drawMainMenu(menu);
@@ -64,8 +64,11 @@ void Game::run() {
         case LevelRun:
             gameview.drawLevel(level_num);
             gameview.drawGameMenu(waiterMenu);
-            gameManager.loop();
-            for (Enemy *enemy : gameManager.getEnemies()) enemy->draw(&window);
+            if (gamerun_state == monsterRun || gamerun_state == btnPlay ) { //по-хорошему тут нужен ОТДЕЛЬНЫЙ класс
+                gameManager.loop();}
+                for (Enemy *enemy : gameManager.getEnemies())
+                    enemy->draw(&window);
+
             break;
         case Quit:
             Exit();
