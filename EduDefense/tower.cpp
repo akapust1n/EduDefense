@@ -42,6 +42,10 @@ bool Tower::isReady() {
     return ready;
 }
 
+void Tower::setReady(bool ready) {
+    this->ready = ready;
+}
+
 void Tower::upgrade() {
     if (grade < MAX_GRADE) {
         grade++;
@@ -51,12 +55,8 @@ void Tower::upgrade() {
 
 void Tower::action() {
     ready = true;
-    if (target == NULL) {
-        return;
-    }
-    if (distance(target) > range) {
+    if (target != NULL && (distance(target) > range || !target->isAlive())) {
         target = NULL;
         return;
     }
-    ready = false;
 }

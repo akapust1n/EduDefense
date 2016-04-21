@@ -3,7 +3,7 @@
 ActiveGameObject::~ActiveGameObject() {}
 
 void ActiveGameObject::loop() {
-    if (clock.getElapsedTime().asSeconds() > frequency) {
+    if (clock.getElapsedTime().asSeconds() > period) {
         action();
         clock.restart();
     }

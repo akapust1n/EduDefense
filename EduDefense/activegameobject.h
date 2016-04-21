@@ -11,7 +11,7 @@ public:
 
 protected:
     sf::Clock clock;
-    float frequency;
+    float period;
     virtual void action() = 0;
 };
 

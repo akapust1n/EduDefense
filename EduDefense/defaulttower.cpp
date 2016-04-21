@@ -6,6 +6,7 @@ DefaultTower::DefaultTower(double x, double y) {
     radius = 30;
     range = 200;
     baseDamage = 20;
-    frequency = 2;
+    damage = baseDamage;
+    period = 2;
     loadSprite("images/Tower/FireTower.png");
 }

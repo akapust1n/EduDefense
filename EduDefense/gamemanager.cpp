@@ -1,12 +1,11 @@
 #include "gamemanager.h"
 
 #include "defaultenemy.h"
+#include "defaulttower.h"
 
 GameManager::GameManager() {
     enemies.push_back(new DefaultEnemy(-60, 60));
-    MapObject temp(100,100,FREE);
-
-    freeAreas.push_back(temp);
+    towers.push_back(new DefaultTower(300, 120));
     //---------
 }
 
@@ -50,8 +49,8 @@ std::vector<Enemy *> GameManager::getEnemies() {
     return enemies;
 }
 
-std::vector<Missle> GameManager::getMissles() {
-    return missles;
+std::vector<Missile> GameManager::getMissles() {
+    return missiles;
 }
 
 void GameManager::loop() {
@@ -85,17 +84,18 @@ void GameManager::loop() {
                 }
             }
         }
-        if (tower->getTarget() != NULL) {
+        if (tower->getTarget() != NULL && tower->isReady()) {
             // запускаем ракету (скорость пока магическое число)
-            Missle missle(tower->getX(), tower->getY(), 0.1, tower->getDamage(),
+            Missile missile(tower->getX(), tower->getY(), 10, tower->getDamage(),
                           tower->getTarget());
-            missles.push_back(missle);
+            missiles.push_back(missile);
+            tower->setReady(false);
         }
         tower->loop();
     }
-    for (std::vector<Missle>::iterator it = missles.begin(); it != missles.end(); ) {
+    for (std::vector<Missile>::iterator it = missiles.begin(); it != missiles.end(); ) {
         if (it->isExploded()) {
-            it = missles.erase(it);
+            it = missiles.erase(it);
         } else {
             it->loop();
             it++;

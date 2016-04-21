@@ -3,7 +3,7 @@
 
 #include "gameobject.h"
 #include "enemy.h"
-#include "missle.h"
+#include "missile.h"
 
 static const size_t MAX_GRADE = 2;
 static const double GRADE_FACTORS[] {1.0, 1.4, 2.0}; // множители урона
@@ -22,6 +22,7 @@ public:
     Enemy *getTarget();
     void setTarget(Enemy *target);
     bool isReady();
+    void setReady(bool ready);
     void upgrade();
     void action() override;
 
@@ -31,7 +32,7 @@ protected:
     double damage = baseDamage;
     double range;
     Enemy *target = NULL;
-    bool ready = true;
+    bool ready = false;
 };
 
 #endif // TOWER_H

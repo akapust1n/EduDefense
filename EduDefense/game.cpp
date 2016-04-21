@@ -13,7 +13,6 @@ Game::Game(size_t width, size_t height)
     gameview.setMenu(waiterMenu);
     gameview.setWindow(window);
     controller.setWindow(window);
-    map1 = new UsualMapCreator("maps/level1");
 }
 
 void Game::run() {
@@ -22,7 +21,6 @@ void Game::run() {
     gameManager.setPlayer(player);
     int level_num = 0;
     int gamerun_state = -1;
-    int tower_count = 0;
     // по-хорошему, это надо бы куда-то унести, но пока хз куда
     while (window.isOpen() && !m_Exit) {
         sf::Event event;
@@ -49,9 +47,6 @@ void Game::run() {
             }
             case LevelRun: {
                 gamerun_state = controller.GameLevelCont(waiterMenu, event);
-                if (gamerun_state == 10)
-                    tower_count = 1;
-
                 break;
             }
             default:
@@ -66,27 +61,22 @@ void Game::run() {
         case Levelchoose:
             gameview.drawLevelChoose(m_levelmenu);
             break;
-        case LevelRun: {
+        case LevelRun:
             gameview.drawLevel(level_num);
             gameview.drawGameMenu(waiterMenu);
-            if (gamerun_state == monsterRun ||
-                gamerun_state ==
-                    btnPlay) { //по-хорошему тут нужен ОТДЕЛЬНЫЙ класс
+            if (gamerun_state == monsterRun || gamerun_state == btnPlay ) { //по-хорошему тут нужен ОТДЕЛЬНЫЙ класс
                 gameManager.loop();
             }
-            for (Enemy *enemy : gameManager.getEnemies())
+            for (Enemy *enemy : gameManager.getEnemies()) {
                 enemy->draw(&window);
-            // if(gamerun_state==drawTower){
-            if (tower_count) {
-                tower_count = 0;
-                gameview.drawTower(controller.TowerPickCont(), gameManager,
-                                   controller.getCurrentTower());
             }
-
-            //             /}
-            gameview.drawTowerMask();
+            for (Tower *tower : gameManager.getTowers()) {
+                tower->draw(&window);
+            }
+            for (Missile missile : gameManager.getMissles()) {
+                missile.draw(&window);
+            }
             break;
-        }
         case Quit:
             Exit();
             break;
