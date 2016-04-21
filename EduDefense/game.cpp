@@ -65,10 +65,10 @@ void Game::run() {
             gameview.drawLevel(level_num);
             gameview.drawGameMenu(waiterMenu);
             if (gamerun_state == monsterRun || gamerun_state == btnPlay ) { //по-хорошему тут нужен ОТДЕЛЬНЫЙ класс
-                gameManager.loop();
+                gameManager.loop();}
                 for (Enemy *enemy : gameManager.getEnemies())
                     enemy->draw(&window);
-            }
+
             break;
         case Quit:
             Exit();
